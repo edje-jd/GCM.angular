@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 5% " >
+ <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addMedicament"
+                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-plus-lg"></i> Ajouter Medicament</a></button>
+
+<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Medicaments</h2></DIV>
+  <hr STYLE="color: yellow; ">
+  <br>
+  <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+         name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search medicament..." required> <br>
+<table class = "table table-hover">
+    <thead class="thead-light">
+        <tr>
+           <th>Id</th>
+            <th>Type de Medicament</th>
+            <th> Nom de Medicament</th>
+          
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let medicament of medicaments "  >
+          
+            <th class ="hidden"> {{ medicament.id }} </th>
+            <td> {{ medicament.typeMedc }} </td>
+          <td> {{medicament.nomMedc }} </td>
+          
+         <td>
+                  <button (click) = "updateMedicament(medicament.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteMedicament(medicament.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+               
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div> 
+

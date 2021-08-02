@@ -1,0 +1,69 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0">
+
+
+<div class="container" style="background-color: light; margin-left: 0% " >
+ <DIV CLASS="container" > <button class="bnt btn-primary" style="margin-left: 87%; margin-top: 2%"><a routerLink="/addPatient"
+                        style="color: black;font-family: 'Georgia'  "><i class="bi bi-person-plus-fill"></i> Ajouter patients</a></button>
+
+<h2 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;margin-right: 52%; " >   Liste des patients</h2></DIV>
+  <hr STYLE="color: yellow; ">
+  <br>
+<div>
+  <!-- <input type="test" class="form-control" name="Name" [(ngModel)]="Name" (ngModelChange)="Search()"
+  placeholder="Entrer you name to search"> -->
+  <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+         name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
+    
+</div><br>
+
+<table class = "table table-bordered">
+    <thead class="thead-light">
+        <tr>
+           <th> Id &nbsp;<i class="fa fa-sort"></i></th>
+            <th> Name </th>
+            <th> Phone</th>
+          <th> Date</th>
+            <th>Sexe</th>
+          <th> Adresse</th>
+          <th>NomM</th>
+          <th>Locali</th>
+          <th> Actions </th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        <tr *ngFor = "let patientDes of patientsDeseases">
+          
+            <th class ="hidden"> {{patientDes.patient.id }} </th>
+            <td> {{patientDes.patient.name }} </td>
+          <td> {{patientDes.patient.phone }} </td>
+          <td> {{patientDes.patient.date_naissance|date: 'dd/MM/yyyy'}} </td>
+          <td> {{patientDes.patient.sexe }} </td>
+          <td> {{patientDes.patient.adresse }} </td>
+          <td> {{patientDes.antcedent.nom_malade }} </td>
+          <td>{{patientDes.localisation.nom_moghata}}</td>
+
+          <!-- <td><div *ngFor="let item of patient.localisations">{{item.nom_moghata}}</div></td>  -->
+          
+           <td>
+                <button (click) = "updatePatient(patientDes.patient)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deletePatientDesease(patientDes.patient.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+                <button (click) = "PatientDetails(patientDes)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
+                <button (click) = "DemandeVisite(patientDes.patient)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-plus-square-fill"></i></button>
+            </td>
+        </tr>
+    </tbody>
+    <!--<pagination-controls (pageChange)="p=$event"></pagination-controls>
+    paginate:{itemsPerPage:5,currentPage:p};-->
+   <!-- <mat-paginator [length]="100"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>  -->
+
+
+</table>
+<router-outlet></router-outlet>
+</div> 

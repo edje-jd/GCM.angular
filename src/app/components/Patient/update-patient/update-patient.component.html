@@ -1,0 +1,100 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light;  " >
+
+  <div class="col-md-6 offset-md-3 " STYLE="margin-left: 10% ; width: 45%"   ><BR>
+    <h3 style="margin-left: 5%; font-family: 'Georgia', Times, serif; color: blue;" > Mettre a jour les Information de Patient </h3>
+    <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+      <div class="form-group">
+        <input type="text" class ="form-control" id = "name" placeholder="Nome de Patient"
+               [(ngModel)] = "patient.name" name = "name">
+      </div>
+
+      <div class="form-group">
+
+        <input type="text" class ="form-control" id = "phone" placeholder="Age de Patient"
+               [(ngModel)] = "patient.phone" name = "phone">
+      </div>
+
+      <div class="form-group">
+
+        <input type="text" class ="form-control" id = "date_naissance" placeholder="Date de naissance"
+               [(ngModel)] = "patient.date_naissance" name = "date_naissance">
+      </div>
+      <div class="form-group">
+
+        <input type="text" class ="form-control" id = "sexe" placeholder="Patient Sexe"
+               [(ngModel)] = "patient.sexe" name = "sexe">
+      </div>
+      <div class="form-group">
+
+        <input  type="text" class ="form-control" id = "adresse" placeholder="Patient Adresse"
+                [(ngModel)] = "patient.adresse" name = "adresse">
+
+      </div>
+      <!-- <div class="form-group">
+
+        <input  type="text" class ="form-control" id = "antcedents" placeholder="Patient Antecedent"
+                [(ngModel)] = "Patient.antcedents"name = "antcedents">
+
+      </div> -->
+      <!-- <div class="form-group">
+
+        <input  type="text" class ="form-control" id = "localisations" placeholder="Patient localisations"
+                [(ngModel)] = "Patient.localisations" name = "localisations">
+
+      </div> -->
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Update</button>
+
+    </form>
+  </div>
+</div> 
+<!-- 
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           
+           <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Patient {{Patient?.name}}</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <form #editForm="ngForm">
+              <div class="form-group">
+                 <label for="name">Name</label>
+                 <input type="text" ngModel="{{Patient?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+              </div>
+              <input type="hidden" ngModel="{{Patient.id}}" name="id" class="form-control" id="id" placeholder="Email">
+             
+              <div class="form-group">
+                 <label for="phone">Phone</label>
+                 <input type="text" ngModel="{{Patient.phone}}" name="phone" class="form-control" id="phone" placeholder="Phone">
+              </div>
+              <div class="form-group">
+                 <label for="date_naissance">Date Naissance</label>
+                 <input type="date" ngModel="{{Patient.date_naissance}}" name="date_naissance" class="form-control" id="date_naissance" placeholder="Date naissance">
+              </div>
+              <div class="form-group">
+                 <label for="sexe">Sexe</label>
+                 <input type="text" ngModel="{{Patient.sexe}}" name="sexe" class="form-control" id="sexe" name="sexe" placeholder="Sexe">
+              </div>
+              <div class="form-group">
+                 <label for="adresse">Adresse</label>
+                 <input type="text" ngModel="{{Patient.adresse}}" name="adresse" class="form-control" id="adresse" placeholder="Adresse">
+              </div>
+              <div class="modal-footer">
+                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                 <button (click)="onUpdateEmloyee(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+              </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>  -->
+
+

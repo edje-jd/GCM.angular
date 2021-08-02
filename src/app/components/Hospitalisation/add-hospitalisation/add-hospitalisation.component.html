@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 10% " >
+
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter une Hospitalisation</h3>
+  <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+        <div class="form-group">
+            <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
+                [(ngModel)] = "hospitalisationV.hospitalisation.id" name = "id">
+        </div>
+
+        <div class="form-group">
+            <input type="date" class ="form-control" id = "date_debut_hosp" placeholder="Date debut d'hospitalisation"
+                [(ngModel)] = "hospitalisationV.hospitalisation.date_debut_hosp" name = "date_debut_hosp">
+        </div>
+
+        <div class="form-group">
+
+            <input type="date" class ="form-control" id = "date_fin_hosp" placeholder="Date fin d'hospitalisation"
+                [(ngModel)] = "hospitalisationV.hospitalisation.date_fin_hosp" name = "date_fin_hosp">
+        </div>
+        <div class="form-group">
+
+            <input type="number" class ="form-control" id = "numLit" placeholder="numerau de lit"
+                [(ngModel)] = "hospitalisationV.hospitalisation.numLit " name = "numLit">
+        </div>
+        <div class="form-group">
+
+            <input type="number" class ="form-control" id = "numChambre" placeholder="numerau de chambre"
+                [(ngModel)] = "hospitalisationV.hospitalisation.numChambre " name = "numChambre">
+        </div>
+        <div class="form-group">
+
+            <input type="text" class ="form-control" id = "nomUnite" placeholder="Nom d'unite"
+                [(ngModel)] = "hospitalisationV.hospitalisation.nomUnite  " name = "nomUnite">
+        </div>
+        <div class="form-group">
+
+            <input type="text" class ="form-control" id = "traitement" placeholder="Traitement donnee"
+                [(ngModel)] = "hospitalisationV.hospitalisation.traitement " name = "traitement">
+        </div>
+    
+    
+        
+   
+        
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
+    </form>
+</div>
+</div>

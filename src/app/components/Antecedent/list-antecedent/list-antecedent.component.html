@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 5% " >
+ <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addAntecedent"
+                        style="color: black;font-family: 'Script MT Bold'  "> <i class="bi bi-plus-lg"></i>Ajouter Antecedent</a></button>
+
+<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    List des Maladies</h2></DIV>
+  <hr STYLE="color: yellow; ">
+  <br><br>
+<table class = "table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>Id</th>
+            <th> Name </th>
+            
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let antecedent of antecedents "  >
+          
+            <th class ="hidden"> {{ antecedent.id }} </th>
+            <td> {{ antecedent.nom_malade }} </td>
+          
+            
+         <td>
+                  <button (click) = "updateAntecedent(antecedent.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteAntecedent(antecedent.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+            
+            </td>
+        </tr>
+    </tbody>
+    <!--<pagination-controls (pageChange)="p=$event"></pagination-controls>-->
+</table>
+</div> 

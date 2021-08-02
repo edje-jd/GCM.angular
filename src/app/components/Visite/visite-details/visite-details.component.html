@@ -1,0 +1,101 @@
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+    
+    
+    <div class="container" style="background-color: right; margin-top: 5%;" >
+        
+      <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-xl-8 col-md-12">
+                    <div class="card user-card-full">
+                       
+                        <div id="id-print" >
+                        <div class="row m-l-0 m-r-0">
+    
+                       
+                            <div   class="col-sm-4 bg-c-lite-green user-profile">
+                                <div class="card-block text-center text-white">
+                                    
+                                    <br>
+                                     <header   style="margin-left: 5%; size: 25ch; font-family: Georgia,  'Times New Roman', Times, serif, Times, serif;font-weight: bold; color: blue;"><b>Detail de la visite du Patient {{visitepm.patient.name}}</b> </header>
+                                        <br>
+                                    <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png"
+                                        class="img-radius" alt="User-Profile-Image"> </div>
+                                 
+                                    <h6 class="f-w-600" style="color: blue;"><b>Identifiant du patient</b></h6>
+                                    <p style="color: black;">{{visitepm.visite.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600" style="color: blue">Nom de patient</p>
+                                            <h6 class="text-muted f-w-400"> {{visitepm.patient.name}}</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600" style="color: blue">Date de visite</p>
+                                            <h6 class="text-muted f-w-400">{{visitepm.visite.date_visit}}</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600" style="color: blue">Objet de visite</p>
+    
+                                            <h6 class="text-muted f-w-400">{{visitepm.visite.objet_visit!}}</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600" style="color: blue">Type de visite</p>
+                                            <h6 class="text-muted f-w-400">{{visitepm.visite.type_visite!}}</h6>
+                                        </div>
+                                      
+                                     <br>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600" style="color: blue">Prix de consultation</p>
+    
+                                        <h6 class="text-muted f-w-400">{{visitepm.visite.prix_cons}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600" style="color: blue">Date derinier consultation </p>
+                                        <h6 class="text-muted f-w-400">{{visitepm.visite.date_der_con}}</h6>
+                                    </div>
+                    
+                                <div class="col-sm-6">
+                                    <p class="m-b-10 f-w-600" style="color: blue">Nom de medecin</p>
+    
+                                    <h6 class="text-muted f-w-400">{{visitepm.medecinPH.medecin.name}}</h6>
+                                </div>
+                                
+                            
+                                </div>
+                                </div>
+                                <footer style="margin-left: 80%; color: rgb(180, 12, 12); ">
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600" >
+                                    <b> GCM.SISTA</b></h6></footer>
+                    </div>
+               
+                    
+                
+                
+                        </div>
+                        <i class="far fa-print">
+                            <!-- [useExistingCss]="true"  -->
+                            <button 
+                           
+                                printSectionId="id-print" 
+                                    ngxPrint style="margin-top:-5%; margin-left: 10%;" class = "btn btn-success" type ="submit">
+                                      Imprimer</button>
+                        </i>
+                        </div>
+                        </div>
+                            </div>
+                </div>
+                    </div>
+                    
+            </div>
+    
+    
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>

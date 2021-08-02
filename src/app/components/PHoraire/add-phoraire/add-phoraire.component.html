@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 10% " >
+
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter un Phoraire </h3>
+  <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+        <div class="form-group">
+            <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
+                [(ngModel)] = "phoraire.id" name = "id">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class ="form-control" id = "Date de debut" placeholder="Date debut"
+                [(ngModel)] = "phoraire.heure_deb" name = "heure_deb">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class ="form-control" id = "Nom Commune" placeholder="Nome de Commune"
+                [(ngModel)] = "phoraire.heure_fin " name = "heure_deb">
+        </div>
+       
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
+      </form>
+</div>
+</div>

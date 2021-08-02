@@ -1,0 +1,68 @@
+
+  <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-full bg-primary">
+      <a href="#" class="navbar-brand">GCM.SISTA</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a href="/admin" class="nav-link" routerLink="admin">Medecin </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">Secretaire</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        
+        <li class="nav-item">
+          <a href="/login" class="nav-link" routerLink="login">Login</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+        </li>
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()">LogOut</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+</div>
+  
+
+<!--
+<mat-toolbar>
+  GCM.SISTA 
+</mat-toolbar>
+<mat-sidenav-container>
+   <mat-sidenav mode="over"> 
+    
+  
+
+     <mat-divider></mat-divider>
+
+     <button mat-button class="menu-button">
+         <mat-icon>home</mat-icon>
+         <span>Home</span>
+
+     </button>
+     <button mat-button class="menu-button">
+       <mat-icon>Person</mat-icon>
+       <span>Patient</span>
+
+   </button>
+
+
+   </mat-sidenav>
+   <mat-sidenav-content>
+      <div class="content">
+          Main content
+      </div>
+
+   </mat-sidenav-content>
+</mat-sidenav-container>-->

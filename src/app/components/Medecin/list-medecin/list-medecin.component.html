@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 5% " >
+ <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addMedecin"
+                        style="color: black;font-family: 'Script MT Bold'  "> <i class="bi bi-person-plus-fill"></i>Ajouter Medecin</a></button>
+
+<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Medecins</h2></DIV>
+  <hr STYLE="color: yellow; ">
+  <br>
+
+  <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+         name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search medecin..." required> <br>
+<table class = "table table-bordered">
+    <thead class="thead-light">
+        <tr>
+           <th>Id</th>
+            <th> Name </th>
+            <th> Specialite</th>
+          
+          <th>Ph_Id</th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let medecinPh of medecinPhs "  >
+          
+            <th class ="hidden"> {{medecinPh.medecin.id }} </th>
+            <td> {{ medecinPh.medecin.name }} </td>
+          <td> {{medecinPh.medecin.specialicite }} </td>
+          <td>{{medecinPh.plage_Horaire.heure_deb}}</td>  
+          <!-- <td><div *ngFor="let item of medecinPh.plage_Horaire">{{item.heure_deb}}</div></td> -->
+         <td>
+                  <button (click) = "updateMedecin(medecinPh.medecin.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteMedecin(medecinPh.medecin.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+                <button (click) = "MedecinDetails(medecinPh.medecin.id)" class = "btn btn-info" style="margin-left: 10px"> <i class="bi bi-zoom-in"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div> 

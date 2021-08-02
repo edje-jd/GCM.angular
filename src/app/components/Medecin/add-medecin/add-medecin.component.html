@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 10% " >
+
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"><br>
+    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter un Medecin </h3>
+  <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+        <div class="form-group row">
+            <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
+                [(ngModel)] = "medecin.id" name = "id">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class ="form-control" id = "Name" placeholder="Nome de Medecin"
+                [(ngModel)] = "medecin.name" name = "name">
+        </div>
+
+        <div class="form-group">
+
+            <input type="text" class ="form-control" id = "Specialite" placeholder="Medecin Specialite"
+                [(ngModel)] = "medecin.specialicite" name = "specialicite">
+        </div>
+
+
+       
+        
+      
+      <mat-select  type="text" class ="form-control" id = " Ph_Id"  placeholder="id Phoraire"
+      [(ngModel)]="phoraire" name = "Ph_Id">
+
+            <mat-option *ngFor = "let item of phoraires " [value]="item"  >
+                <tr >
+                    {{item.id}} 
+                    {{item.heure_deb}}
+                    {{item.heure_fin}}
+                
+            </tr>
+            </mat-option>
+
+        </mat-select><br>
+        
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
+    </form>
+</div>
+</div>
+
+
+

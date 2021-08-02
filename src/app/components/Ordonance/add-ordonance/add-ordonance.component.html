@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 10% " >
+
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter un Ordonance</h3>
+  <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+        <div class="form-group">
+            <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
+                [(ngModel)] = "ordonancemv.ordonance.id" name = "id">
+        </div>
+
+        <div class="form-group">
+            <input type="date" class ="form-control" id = "date_ord" placeholder="Date d'ordonance"
+                [(ngModel)] = "ordonancemv.ordonance.date_ord" name = "date_ord">
+        </div>
+
+        <div class="form-group">
+
+            <input type="text" class ="form-control" id = "dosage" placeholder="Dosage"
+                [(ngModel)] = "ordonancemv.ordonance.dosage" name = "dosage">
+        </div>
+      
+     
+    
+    
+        <mat-select  type="text" class ="form-control" id = " M_Id"  placeholder="id Medicament"
+        [(ngModel)]="ordonancemv.medicament" name = "M_Id">
+
+            <mat-option *ngFor = "let item of medicaments" [value]="item" >
+                <tr >
+                    {{item.id}} 
+                    {{item.typeMedc}}
+                    {{item.nomMedc}}
+                
+                </tr>
+            </mat-option>
+
+        </mat-select><br>
+   
+        
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
+    </form>
+</div>
+</div>

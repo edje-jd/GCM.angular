@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 5% " >
+ <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addMedecin"
+                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-person-plus-fill"></i>  Ajouter Hospitaliser</a></button>
+
+<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Hospitalisations</h2></DIV>
+  <hr STYLE="color: yellow; ">
+  <br><br>
+<table class = "table table-hover">
+    <thead class="thead-light">
+        <tr>
+           <th>Id</th>
+           <th>DDH</th>
+           <th>DFH</th>
+            <th> Num Lit </th>
+            <th> Num Chambre </th>
+            <th> Nom Unite </th>
+            <th>Traitement</th>
+            <th> Patient</th>
+            <th> Medecin </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let hospitalisationV of hospitalisationVs "  >
+          
+            <th class ="hidden"> {{ hospitalisationV.hospitalisation.id }} </th>
+            <th> {{ hospitalisationV.hospitalisation.date_debut_hosp |date: 'dd/MM/yyyy'}} </th>
+            <th> {{ hospitalisationV.hospitalisation.date_fin_hosp |date: 'dd/MM/yyyy'}} </th>
+            <td> {{  hospitalisationV.hospitalisation.numLit }} </td>
+            <th> {{ hospitalisationV.hospitalisation.numChambre}} </th>
+            <th> {{ hospitalisationV.hospitalisation.nomUnite }} </th>
+            <th> {{ hospitalisationV.hospitalisation.traitement }} </th>
+            <td> {{hospitalisationV.visitePM.patient.name}} </td>
+            <td> {{hospitalisationV.visitePM.medecinPH.medecin.name}} </td>
+          
+          
+         <td>
+                  <button (click) = "updateHospitalisation(hospitalisationV.hospitalisation.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteHospitalisation(hospitalisationV.hospitalisation.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+               
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div> 

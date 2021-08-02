@@ -1,0 +1,98 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 10% " >
+
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
+    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter un Patient </h3>
+    
+  <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+        <div class="form-group">
+            <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
+                [(ngModel)] = "patient.id" name = "id">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class ="form-control" id = "Name" placeholder="Nome de Patient"
+                [(ngModel)] = "patient.name" name = "name" required>
+        </div>
+        
+
+        <div class="form-group">
+
+            <input type="text" class ="form-control" id = "phone" placeholder="NPhone de Patient"
+                [(ngModel)] = "patient.phone" name = "phone">
+        </div>
+
+
+        <div class="form-group">
+
+            <input type="date" class ="form-control" id = "date_naissance" placeholder="Date de naissance"
+                [(ngModel)] = "patient.date_naissance" name = "date_naissance">
+        </div>
+        <div class="form-group">
+
+            <input type="text" class ="form-control" id = "sexe" placeholder="Sexe"
+                [(ngModel)] = "patient.sexe" name = "sexe">
+                
+        </div>
+        
+      <div class="form-group">
+
+        <input  type="text" class ="form-control" id = " adresse"  placeholder="Patient adresse"
+                [(ngModel)] = "patient.adresse" name = "adresse">
+
+
+      </div>
+      
+      <mat-select  type="text" class ="form-control" id = "antecedent_id"  placeholder="id Antecedent"
+              name = "antecedent_id" [(ngModel)]="antcedent">
+
+            <mat-option  *ngFor = "let item of antcedents" [value]="item" >
+                <tr>
+                    
+                    {{item.id}} 
+                    {{item.nom_malade}}
+                    
+                </tr>
+            </mat-option>
+
+        </mat-select><br>
+
+
+        <mat-select type="text" class ="form-control" id ="localisation_id"  placeholder="id Localiation"
+            name = "localisation_id" [(ngModel)]="localisation" >
+
+            <mat-option *ngFor="let item of localisations" [value]="item">
+                <tr >
+                    {{item.id}} 
+                    {{item.nom_moghata}}
+                    {{item.nom_commune}}
+                    
+                </tr>
+            </mat-option>
+
+        </mat-select><br>
+   
+       <div>
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
+      
+       </div>
+    </form>
+</div>
+</div>
+
+<!--<select  type="text" class ="form-control" id = " id_med"  placeholder="id medecin"
+name = "id_med">
+
+<option >
+    <tr *ngFor = "let patient ngForOf patient "  >
+      [(ngModel)] = {{patient.medecin}}
+     </tr>
+
+ </option>
+
+</select>-->

@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color:light; margin-left: 0% " >
+ <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 80%; margin-top: 2%"><a routerLink="/addVisite"
+                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-person-plus-fill"></i> Ajouter Visite</a></button>
+
+<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Visites</h2></DIV>
+  <hr STYLE="color: yellow; ">
+  <br><br>
+<table class = "table table-bordered" >
+    <thead class="thead-light">
+        <tr>
+           
+            <th > Id</th>
+            
+            <th >DVisite</th>
+          <th >OVisite</th>
+          <th >TVisite</th> 
+            <th >PConsult</th>
+          <th >DDConsultation</th>
+          <th >Patient</th>
+          <th >Medecin</th>
+         
+            <th >Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let visitepm of visitepms "  >
+          
+            
+            <td > {{ visitepm.visite.id }} </td>
+          <td > {{visitepm.visite.date_visit|date: 'dd/MM/yyyy'}} </td>
+          <td > {{visitepm.visite.objet_visit}} </td>
+          <td > {{ visitepm.visite.type_visite}} </td> 
+          <td > {{visitepm.visite.prix_cons}} </td>
+          <td > {{visitepm.visite.date_der_con |date: 'dd/MM/yyyy'}} </td>
+          <td>  {{visitepm.patient.name}}</td>
+          <td>  {{visitepm.medecinPH.medecin.name}}</td>
+     
+         <td>
+
+                <button (click) = "updateVisite(visitepm.visite.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteVisite(visitepm.visite.id)" class = "btn btn-danger" style="margin-left: 5px"> <i class="bi bi-trash-fill"></i></button>
+                <button (click) = "detalVisite(visitepm)" class="btn btn-light" style="margin-left: 5px"> <i class="bi bi-three-dots"></i></button>
+                <button (click) = "DemandeOrdonance(visitepm)" class="btn btn-warning" style="margin-left: 10px"><i class="bi bi-plus-square-fill"></i></button>
+                <button (click) = "DemandeAnnalyse(visitepm)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
+                <button (click) = "DemandeHospitalisation(visitepm)" class="btn btn-success" style="margin-left: 10px"><i class="bi bi-node-plus-fill"></i></button>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div> 
+
