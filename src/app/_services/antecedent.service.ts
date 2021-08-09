@@ -28,7 +28,7 @@ export class AntecedentService {
   }
 
   updateAntecedent(id: number, antecedent: Antecedent): Observable<Object>{
-    return this.httpClient.put(`${this.host}/${id}`, antecedent);
+    return this.httpClient.put(`${this.host}/update`, antecedent);
   }
 
 }

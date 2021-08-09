@@ -26,7 +26,7 @@ export class ListOrdonanceComponent implements OnInit {
   visites?:Visite[];
   medicaments?: Medicament[];
   medicament!: Medicament;
-  constructor(private ordonanceMVService: OrdonanceMVService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) { }
+  constructor(private ordonanceService:OrdonanceService,private ordonanceMVService: OrdonanceMVService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) { }
 
   ngOnInit(): void {
     this.getOrdonanceMVs();
@@ -39,20 +39,20 @@ export class ListOrdonanceComponent implements OnInit {
     });
 
 }
-ordoranceDetails(id:any){
-  this.router.navigate(['ordonance-details']);
+ordoranceDetails(ordonancemv:OrdonanceMV){
+  this.router.navigate(['ordonance-details'],{state:ordonancemv});
 }
 
 
-updateOrdonance(id: any){
-  this.router.navigate(['update-ordonance', id]);
+updateOrdonance(ordonance: Ordonance){
+  this.router.navigate(['update-ordonance'],{state:ordonance});
 }
 
 deleteOrdonance(id: any){
-  // this.ordonanceService.deleteOrdonance(id).subscribe( data => {
-  //   console.log(data);
-  //   this.getOrdonances();
-  // })
+  this.ordonanceMVService.deleteOrdonanceMV(id).subscribe( data => {
+    console.log(data);
+    this.getOrdonanceMVs();
+  })
 }
 
 getVisitebyId(id:number){
@@ -68,4 +68,21 @@ getMedicamentbyId(id:number){
   this.medicament=data;
   })
    }
+
+   public Search(key: string): void {
+    console.log(key);
+    const results: OrdonanceMV[] = [];
+    for (const ordonancemv of this.ordonancemvs) {
+      if ( ordonancemv.visitepm.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      ||  ordonancemv.visitepm.medecinPH.medecin.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      ||  ordonancemv.medicament.nomMedc?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+       ) {
+        results.push(ordonancemv );
+      }
+    }
+    this.ordonancemvs = results;
+    if (results.length === 0 || !key) {
+      this.getOrdonanceMVs();
+    }
+  }
 }

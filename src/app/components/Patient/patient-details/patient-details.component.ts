@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Antecedent } from 'src/app/model/Antecedent';
 import { Localisation } from 'src/app/model/Localisation';
 import { patient } from 'src/app/model/Patient';
@@ -19,11 +19,14 @@ export class PatientDetailsComponent implements OnInit {
   id: any;
   p: number = 1;
   patientd!:PatientDesease;
+  patient!:patient;
   patientdes!: PatientDesease [];
   antcedents!:Antecedent[];
   localisations!:Localisation[];
-  constructor(private patientdesService :PatientDeseaseService,
-    private route: ActivatedRoute) {this.patientd = history.state }
+  constructor(private patientdesService :PatientDeseaseService,private router:Router,
+    private route: ActivatedRoute) {this.patientd=history.state;
+      
+      }
 
   ngOnInit(): void {
     this.getPatientDes();
@@ -32,10 +35,16 @@ export class PatientDetailsComponent implements OnInit {
  
  
   }
+  DemandeVisite(patient:patient){
+    this.router.navigate(['addVisite'], {state: patient});
+  }
   private getPatientDes(){
     this.patientdesService.getPatientDeseaseList().subscribe(data => {
       this.patientdes = data;
     });
 
+}
+Retour(){
+  window.history.back();
 }
 }

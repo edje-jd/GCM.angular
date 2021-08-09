@@ -1,0 +1,31 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light;  " >
+
+  <div class="col-md-6 offset-md-3 " STYLE="margin-left: 10% ; width: 45%"   ><BR>
+    <h3 style="margin-left: 5%; font-family: 'Georgia', Times, serif; color: blue;" > Modifier une medicament</h3>
+    <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+      <div class="form-group">
+        <input type="text" class ="form-control" id = "typeMedc" placeholder="Type de medicament"
+               [(ngModel)] = "medicament.typeMedc" name = "typeMedc">
+      </div>
+
+      <div class="form-group">
+
+        <input type="text" class ="form-control" id = "nomMedc" placeholder="Nom de medicament"
+               [(ngModel)] = "medicament.nomMedc" name = "nomMedc">
+      </div>
+
+     
+     
+
+       
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Update</button>
+
+    </form>
+  </div>
+</div> 
+

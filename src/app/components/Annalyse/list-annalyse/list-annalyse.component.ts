@@ -12,7 +12,7 @@ import { AnnalyseVService } from 'src/app/_services/annalyse-v.service';
 })
 export class ListAnnalyseComponent implements OnInit {
 
-  annalyseVs?: AnnalyseV[];
+  annalyseVs!: AnnalyseV[];
   id: any;
   i:any;
   constructor(private annalyseVService: AnnalyseVService,private annalyseService:AnnalyseServiceService, private route: ActivatedRoute ,private router: Router) { }
@@ -30,15 +30,31 @@ export class ListAnnalyseComponent implements OnInit {
 }
 
 
-updateAnnalyse(id: any){
-  this.router.navigate(['update-annalyse', id]);
+updateAnnalyse(annalyse: Annalyse){
+  this.router.navigate(['update-annalyse'], {state:annalyse});
 }
 
 deleteAnnalyse(id: any){
-  this.annalyseService.deleteAnnalyse(id).subscribe( data => {
+  this.annalyseVService.deleteAnnalyseV(id).subscribe( data => {
     console.log(data);
     this.getAnnalyseVs();
   })
+}
+public Search(key: string): void {
+  console.log(key);
+  const results: AnnalyseV[] = [];
+  for (const annalyseV of this.annalyseVs) {
+    if ( annalyseV.visitePM.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+    ||  annalyseV.annalyse.nomAnls?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+    ||   annalyseV.annalyse.nom_labo?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+     ) {
+      results.push(annalyseV );
+    }
+  }
+  this.annalyseVs = results;
+  if (results.length === 0 || !key) {
+    this.getAnnalyseVs();
+  }
 }
 
 }

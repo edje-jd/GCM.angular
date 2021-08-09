@@ -1,14 +1,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color:light; margin-left: 0% " >
- <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 80%; margin-top: 2%"><a routerLink="/addVisite"
-                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-person-plus-fill"></i> Ajouter Visite</a></button>
+ <DIV CLASS="container">
+    <!-- <button class="bnt btn-primary" style="margin-left: 80%; margin-top: 2%"><a routerLink="/addVisite"
+                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-person-plus-fill"></i> Ajouter Visite</a></button> -->
 
-<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Visites</h2></DIV>
+<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    Liste des Visites</h1></DIV>
   <hr STYLE="color: yellow; ">
-  <br><br>
-<table class = "table table-bordered" >
-    <thead class="thead-light">
+  <div>
+    <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
+  </div><br>
+<table class = "table table-hover">
+    <thead class="thead-dark">
         <tr>
            
             <th > Id</th>
@@ -39,12 +43,18 @@
      
          <td>
 
-                <button (click) = "updateVisite(visitepm.visite.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
-                <button (click) = "deleteVisite(visitepm.visite.id)" class = "btn btn-danger" style="margin-left: 5px"> <i class="bi bi-trash-fill"></i></button>
-                <button (click) = "detalVisite(visitepm)" class="btn btn-light" style="margin-left: 5px"> <i class="bi bi-three-dots"></i></button>
-                <button (click) = "DemandeOrdonance(visitepm)" class="btn btn-warning" style="margin-left: 10px"><i class="bi bi-plus-square-fill"></i></button>
-                <button (click) = "DemandeAnnalyse(visitepm)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
-                <button (click) = "DemandeHospitalisation(visitepm)" class="btn btn-success" style="margin-left: 10px"><i class="bi bi-node-plus-fill"></i></button>
+                <!-- <button (click) = "updateVisite(visitepm.visite)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button> -->
+                <button (click) = "updateVisite(visitepm.visite)" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
+                  <mat-icon>update</mat-icon></button>
+
+                <!-- <button (click) = "deleteVisite(visitepm.id)" class = "btn btn-danger" style="margin-left: 5px"> <i class="bi bi-trash-fill"></i></button> -->
+                <button (click) = "deleteVisite(visitepm.id)" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <!-- <button (click) = "detalVisite(visitepm)" class="btn btn-light" style="margin-left: 5px"> <i class="bi bi-three-dots"></i></button> -->
+                <button  mat-mini-fab color="warn" (click) = "detalVisite(visitepm)"  aria-label="Example icon button with a home icon">
+                  <mat-icon>info</mat-icon>
+                </button>
                 
             </td>
         </tr>

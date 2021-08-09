@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Medicament } from 'src/app/model/Medicament';
 import { Ordonance } from 'src/app/model/Ordonance';
@@ -26,6 +27,10 @@ export class AddOrdonanceComponent implements OnInit {
   medicaments!:Medicament[];
   medicament!:Medicament;
   id?:any;
+  form = new FormGroup({
+    dosage : new FormControl('',Validators.required),
+    medicament :new FormControl('',Validators.required)
+ })
   constructor(private visitepmservice:VisitePMService,private ordonancemvservice:OrdonanceMVService,private ordonanceService: OrdonanceService,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) {
     this.visitepm = history.state
     this.ordonancemv.ordonance=new Ordonance();
@@ -64,6 +69,9 @@ export class AddOrdonanceComponent implements OnInit {
     this.ordonancemv.visitepm=this.visitepm;
     console.log(this.ordonancemv.medicament);
     this.saveOrdonance();
+  }
+  Retour(){
+    window.history.back();
   }
 
 }

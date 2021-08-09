@@ -7,9 +7,8 @@
  <DIV CLASS="container" > <button class="bnt btn-primary" style="margin-left: 87%; margin-top: 2%"><a routerLink="/addPatient"
                         style="color: black;font-family: 'Georgia'  "><i class="bi bi-person-plus-fill"></i> Ajouter patients</a></button>
 
-<h2 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;margin-right: 52%; " >   Liste des patients</h2></DIV>
+<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;margin-right: 52%; " >   Liste des patients</h1></DIV>
   <hr STYLE="color: yellow; ">
-  <br>
 <div>
   <!-- <input type="test" class="form-control" name="Name" [(ngModel)]="Name" (ngModelChange)="Search()"
   placeholder="Entrer you name to search"> -->
@@ -18,18 +17,18 @@
     
 </div><br>
 
-<table class = "table table-bordered">
-    <thead class="thead-light">
+<table class = "table table-hover" >
+    <thead class="thead-dark">
         <tr>
            <th> Id &nbsp;<i class="fa fa-sort"></i></th>
-            <th> Name </th>
-            <th> Phone</th>
+            <th> Nom Pérnom</th>
+            <th>Téléphone</th>
           <th> Date</th>
             <th>Sexe</th>
           <th> Adresse</th>
-          <th>NomM</th>
-          <th>Locali</th>
-          <th> Actions </th>
+          <th>Maladie</th>
+          <th>Localisation</th>
+          <th ligne="text-center"> Actions </th>
         </tr>
     </thead>
 
@@ -49,21 +48,33 @@
           <!-- <td><div *ngFor="let item of patient.localisations">{{item.nom_moghata}}</div></td>  -->
           
            <td>
-                <button (click) = "updatePatient(patientDes.patient)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
-                <button (click) = "deletePatientDesease(patientDes.patient.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
-                <button (click) = "PatientDetails(patientDes)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
-                <button (click) = "DemandeVisite(patientDes.patient)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-plus-square-fill"></i></button>
+                <!-- <button (click) = "updatePatient(patientDes.patient)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button> -->
+                <button (click) = "updatePatient(patientDes.patient)"  mat-mini-fab color="basic" aria-label="Example icon button with a delete icon">
+                  <mat-icon>update</mat-icon>
+                </button>
+                <!-- <button (click) = "deletePatientDesease(patientDes.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button> -->
+                <button (click) = "deletePatientDesease(patientDes.id)"  mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <!-- <button (click) = "PatientDetails(patientDes)" class = "btn btn-success" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button> -->
+                <button  mat-mini-fab color="warn" (click) = "PatientDetails(patientDes)"  aria-label="Example icon button with a home icon">
+                  <mat-icon>info</mat-icon>
+                </button>
+                <!-- <button (click) = "DemandeVisite(patientDes.patient)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-plus-square-fill"></i></button> -->
+                <button  mat-mini-fab color="primary" (click) = "DemandeVisite(patientDes.patient)"  aria-label="Example icon button with a home icon">
+                  <mat-icon>add</mat-icon>
+                </button>
             </td>
         </tr>
     </tbody>
-    <!--<pagination-controls (pageChange)="p=$event"></pagination-controls>
-    paginate:{itemsPerPage:5,currentPage:p};-->
-   <!-- <mat-paginator [length]="100"
-    [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 25, 100]">
-</mat-paginator>  -->
+   
+    
 
 
 </table>
+<mat-paginator [length]="100"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>  
 <router-outlet></router-outlet>
 </div> 

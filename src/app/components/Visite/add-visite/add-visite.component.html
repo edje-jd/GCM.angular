@@ -2,10 +2,11 @@
 
 <div class="container" style="background-color: light; margin-left: 10% " >
 
-<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
-    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter une Visite </h3>
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 20% ; width: 40%"   >
+    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
+    <h3 style="margin-left: 30%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter une Visite </h3>
   <hr STYLE="color: yellow; ">
-    <form (ngSubmit) = "onSubmit()">
+    <form (ngSubmit) = "onSubmit()" >
 
         <div class="form-group">
             <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
@@ -15,34 +16,45 @@
        
 
         <div class="form-group">
-
+            <label for="date_visit" class="required" style="color: blue;font-family: 'Georgia'">Date de visite</label>
             <input type="date" class ="form-control" id = "date_visit" placeholder="Date de  Visite"
-                [(ngModel)] = "visitepm.visite.date_visit" name = "date_visit">
+                [(ngModel)] = "visitepm.visite.date_visit" name = "date_visit"> 
+                <!-- formControlName="date_visit"
+                [ngClass]="{'is-invalid':form.get('date_visit')?.touched && form.get('date_visit')?.invalid}">
+                <div class="invalid-feedback">
+                    <div>date of visite is required</div>
+                </div> -->
         </div>
 
 
         <div class="form-group">
-
+            <label for="objet_visit"  style="color: blue;font-family: 'Georgia'">Objet de visite</label>
             <input type="text" class ="form-control" id = "objet_visit" placeholder="Objet de Visite"
                 [(ngModel)] = "visitepm.visite.objet_visit" name = "objet_visit">
         </div>
         <div class="form-group">
+            <label for="type_visite" class="required" style="color: blue;font-family: 'Georgia'">Type de visite</label>
         <mat-select (selectionChange)="changeVisit()" class ="form-control" id = "TypenVisite" placeholder="Type de visite"
                 [(ngModel)] = "visitepm.visite.type_visite" name = "TYPE_Visite">
+                 <!-- formControlName="type_visite"
+                [ngClass]="{'is-invalid':form.get('type_visite')?.touched && form.get('type_visite')?.invalid}">
 
+                <div class="invalid-feedback">
+                    <div>type of visite is required</div>
+                </div> -->
                 <mat-option *ngFor = "let option of options" [value]="option">
                     {{option}}
                 </mat-option>
             </mat-select>
         </div>
-        <div class="form-group">
-
-            <input type="text" *ngIf="visitepm.visite.type_visite === 'VC'" class ="form-control" id = "prix_cons" placeholder="Prix de Consultation"
+        <div class="form-group" >
+            <label for="prix_cons" class="required" style="color: blue;font-family: 'Georgia'">Prix de consultation</label>
+            <input type="text" class ="form-control" id = "prix_cons" placeholder="Prix de Consultation"
                 [(ngModel)] = "visitepm.visite.prix_cons" name = "prix_cons">
         </div>
       <div class="form-group">
-
-        <input  type="date" *ngIf="visitepm.visite.type_visite === 'VR'" class ="form-control" id = " date_h_RDV"  placeholder="date Rdv"
+        <label for="date_h_RDV" class="required" style="color: blue;font-family: 'Georgia'">Date de derénier consultation</label>
+        <input  type="date"  class ="form-control" id = " date_h_RDV"  placeholder="date Rdv"
         [(ngModel)] = "visitepm.visite.date_der_con"   name = "date_h_RDV">
 
 
@@ -50,9 +62,16 @@
       
 
     
-    
+      <div class="form-group">
+        <label for="visitepm" class="required" style="color: blue;font-family: 'Georgia'">Medecin visité</label>
         <mat-select   type="text" class ="form-control" id = " M_Id"  placeholder="Nom de Medecin"
-        [(ngModel)]="visitepm.medecinPH" name = "M_Id">
+        [(ngModel)]="visitepm.medecinPH" name = "M_Id" >
+        <!-- formControlName="visitepm"
+        [ngClass]="{'is-invalid':form.get('visitepm')?.touched && form.get('visitepm')?.invalid}">
+
+        <div class="invalid-feedback">
+            <div> Name Medcin visite is required</div>
+        </div> -->
 
             <mat-option *ngFor = "let item of medecinphs" [value]="item">
                 <tr >
@@ -68,7 +87,7 @@
             </tr>
             </mat-option>
 
-        </mat-select><br>
+        </mat-select></div>
         <!-- <select  type="text" class ="form-control" id = " S_Id"  placeholder="id Secretaire"
         [(ngModel)]="secretaire" name = "S_Id">
 

@@ -2,10 +2,11 @@
 
 <div class="container" style="background-color: light; margin-left: 10% " >
 
-<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 20% ; width: 40%"   >
+    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
     <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter Annalyse </h3>
   <hr STYLE="color: yellow; ">
-    <form (ngSubmit) = "onSubmit()">
+    <form (ngSubmit) = "onSubmit()" [formGroup]="form">
 
         <div class="form-group">
             <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
@@ -13,12 +14,22 @@
         </div>
 
         <div class="form-group">
+            <label for="nomAnls" class="required" style="color: blue;font-family: 'Georgia'">Nom d'analyse</label>
             <input type="text" class ="form-control" id = "nomAnls" placeholder="Nome d'annalyse"
-                [(ngModel)] = "annalyseV.annalyse.nomAnls" name = "nomAnls">
+                [(ngModel)] = "annalyseV.annalyse.nomAnls" name = "nomAnls" formControlName="nomAnls"
+                [ngClass]="{'is-invalid':form.get('nomAnls')?.touched && form.get('nomAnls')?.invalid}">
+                <div class="invalid-feedback">
+                    <div>Le nom d'analyse est obligatoire</div>
+                </div>
         </div>
         <div class="form-group">
-            <input type="text" class ="form-control" id = "nomAnls" placeholder="Nome de laboratoire"
-                [(ngModel)] = "annalyseV.annalyse.nom_labo" name = "nomAnls">
+            <label for="nom_labo" class="required" style="color: blue;font-family: 'Georgia'">Nom de laboratoire</label>
+            <input type="text" class ="form-control" id = "nom_labo" placeholder="Nome de laboratoire"
+                [(ngModel)] = "annalyseV.annalyse.nom_labo" name = "nom_labo" formControlName="nom_labo"
+                [ngClass]="{'is-invalid':form.get('nom_labo')?.touched && form.get('nom_labo')?.invalid}">
+                <div class="invalid-feedback">
+                    <div>Le nom de laboratoire est obligatoire</div>
+                </div>
         </div>
 
         

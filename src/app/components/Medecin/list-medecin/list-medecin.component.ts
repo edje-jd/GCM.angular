@@ -47,18 +47,18 @@ private getMedecinsPh(){
 
 }
 
-MedecinDetails(id: any){
-  this.router.navigate(['medecin-details', id]);
+MedecinDetails(medecinph: MedecinPH){
+  this.router.navigate(['medecin-details'],{state:medecinph});
 }
 
-updateMedecin(id: any){
-  this.router.navigate(['update-medecin', id]);
+updateMedecin(medecin: Medecin){
+  this.router.navigate(['update-medecin'],{state:medecin});
 }
 
 deleteMedecin(id: any){
-  this.medecinservice.deleteMedecin(id).subscribe( data => {
+  this.medecinPhService.deleteMedecinPH(id).subscribe( data => {
     console.log(data);
-    this.getMedecins();
+    this.getMedecinsPh();
   })
 }
 getPhorairebyId(id:number){

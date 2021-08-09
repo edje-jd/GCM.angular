@@ -29,6 +29,6 @@ export class AnnalyseServiceService {
   }
 
   updateAnnalyse(id: number, annalyse: Annalyse): Observable<Object>{
-    return this.httpClient.put(`${this.host}/${id}`, annalyse);
+    return this.httpClient.put(`${this.host}/update`, annalyse);
   }
 }

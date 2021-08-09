@@ -33,6 +33,16 @@ import { ListAnnalyseComponent } from './components/Annalyse/list-annalyse/list-
 import { AddAnnalyseComponent } from './components/Annalyse/add-annalyse/add-annalyse.component';
 import { AddHospitalisationComponent } from './components/Hospitalisation/add-hospitalisation/add-hospitalisation.component';
 import { VisiteDetailsComponent } from './components/Visite/visite-details/visite-details.component';
+import { UpdateAntecedentComponent } from './components/Antecedent/update-antecedent/update-antecedent.component';
+import { UpdateMedicamentComponent } from './components/Medicament/update-medicament/update-medicament.component';
+import { UpdateMedecinComponent } from './components/Medecin/update-medecin/update-medecin.component';
+import { MedecinDetailsComponent } from './components/Medecin/medecin-details/medecin-details.component';
+import { OrdonanceDetailsComponent } from './components/Ordonance/ordonance-details/ordonance-details.component';
+import { UpdateOrdonanceComponent } from './components/Ordonance/update-ordonance/update-ordonance.component';
+import { UpdateHospitalisationComponent } from './components/Hospitalisation/update-hospitalisation/update-hospitalisation.component';
+import { DetailsHospitalisationComponent } from './components/Hospitalisation/details-hospitalisation/details-hospitalisation.component';
+import { UpdateAnnalyseComponent } from './components/Annalyse/update-annalyse/update-annalyse.component';
+import { UpdateVisiteComponent } from './components/Visite/update-visite/update-visite.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -50,25 +60,35 @@ const routes: Routes = [
   
   {path:'addAntecedent' , component:AddAntecedentComponent},
   {path:'listAntecedent', component:ListAntecedentComponent},
+  {path:'update-antecedent',component:UpdateAntecedentComponent},
   {path:'listLocalisation', component:ListLocalisationComponent},
   {path:'addLocalisation', component:AddLocalisationComponent},
   {path:'listPhoraire', component:ListPhoraireComponent},
   {path:'addPhoraire', component:AddPhoraireComponent},
   {path:'listMedecin', component:ListMedecinComponent},
   {path:'addMedecin', component:AddMedecinComponent},
+  {path:'update-medecin',component:UpdateMedecinComponent},
+  {path:'medecin-details',component:MedecinDetailsComponent},
   {path:'listMedicament', component:ListMedicamentComponent},
   {path:'addMedicament' , component:AddMedicamentComponent},
+  {path:'update-medicament',component:UpdateMedicamentComponent},
   {path:'listVisite' , component:ListVisiteComponent},
   {path:'addVisite',component:AddVisiteComponent},
+  {path:'update-visite' , component:UpdateVisiteComponent},
   {path:'visiteDetails',component:VisiteDetailsComponent},
   {path:'listSecretaire' , component:ListSecretaireComponent},
   {path:'addSecretaire', component:AddSecretaireComponent},
   {path:'listOrdonance',component:ListOrdonanceComponent},
   {path:'addOrdonance',component:AddOrdonanceComponent},
+  {path:'ordonance-details',component:OrdonanceDetailsComponent},
+  {path:'update-ordonance',component:UpdateOrdonanceComponent},
   {path:'listHospitalisation',component:ListHospitalisationComponent},
   {path:'addHospitalisation',component:AddHospitalisationComponent},
+  {path:'update-hospitalisation',component:UpdateHospitalisationComponent},
+  {path:'details-hospitalisation',component:DetailsHospitalisationComponent},
   {path:'listAnnalyse',component:ListAnnalyseComponent},
   {path:'addAnnalyse',component:AddAnnalyseComponent},
+  {path:'update-annalyse',component:UpdateAnnalyseComponent},
  
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

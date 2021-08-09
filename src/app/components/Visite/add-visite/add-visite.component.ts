@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Medecin } from 'src/app/model/Medecin';
 import { MedecinPH } from 'src/app/model/MedecinPH';
@@ -27,9 +28,15 @@ export class AddVisiteComponent implements OnInit {
   secretaires?:Secretaire[];
   secretaire?:Secretaire;
   id?:any;
-  options = ['VC','VR'];
+  options = ['Consultation','Rend-Vous'];
+//   form = new FormGroup({
+//     type_visite : new FormControl('',Validators.required),
+//     date_visit :new FormControl('',Validators.required),
+//     visitepm: new FormControl('',Validators.required)
+//  })
   constructor(private visitepmservice:VisitePMService,private visiteService:VisiteService,private patientservice: PatientService,private router: Router ,private medecinphservice:MedecinPHService,private secretaireService:SecretaireService) {
     this.patient = history.state
+    
     this.visitepm.visite = new Visite();
    }
 
@@ -45,7 +52,9 @@ export class AddVisiteComponent implements OnInit {
       console.log(this.visitepm.medecinPH)
         console.log(data);
 
-        this.goToVisiteList();
+        this.detalVisite(this.visitepm)
+
+        // this.goToVisiteList();
       },
       error => console.log(error));
   }
@@ -57,6 +66,9 @@ export class AddVisiteComponent implements OnInit {
     } else {
       this.visitepm.visite.prix_cons = 0
     }
+  }
+  detalVisite(visitepm:VisitePM){
+    this.router.navigate(['visiteDetails'], {state: visitepm});
   }
   goToVisiteList(){
     this.router.navigate(['/listVisite']);
@@ -92,5 +104,7 @@ export class AddVisiteComponent implements OnInit {
     this.saveVisite();
   }
 
-
+  Retour(){
+    window.history.back();
+  }
 }

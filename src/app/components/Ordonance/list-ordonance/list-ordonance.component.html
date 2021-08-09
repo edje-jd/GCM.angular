@@ -1,14 +1,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<div class="container" style="background-color: light; margin-left: 5% " >
+<div class="container" style="background-color: light; margin-left: 0% " >
  <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addOrdonance"
                         style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-plus-lg"></i> Ajouter Ordonance</a></button>
 
-<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Ordonances</h2></DIV>
+<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    Liste des Ordonances</h1></DIV>
   <hr STYLE="color: yellow; ">
-  <br><br>
-<table class = "table table-bordered">
-    <thead class="thead-light">
+  <div>
+    <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
+  </div><br>
+<table class = "table table-hover" >
+    <thead class="thead-dark">
         <tr>
            <th>Id</th>
             <th>Date d'ordonance </th>
@@ -31,9 +34,9 @@
           <!--<td> <tr *ngFor="let visite of visites"><td>{{visite.id}}</td></tr></td>-->
           <!-- <td><div *ngFor="let item of ordonance.medicements">{{item.nomMedc}}</div></td> -->
          <td>
-                  <button (click) = "updateOrdonance(ordonancemv.ordonance.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
-                <button (click) = "deleteOrdonance(ordonancemv.ordonance.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
-                <button (click) = "ordoranceDetails(ordonancemv.ordonance.id)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
+                  <button (click) = "updateOrdonance(ordonancemv.ordonance)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteOrdonance(ordonancemv.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+                <button (click) = "ordoranceDetails(ordonancemv)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
             </td>
         </tr>
     </tbody>

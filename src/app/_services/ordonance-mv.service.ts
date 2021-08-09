@@ -10,6 +10,7 @@ export class OrdonanceMVService {
 
   private host1 ="http://localhost:8080/GCM/OMV/add";
   private host2 ="http://localhost:8080/GCM/OMV/all";
+  private host ="http://localhost:8080/GCM/OMV" ;
   
 
   constructor(private httpClient:HttpClient) { }
@@ -20,5 +21,8 @@ export class OrdonanceMVService {
   }
   getOrdonanceMVList(): Observable<OrdonanceMV[]>{
     return this.httpClient.get<OrdonanceMV[]>(`${this.host2}`);
+  }
+  deleteOrdonanceMV(id: number): Observable<Object>{
+    return this.httpClient.delete(`${this.host}/delete/${id}`);
   }
 }

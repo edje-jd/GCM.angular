@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light; margin-left: 10% " >
+
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+   
+    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Modifier Annalyse </h3>
+  <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+        
+
+        <div class="form-group">
+            <input type="text" class ="form-control" id = "nomAnls" placeholder="Nome d'annalyse"
+                [(ngModel)] = "annalyse.nomAnls" name = "nomAnls">
+        </div>
+        <div class="form-group">
+            <input type="text" class ="form-control" id = "nom_labo" placeholder="Nome de laboratoire"
+                [(ngModel)] = "annalyse.nom_labo" name = "nom_labo">
+        </div>
+
+        
+       
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Modifier</button>
+      </form>
+</div>
+</div>

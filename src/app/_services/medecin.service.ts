@@ -27,6 +27,6 @@ export class MedecinService {
   }
 
   updateMedecin(id: number, medecin: Medecin): Observable<Object>{
-    return this.httpClient.put(`${this.host}/${id}`, medecin);
+    return this.httpClient.put(`${this.host}/update`, medecin);
   }
 }

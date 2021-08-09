@@ -1,4 +1,6 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './_services/auth.service';
 
 import { TokenStorageService } from './_services/token-storage.service';
@@ -18,7 +20,7 @@ export class AppComponent implements OnInit {
   username?: string;
   title='GCM.SISTA';
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService,private observer: BreakpointObserver) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -39,5 +41,21 @@ export class AppComponent implements OnInit {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+//   @ViewChild(MatSidenav)
+//  sidenav!: MatSidenav;
+
+// aside:any;
+
+//   ngAfterViewInit() {
+//     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+//       if (res.matches) {
+//         this.aside.mode = 'over';
+//         this.aside.close();
+//       } else {
+//         this.aside.mode = 'side';
+//         this.aside.open();
+//       }
+//     });
+//   }
    
 }

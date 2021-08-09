@@ -21,4 +21,7 @@ export class AnnalyseVService {
   getAnnalyseVList(): Observable<AnnalyseV[]>{
     return this.httpClient.get<AnnalyseV[]>(`${this.host2}`);
   }
+  deleteAnnalyseV(id: number): Observable<Object>{
+    return this.httpClient.delete(`${this.host}/delete/${id}`);
+  }
 }

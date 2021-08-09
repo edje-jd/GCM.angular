@@ -13,7 +13,7 @@ import { HospitalisationService } from 'src/app/_services/hospitalisation.servic
 })
 export class ListHospitalisationComponent implements OnInit {
 
-  hospitalisationVs?: HospitalisationV[];
+  hospitalisationVs!: HospitalisationV[];
   id!: any;
   i:any;
   visite!:Visite;
@@ -37,15 +37,34 @@ export class ListHospitalisationComponent implements OnInit {
 
 
 
-updateHospitalisation(id: any){
-  this.router.navigate(['update-hospitalisation', id]);
+updateHospitalisation(hospitalisation: Hospitalisation){
+  this.router.navigate(['update-hospitalisation'],{state:hospitalisation});
+}
+HospitalisationDetails(hospitalisationV:HospitalisationV){
+  this.router.navigate(['details-hospitalisation'],{state:hospitalisationV});
 }
 
 deleteHospitalisation(id: any){
-  // this.hospitalisationService.deleteHospitalisation(id).subscribe( data => {
-  //   console.log(data);
-  //   this.getHospitalisation();
-  // })
+  this.hospitalisationVService.deleteHospitalisationV(id).subscribe( data => {
+    console.log(data);
+    this.getHospitalisationV();
+  })
+}
+public Search(key: string): void {
+  console.log(key);
+  const results: HospitalisationV[] = [];
+  for (const hospitalisationV of this.hospitalisationVs) {
+    if ( hospitalisationV.visitePM.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+    ||  hospitalisationV.hospitalisation.nomUnite?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+    
+     ) {
+      results.push(hospitalisationV );
+    }
+  }
+  this.hospitalisationVs= results;
+  if (results.length === 0 || !key) {
+    this.getHospitalisationV();
+  }
 }
 
 }

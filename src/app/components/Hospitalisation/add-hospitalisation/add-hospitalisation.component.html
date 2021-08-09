@@ -2,10 +2,11 @@
 
 <div class="container" style="background-color: light; margin-left: 10% " >
 
-<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 20% ; width: 40%"   >
+    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
     <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter une Hospitalisation</h3>
   <hr STYLE="color: yellow; ">
-    <form (ngSubmit) = "onSubmit()">
+    <form (ngSubmit) = "onSubmit()" [formGroup]="form">
 
         <div class="form-group">
             <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
@@ -13,34 +14,48 @@
         </div>
 
         <div class="form-group">
-            <input type="date" class ="form-control" id = "date_debut_hosp" placeholder="Date debut d'hospitalisation"
+            <label for="date_debut_hosp"  style="color: blue;font-family: 'Georgia'">Date debut d'hospitalisation</label>
+            <input type="date"  class ="form-control" id = "date_debut_hosp" placeholder="Date debut d'hospitalisation"
                 [(ngModel)] = "hospitalisationV.hospitalisation.date_debut_hosp" name = "date_debut_hosp">
+               
+                  
         </div>
 
         <div class="form-group">
-
+            <label for="date_fin_hosp"  style="color: blue;font-family: 'Georgia'">Date fin d'hospitalisation</label>
             <input type="date" class ="form-control" id = "date_fin_hosp" placeholder="Date fin d'hospitalisation"
                 [(ngModel)] = "hospitalisationV.hospitalisation.date_fin_hosp" name = "date_fin_hosp">
         </div>
         <div class="form-group">
-
-            <input type="number" class ="form-control" id = "numLit" placeholder="numerau de lit"
-                [(ngModel)] = "hospitalisationV.hospitalisation.numLit " name = "numLit">
+            <label for="nomUnite" class="required" style="color: blue;font-family: 'Georgia'">Nom d'unité</label>
+            <input type="text" class ="form-control" id = "nomUnite" placeholder="Nom d'unite"
+                [(ngModel)] = "hospitalisationV.hospitalisation.nomUnite  " name = "nomUnite" formControlName="nomUnite"
+                [ngClass]="{'is-invalid':form.get('nomUnite')?.touched && form.get('nomUnite')?.invalid}">
+                <div class="invalid-feedback">
+                    <div>unite name is required</div>
+                </div>
         </div>
         <div class="form-group">
-
+            <label for="numChambre" style="color: blue;font-family: 'Georgia'">Numéro de chambre</label>
             <input type="number" class ="form-control" id = "numChambre" placeholder="numerau de chambre"
                 [(ngModel)] = "hospitalisationV.hospitalisation.numChambre " name = "numChambre">
         </div>
         <div class="form-group">
-
-            <input type="text" class ="form-control" id = "nomUnite" placeholder="Nom d'unite"
-                [(ngModel)] = "hospitalisationV.hospitalisation.nomUnite  " name = "nomUnite">
+            <label for="numLit"  style="color: blue;font-family: 'Georgia'">Numéro de lit </label>
+            <input type="number" class ="form-control" id = "numLit" placeholder="numerau de lit"
+                [(ngModel)] = "hospitalisationV.hospitalisation.numLit " name = "numLit">
         </div>
+        
+   
         <div class="form-group">
 
+            <label for="traitement" class="required" style="color: blue;font-family: 'Georgia'">Traitement </label>
             <input type="text" class ="form-control" id = "traitement" placeholder="Traitement donnee"
-                [(ngModel)] = "hospitalisationV.hospitalisation.traitement " name = "traitement">
+                [(ngModel)] = "hospitalisationV.hospitalisation.traitement " name = "traitement" formControlName="traitement"
+                [ngClass]="{'is-invalid':form.get('traitement')?.touched && form.get('traitement')?.invalid}">
+                <div class="invalid-feedback">
+                    <div>Traitement is required</div>
+                </div>
         </div>
     
     

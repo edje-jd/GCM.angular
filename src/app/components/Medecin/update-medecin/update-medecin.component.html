@@ -1,0 +1,42 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<div class="container" style="background-color: light;  " >
+
+  <div class="col-md-6 offset-md-3 " STYLE="margin-left: 10% ; width: 45%"   ><BR>
+    <h3 style="margin-left: 5%; font-family: 'Georgia', Times, serif; color: blue;" > Modifier une medicament</h3>
+    <hr STYLE="color: yellow; ">
+    <form (ngSubmit) = "onSubmit()">
+
+      <div class="form-group">
+        <input type="text" class ="form-control" id = "name" placeholder="Nom de medecin"
+               [(ngModel)] = "medecin.name" name = "name">
+      </div>
+
+      <div class="form-group">
+
+        <input type="text" class ="form-control" id = "nomMedc" placeholder="Nom de medicament"
+               [(ngModel)] = "medecin.specialicite" name = "nomMedc">
+      </div>
+
+      <!-- <mat-select  type="text" class ="form-control" id = " Ph_Id"  placeholder="id Phoraire"
+      [(ngModel)]="medecinph.plage_Horaire" name = "Ph_Id">
+
+            <mat-option *ngFor = "let item of plage_Horaires " [value]="item"  >
+                <tr >
+                    {{item.id}} 
+                    {{item.heure_deb}}
+                    {{item.heure_fin}}
+                
+            </tr>
+            </mat-option>
+
+        </mat-select><br> -->
+     
+
+       
+      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Update</button>
+
+    </form>
+  </div>
+</div> 

@@ -31,7 +31,12 @@
                             </div>
                             <div class="col-sm-8">
                                 <div class="card-block">
-    
+                                     
+    <!-- <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button> -->
+    <button  mat-mini-fab style="margin-left: 80%;margin-top: 2%" color="accent" (click) = "Retour()"  aria-label="Example icon button with a home icon">
+        <mat-icon>assignment_return</mat-icon>
+      </button>
+      
                                     <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: blue"><b>Patient Information</b></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -74,6 +79,9 @@
                                 </div>
                                 <footer style="margin-left: 80%; color: rgb(180, 12, 12); ">
                                     <h6 class="m-b-20 p-b-5 b-b-default f-w-600" >
+                                        <button  mat-mini-fab  style="margin-left: 40%;margin-top: 2%" color="primary" (click) = "DemandeVisite(patientd.patient)"  aria-label="Example icon button with a home icon">
+                                            <mat-icon>add</mat-icon>
+                                          </button><br>
                                     <b> GCM.SISTA</b></h6></footer>
                     </div>
                
@@ -87,7 +95,7 @@
                            
                                 printSectionId="id-print" 
                                     ngxPrint style="margin-top:-5%; margin-left: 10%;" class = "btn btn-success" type ="submit">
-                                      Imprimer</button>
+                                    <mat-icon>print</mat-icon> Imprimer</button>
                         </i>
                         </div>
                         </div>

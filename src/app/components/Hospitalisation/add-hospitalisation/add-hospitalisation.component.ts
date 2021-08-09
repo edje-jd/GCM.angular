@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Hospitalisation } from 'src/app/model/Hospitalisation';
 import { HospitalisationV } from 'src/app/model/HospitalisationV';
@@ -22,6 +23,10 @@ export class AddHospitalisationComponent implements OnInit {
   visite!:Visite ;
  
   id?:any;
+  form = new FormGroup({
+    nomUnite : new FormControl('',Validators.required),
+    traitement :new FormControl('',Validators.required)
+ })
   constructor(private visitepmservice:VisitePMService,private hospitalisationVService:HospitalisationVService,private router: Router,private visiteService:VisiteService) {
     this.visitepm = history.state
     this.hospitalisationV.hospitalisation=new Hospitalisation();
@@ -56,6 +61,9 @@ export class AddHospitalisationComponent implements OnInit {
     this.hospitalisationV.visitePM=this.visitepm;
     
     this.saveHospitalisation();
+  }
+  Retour(){
+    window.history.back();
   }
 
 }

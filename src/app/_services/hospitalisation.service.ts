@@ -28,6 +28,6 @@ export class HospitalisationService {
   }
 
   updateHospitalisation(id: number, hospitalisation: Hospitalisation): Observable<Object>{
-    return this.httpClient.put(`${this.host}/${id}`, hospitalisation);
+    return this.httpClient.put(`${this.host}/update`, hospitalisation);
   }
 }

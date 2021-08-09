@@ -2,10 +2,11 @@
 
 <div class="container" style="background-color: light; margin-left: 10% " >
 
-<div class="col-md-6 offset-md-3 " STYLE="margin-left: 25% ; width: 40%"   >
+<div class="col-md-6 offset-md-3 " STYLE="margin-left: 20% ; width: 40%"   >
+    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
     <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter un Ordonance</h3>
   <hr STYLE="color: yellow; ">
-    <form (ngSubmit) = "onSubmit()">
+    <form (ngSubmit) = "onSubmit()" [formGroup]="form">
 
         <div class="form-group">
             <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
@@ -13,32 +14,45 @@
         </div>
 
         <div class="form-group">
+            <label for="date_ord"  style="color: blue;font-family: 'Georgia'">Date d'ordonnance</label>
             <input type="date" class ="form-control" id = "date_ord" placeholder="Date d'ordonance"
                 [(ngModel)] = "ordonancemv.ordonance.date_ord" name = "date_ord">
         </div>
 
         <div class="form-group">
+            <label for="medicament" class="required" style="color: blue;font-family: 'Georgia'">Sélectionner une Médicament</label>
+            <mat-select  type="text" class ="form-control" id = " M_Id"  placeholder="id Medicament"
+            [(ngModel)]="ordonancemv.medicament" name = "M_Id">
+             <!-- formControlName="medicament"
+            [ngClass]="{'is-invalid':form.get('medicament')?.touched && form.get('medicament')?.invalid}"> -->
+            
+    
+                <mat-option *ngFor = "let item of medicaments" [value]="item" >
+                    <tr >
+                        {{item.id}} 
+                        {{item.typeMedc}}
+                        {{item.nomMedc}}
+                    
+                    </tr>
+                </mat-option>
+    
+            </mat-select></div>
 
+        <div class="form-group">
+            <label for="dosage" class="required" style="color: blue;font-family: 'Georgia'">Dosage</label>
             <input type="text" class ="form-control" id = "dosage" placeholder="Dosage"
-                [(ngModel)] = "ordonancemv.ordonance.dosage" name = "dosage">
+                [(ngModel)] = "ordonancemv.ordonance.dosage" name = "dosage" >
+                <!-- formControlName="dosage"
+                [ngClass]="{'is-invalid':form.get('dosage')?.touched && form.get('dosage')?.invalid}">
+                <div class="invalid-feedback">
+                    <div>Comment utiliser le medicament est obligatoire</div>
+                </div> -->
         </div>
       
      
     
     
-        <mat-select  type="text" class ="form-control" id = " M_Id"  placeholder="id Medicament"
-        [(ngModel)]="ordonancemv.medicament" name = "M_Id">
-
-            <mat-option *ngFor = "let item of medicaments" [value]="item" >
-                <tr >
-                    {{item.id}} 
-                    {{item.typeMedc}}
-                    {{item.nomMedc}}
-                
-                </tr>
-            </mat-option>
-
-        </mat-select><br>
+        
    
         
       <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>

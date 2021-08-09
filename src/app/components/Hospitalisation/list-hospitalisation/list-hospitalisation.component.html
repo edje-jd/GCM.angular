@@ -1,14 +1,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<div class="container" style="background-color: light; margin-left: 5% " >
- <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addMedecin"
+<div class="container" style="background-color: light; margin-left: 0% " >
+ <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addHospitalisation"
                         style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-person-plus-fill"></i>  Ajouter Hospitaliser</a></button>
 
-<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Hospitalisations</h2></DIV>
+<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    Liste des Hospitalisations</h1></DIV>
   <hr STYLE="color: yellow; ">
-  <br><br>
+  <div>
+    <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
+  </div><br>
 <table class = "table table-hover">
-    <thead class="thead-light">
+    <thead class="thead-dark">
         <tr>
            <th>Id</th>
            <th>DDH</th>
@@ -37,9 +40,9 @@
           
           
          <td>
-                  <button (click) = "updateHospitalisation(hospitalisationV.hospitalisation.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
-                <button (click) = "deleteHospitalisation(hospitalisationV.hospitalisation.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
-               
+                  <button (click) = "updateHospitalisation(hospitalisationV.hospitalisation)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteHospitalisation(hospitalisationV.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+                <button (click) = "HospitalisationDetails(hospitalisationV)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
             </td>
         </tr>
     </tbody>

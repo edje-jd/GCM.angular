@@ -30,7 +30,7 @@ export class VisiteService {
     return this.httpClient.get<Visite>(`${this.host}/find/${id}`);
   }
 
-  updateVisite(id: number, visite: Visite): Observable<Object>{
-    return this.httpClient.put(`${this.host}/${id}`, visite);
+   updateVisite(id: number, visite: Visite): Observable<Object>{
+    return this.httpClient.put(`${this.host}/update`, visite);
   }
 }

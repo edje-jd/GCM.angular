@@ -1,14 +1,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<div class="container" style="background-color: light; margin-left: 5% " >
+<div class="container" style="background-color: light; margin-left: 0% " >
  <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addAnnalyse"
                         style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-plus-lg"></i> Ajouter Annalyse</a></button>
 
 <h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    List des Annalyses</h2></DIV>
-  <hr STYLE="color: yellow; ">
-  <br><br>
-<table class = "table table-hover">
-    <thead class="thead-light">
+  <hr STYLE="color: lightblue; ">
+  <br>
+  <div>
+    <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+    name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
+  </div><br>
+<table class = "table table-hover" >
+    <thead class="thead-dark">
         <tr>
             <th>Id</th>
             <th> Nom d'annalyse </th>
@@ -27,8 +31,8 @@
           
             
          <td>
-                  <button (click) = "updateAnnalyse(annalyseV.annalyse.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
-                <button (click) = "deleteAnnalyse(annalyseV.annalyse.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
+                  <button (click) = "updateAnnalyse(annalyseV.annalyse)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                <button (click) = "deleteAnnalyse(annalyseV.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
             
             </td>
         </tr>

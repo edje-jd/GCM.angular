@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Annalyse } from 'src/app/model/Annalyse';
 import { AnnalyseV } from 'src/app/model/AnnlyseV';
@@ -19,6 +20,10 @@ export class AddAnnalyseComponent implements OnInit {
   visitePM!:VisitePM;
   visitepms!:VisitePM[];
   visite!:Visite;
+  form = new FormGroup({
+    nomAnls : new FormControl('',Validators.required),
+    nom_labo :new FormControl('',Validators.required)
+ })
   constructor(private visitepmservice:VisitePMService,private annalyseVService:AnnalyseVService , private router:Router,private visiteService:VisiteService) { 
     this.visitePM = history.state
     this.annalyseV.annalyse= new Annalyse();
@@ -47,6 +52,8 @@ export class AddAnnalyseComponent implements OnInit {
     this.annalyseV.visitePM=this.visitePM;
     this.saveAnnalyse();
   }
- 
+  Retour(){
+    window.history.back();
+  }
 
 }

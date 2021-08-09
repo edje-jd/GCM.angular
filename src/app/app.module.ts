@@ -38,7 +38,8 @@ import { SideBareComponent } from './components/nav and sideBare/side-bare/side-
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button'
+import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu'
 import {MatIconModule} from '@angular/material/icon'
 import {MatDividerModule} from '@angular/material/divider'
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
@@ -50,7 +51,19 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { ListAnnalyseComponent } from './components/Annalyse/list-annalyse/list-annalyse.component';
 import { AddAnnalyseComponent } from './components/Annalyse/add-annalyse/add-annalyse.component';
 import { AddHospitalisationComponent } from './components/Hospitalisation/add-hospitalisation/add-hospitalisation.component';
-import { VisiteDetailsComponent } from './components/Visite/visite-details/visite-details.component'; 
+import { VisiteDetailsComponent } from './components/Visite/visite-details/visite-details.component';
+import { UpdateAntecedentComponent } from './components/Antecedent/update-antecedent/update-antecedent.component';
+import { UpdateMedicamentComponent } from './components/Medicament/update-medicament/update-medicament.component';
+import { UpdateMedecinComponent } from './components/Medecin/update-medecin/update-medecin.component';
+import { MedecinDetailsComponent } from './components/Medecin/medecin-details/medecin-details.component';
+import { UpdateOrdonanceComponent } from './components/Ordonance/update-ordonance/update-ordonance.component';
+import { OrdonanceDetailsComponent } from './components/Ordonance/ordonance-details/ordonance-details.component';
+import { UpdateHospitalisationComponent } from './components/Hospitalisation/update-hospitalisation/update-hospitalisation.component';
+import { DetailsHospitalisationComponent } from './components/Hospitalisation/details-hospitalisation/details-hospitalisation.component';
+import { UpdateAnnalyseComponent } from './components/Annalyse/update-annalyse/update-annalyse.component'; 
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { UpdateVisiteComponent } from './components/Visite/update-visite/update-visite.component'; 
 
 @NgModule({
   declarations: [
@@ -113,7 +126,27 @@ import { VisiteDetailsComponent } from './components/Visite/visite-details/visit
     
     AddHospitalisationComponent,
     
-    VisiteDetailsComponent
+    VisiteDetailsComponent,
+    
+    UpdateAntecedentComponent,
+    
+    UpdateMedicamentComponent,
+    
+    UpdateMedecinComponent,
+    
+    MedecinDetailsComponent,
+    
+    UpdateOrdonanceComponent,
+    
+    OrdonanceDetailsComponent,
+    
+    UpdateHospitalisationComponent,
+    
+    DetailsHospitalisationComponent,
+    
+    UpdateAnnalyseComponent,
+    
+    UpdateVisiteComponent
   ],
   imports: [
     BrowserModule,
@@ -124,13 +157,17 @@ import { VisiteDetailsComponent } from './components/Visite/visite-details/visit
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    MatMenuModule,
     MatIconModule,
     MatDividerModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatDatepickerModule
+
   
 
   ],

@@ -10,7 +10,7 @@ export class VisitePMService {
 
   private host1 ="http://localhost:8080/GCM/VP/add";
   private host2 ="http://localhost:8080/GCM/VPM/all";
-  private host ="http://localhost:8080/GCM/Patient";
+  private host ="http://localhost:8080/GCM/VPM";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -23,5 +23,15 @@ export class VisitePMService {
 
   getVisitePMList(): Observable<VisitePM[]>{
     return this.httpClient.get<VisitePM[]>(`${this.host2}`);
+  }
+  deleteVisitePM(id: number): Observable<Object>{
+    return this.httpClient.delete(`${this.host}/delete/${id}`);
+  }
+  getVisitePMById(id: number): Observable<VisitePM>{
+    return this.httpClient.get<VisitePM>(`${this.host}/find/${id}`);
+  }
+
+  updateVisitePM(id: number, visitePM: VisitePM): Observable<Object>{
+    return this.httpClient.put(`${this.host}/update`, visitePM);
   }
 }

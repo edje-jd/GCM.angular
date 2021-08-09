@@ -29,8 +29,9 @@ export class ListAntecedentComponent implements OnInit {
 }
 
 
-updateAntecedent(id: any){
-  this.router.navigate(['update-antecedent', id]);
+updateAntecedent(antecedent: Antecedent){
+  
+  this.router.navigate(['update-antecedent'], {state:antecedent});
 }
 
 deleteAntecedent(id: any){

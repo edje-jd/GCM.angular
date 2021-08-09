@@ -29,6 +29,6 @@ export class OrdonanceService {
   }
 
   updateOrdonance(id: number, ordonance: Ordonance): Observable<Object>{
-    return this.httpClient.put(`${this.host}/${id}`, ordonance);
+    return this.httpClient.put(`${this.host}/update`, ordonance);
   }
 }

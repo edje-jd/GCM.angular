@@ -28,8 +28,8 @@ export class ListMedicamentComponent implements OnInit {
 }
 
 
-updateMedicament(id: any){
-  this.router.navigate(['update-medicament', id]);
+updateMedicament(medicament: Medicament){
+  this.router.navigate(['update-medicament'] , {state:medicament});
 }
 
 deleteMedicament(id: any){

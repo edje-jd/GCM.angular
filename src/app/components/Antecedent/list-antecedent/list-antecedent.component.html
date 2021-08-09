@@ -7,7 +7,7 @@
 <h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    List des Maladies</h2></DIV>
   <hr STYLE="color: yellow; ">
   <br><br>
-<table class = "table table-hover">
+<table class = "table table-bordered">
     <thead class="thead-light">
         <tr>
             <th>Id</th>
@@ -24,7 +24,7 @@
           
             
          <td>
-                  <button (click) = "updateAntecedent(antecedent.id)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
+                  <button (click) = "updateAntecedent(antecedent)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
                 <button (click) = "deleteAntecedent(antecedent.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
             
             </td>
