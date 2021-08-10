@@ -56,5 +56,8 @@ public Search(key: string): void {
     this.getAnnalyseVs();
   }
 }
+Retour(){
+  window.history.back();
+}
 
 }

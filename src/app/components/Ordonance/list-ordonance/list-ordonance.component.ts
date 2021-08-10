@@ -85,4 +85,7 @@ getMedicamentbyId(id:number){
       this.getOrdonanceMVs();
     }
   }
+  Retour(){
+    window.history.back();
+  }
 }

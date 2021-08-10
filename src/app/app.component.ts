@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username?: string;
   title='GCM.SISTA';
+  public show = false;
 
   constructor(private tokenStorageService: TokenStorageService,private observer: BreakpointObserver) { }
 
@@ -34,6 +35,11 @@ export class AppComponent implements OnInit {
 
       this.username = user.username;
     }
+  }
+
+  isShow(){
+    this.show=!this.show;
+
   }
   
 

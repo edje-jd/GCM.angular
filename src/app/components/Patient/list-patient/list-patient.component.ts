@@ -1,5 +1,6 @@
 import { state } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -93,6 +94,14 @@ deletePatientDesease(id: any){
       this.getPatientsD();
     }
   }
+
+  // @ViewChild(MatPaginator) 
+  // paginator!: MatPaginator;
+  
+
+  // ngAfterViewInit() {
+  //   this.patientsDeseases.paginator = this.paginator;
+  // }
 
  
 

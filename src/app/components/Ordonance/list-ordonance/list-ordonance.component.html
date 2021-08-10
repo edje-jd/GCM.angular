@@ -1,18 +1,19 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light; margin-left: 0% " >
- <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addOrdonance"
-                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-plus-lg"></i> Ajouter Ordonance</a></button>
+ <DIV CLASS="container"> 
+  <mat-icon style="margin-left: 98%;margin-top: 2%" color="primary" (click) = "Retour()">assignment_return</mat-icon>
 
-<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    Liste des Ordonances</h1></DIV>
+
+<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 35%;" >    Liste des Ordonances</h1></DIV>
   <hr STYLE="color: yellow; ">
   <div>
     <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
     name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
   </div><br>
 <table class = "table table-hover" >
-    <thead class="thead-dark">
-        <tr>
+    <thead>
+        <tr class="bg-primary">
            <th>Id</th>
             <th>Date d'ordonance </th>
             <th> Dosage</th>
@@ -34,9 +35,10 @@
           <!--<td> <tr *ngFor="let visite of visites"><td>{{visite.id}}</td></tr></td>-->
           <!-- <td><div *ngFor="let item of ordonance.medicements">{{item.nomMedc}}</div></td> -->
          <td>
-                  <button (click) = "updateOrdonance(ordonancemv.ordonance)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
-                <button (click) = "deleteOrdonance(ordonancemv.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
-                <button (click) = "ordoranceDetails(ordonancemv)" class = "btn btn-info" style="margin-left: 10px"><i class="bi bi-zoom-in"></i></button>
+                <mat-icon  color="primary" (click) = "updateOrdonance(ordonancemv.ordonance)">update</mat-icon>
+                  <mat-icon color="accent" (click) = "deleteOrdonance(ordonancemv.id)">delete</mat-icon>
+                  <mat-icon color="warn" (click) = "ordoranceDetails(ordonancemv)" >info</mat-icon>
+               
             </td>
         </tr>
     </tbody>

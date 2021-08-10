@@ -50,6 +50,9 @@ deleteHospitalisation(id: any){
     this.getHospitalisationV();
   })
 }
+Retour(){
+  window.history.back();
+}
 public Search(key: string): void {
   console.log(key);
   const results: HospitalisationV[] = [];

@@ -12,8 +12,8 @@
     name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
   </div><br>
 <table class = "table table-hover">
-    <thead class="thead-dark">
-        <tr>
+    <thead>
+        <tr class="bg-primary">
            
             <th > Id</th>
             
@@ -42,19 +42,9 @@
           <td>  {{visitepm.medecinPH.medecin.name}}</td>
      
          <td>
-
-                <!-- <button (click) = "updateVisite(visitepm.visite)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button> -->
-                <button (click) = "updateVisite(visitepm.visite)" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
-                  <mat-icon>update</mat-icon></button>
-
-                <!-- <button (click) = "deleteVisite(visitepm.id)" class = "btn btn-danger" style="margin-left: 5px"> <i class="bi bi-trash-fill"></i></button> -->
-                <button (click) = "deleteVisite(visitepm.id)" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
-                  <mat-icon>delete</mat-icon>
-                </button>
-                <!-- <button (click) = "detalVisite(visitepm)" class="btn btn-light" style="margin-left: 5px"> <i class="bi bi-three-dots"></i></button> -->
-                <button  mat-mini-fab color="warn" (click) = "detalVisite(visitepm)"  aria-label="Example icon button with a home icon">
-                  <mat-icon>info</mat-icon>
-                </button>
+                <mat-icon  color="primary" (click) = "updateVisite(visitepm.visite)">update</mat-icon>
+                <mat-icon color="accent" (click) = "deleteVisite(visitepm.id)">delete</mat-icon>
+                <mat-icon color="warn" (click) = "detalVisite(visitepm)">info</mat-icon>
                 
             </td>
         </tr>
