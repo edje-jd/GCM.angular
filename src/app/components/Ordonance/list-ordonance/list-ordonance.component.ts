@@ -26,6 +26,8 @@ export class ListOrdonanceComponent implements OnInit {
   visites?:Visite[];
   medicaments?: Medicament[];
   medicament!: Medicament;
+
+  displayedColumns: string[] = ['id', 'patient.name', 'date_ord', 'dosage','nomMedc','medecin.name','Actions'];
   constructor(private ordonanceService:OrdonanceService,private ordonanceMVService: OrdonanceMVService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) { }
 
   ngOnInit(): void {

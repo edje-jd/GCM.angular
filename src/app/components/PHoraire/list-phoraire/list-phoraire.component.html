@@ -1,12 +1,52 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<div class="container" style="background-color:light; margin-left: 5% " >
- <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addPhoraire"
-                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-plus-lg"></i> Ajouter Phoraire</a></button>
+<div class="container" style="background-color:light; margin-left: 0% " >
+ <DIV CLASS="container"> 
+  <button  mat-mini-fab color="primary" style="margin-left: 95%; margin-top: 2%"   (click)="addPh()" aria-label="Example icon button with a home icon">
+    <mat-icon>add</mat-icon>
+  </button>
 
-<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    List des Plages Horaires</h2></DIV>
+<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    List des Plages Horaires</h1></DIV>
   <hr STYLE="color: yellow; ">
-  <br><br>
+  <br>
+  
+ 
+  <table mat-table [dataSource]="this.phoraires"  class="mat-elevation-z8">
+    
+      
+    <ng-container matColumnDef="id">
+        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let phoraire">  {{ phoraire.id }} </td>
+        
+      </ng-container>
+  
+    <ng-container matColumnDef="heure_deb">
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Heure debut</th>
+      <td mat-cell *matCellDef="let phoraire">  {{ phoraire.heure_deb }} </td>
+      
+    </ng-container>
+    <ng-container matColumnDef="heure_fin">
+        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Heure fin</th>
+        <td mat-cell *matCellDef="let phoraire">  {{ phoraire.heure_fin }} </td>
+        
+      </ng-container>
+  
+    <ng-container matColumnDef="Actions">
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > Actions </th>
+      <td mat-cell *matCellDef="let phoraire">
+        <button  mat-mini-fab color="warn" (click) = "updatePhoraire(phoraire.id)" aria-label="Example icon button with a home icon">
+        <mat-icon >update</mat-icon></button>&nbsp;
+        <button  mat-mini-fab color="accent" (click) = "deletePhoraire(phoraire.id)"><mat-icon >delete</mat-icon></button>&nbsp;
+        
+    </td>
+      
+    </ng-container>
+  
+  
+    <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+<!--  
 <table class = "table table-hover">
     <thead class="thead-light">
         <tr>
@@ -30,5 +70,5 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
 </div> 

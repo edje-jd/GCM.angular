@@ -4,20 +4,29 @@
 
 </head>
 <body>
-    
-    
-<h1 style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter un Patient</h1>
+ 
+<!--   
+<h1 mat-dialog-title style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter un Patient</h1> -->
 
-
+<mat-toolbar>
+  <span style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter un Patient</span>
+  <button  mat-mini-fab color="warn" style="margin-left: 45%;"  (click)="onClose()" aria-label="Example icon button with a home icon">
+      <mat-icon>close</mat-icon>
+    </button>
+</mat-toolbar>
 <div class="container">
-   
+ 
   <form action="/action_page.php" (ngSubmit) = "onSubmit()">
   <div class="row">
+    
     <div class="col-25">
-      <label for="name" style="color: blue;font-family: 'Georgia'">Nom et Prénom</label>
+      <label for="name" class="required" style="color: blue;font-family: 'Georgia'">Nom et Prénom</label>
     </div>
     <div class="col-75">
-      <input type="text" id="name" class="form-control" placeholder="Your name.." [(ngModel)] = "patient.name" name = "name">
+      <input type="text" id="name" class="form-control" placeholder="Your name.." [(ngModel)] = "patient.name" name = "name" 
+      >
+
+         
     </div>
   </div>
   <div class="row">
@@ -67,7 +76,7 @@
         <mat-option  *ngFor = "let item of antcedents" [value]="item" >
             <tr>
                 
-                {{item.id}} 
+                <!-- {{item.id}}  -->
                 {{item.nom_malade}}
                 
             </tr>
@@ -84,8 +93,8 @@
 
         <mat-option *ngFor="let item of localisations" [value]="item">
             <tr >
-                {{item.id}} 
-                {{item.nom_moghata}}
+                <!-- {{item.id}} 
+                {{item.nom_moghata}} -->
                 {{item.nom_commune}}
                 
             </tr>
@@ -94,13 +103,17 @@
     </mat-select></div></div>
 
   <div class="row">
-    <input type="submit" style="margin-left: 50%;" value="Ajouter">
+   
+    <!-- <button  mat-mini-fab color="primary"  mat-dialog-close style="margin-left: 0%;"><mat-icon >close</mat-icon></button>   -->
+    <input type="submit" style="margin-left: 50%;" value="Ajouter"  mat-button mat-dialog-close>
     <!-- <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button> -->
    
    
   </div>
   </form>
 </div>
+
+
 
 </body>
 </html>

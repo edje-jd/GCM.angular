@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VisitePM } from 'src/app/model/VisitePM';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { VisitePMService } from 'src/app/_services/visite-pm.service';
+import { AddAnnalyseComponent } from '../../Annalyse/add-annalyse/add-annalyse.component';
+import { AddHospitalisationComponent } from '../../Hospitalisation/add-hospitalisation/add-hospitalisation.component';
+import { AddOrdonanceComponent } from '../../Ordonance/add-ordonance/add-ordonance.component';
 
 @Component({
   selector: 'app-visite-details',
@@ -19,7 +23,8 @@ export class VisiteDetailsComponent implements OnInit {
  username?: string;
  private roles: string[] = [];
   constructor(private visitepmService :VisitePMService,
-    private route: ActivatedRoute,private router:Router,private tokenStorageService: TokenStorageService) {this.visitepm = history.state }
+    private route: ActivatedRoute,private router:Router,private tokenStorageService: TokenStorageService
+    ,private dialog:MatDialog) {this.visitepm = history.state }
 
   ngOnInit(): void {
 
@@ -56,6 +61,35 @@ DemandeHospitalisation(visitePM:VisitePM){
 }
 DemandeAnnalyse(visitePM:VisitePM){
   this.router.navigate(['addAnnalyse'], {state: visitePM});
+}
+
+AddOrd(){
+  // this.service.initializeFormGroup();
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "60%";
+  this.dialog.open(AddOrdonanceComponent,dialogConfig);
+
+}
+
+AddAnls(){
+  // this.service.initializeFormGroup();
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "60%";
+  this.dialog.open(AddAnnalyseComponent,dialogConfig);
+
+}
+AddHosp(){
+  // this.service.initializeFormGroup();
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "60%";
+  this.dialog.open(AddHospitalisationComponent,dialogConfig);
+
 }
 
 }

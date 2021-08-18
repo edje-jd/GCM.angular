@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Medecin } from 'src/app/model/Medecin';
 import { MedecinPH } from 'src/app/model/MedecinPH';
@@ -29,12 +30,12 @@ export class AddVisiteComponent implements OnInit {
   secretaire?:Secretaire;
   id?:any;
   options = ['Consultation','Rend-Vous'];
-//   form = new FormGroup({
-//     type_visite : new FormControl('',Validators.required),
-//     date_visit :new FormControl('',Validators.required),
-//     visitepm: new FormControl('',Validators.required)
-//  })
-  constructor(private visitepmservice:VisitePMService,private visiteService:VisiteService,private patientservice: PatientService,private router: Router ,private medecinphservice:MedecinPHService,private secretaireService:SecretaireService) {
+  form = new FormGroup({
+    type_visite : new FormControl('',Validators.required),
+    date_visit :new FormControl('',Validators.required),
+    visitepm: new FormControl('',Validators.required)
+ })
+  constructor(public dialogRef: MatDialogRef<AddVisiteComponent>,private visitepmservice:VisitePMService,private visiteService:VisiteService,private patientservice: PatientService,private router: Router ,private medecinphservice:MedecinPHService,private secretaireService:SecretaireService) {
     this.patient = history.state
     
     this.visitepm.visite = new Visite();
@@ -106,5 +107,10 @@ export class AddVisiteComponent implements OnInit {
 
   Retour(){
     window.history.back();
+  }
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
   }
 }

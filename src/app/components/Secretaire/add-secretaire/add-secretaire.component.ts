@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Secretaire } from 'src/app/model/Secretaire';
 import { SecretaireService } from 'src/app/_services/secretaire.service';
@@ -11,7 +12,7 @@ import { SecretaireService } from 'src/app/_services/secretaire.service';
 export class AddSecretaireComponent implements OnInit {
 
   secretaire: Secretaire= new Secretaire();
-  constructor(private secretaireService:SecretaireService , private router:Router) { }
+  constructor(public dialogRef: MatDialogRef<AddSecretaireComponent>,private secretaireService:SecretaireService , private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,7 @@ export class AddSecretaireComponent implements OnInit {
         console.log(data);
 
         this.goToSecretaireList();
+        this.reloadPage();
       },
       error => console.log(error));
   }
@@ -30,6 +32,14 @@ export class AddSecretaireComponent implements OnInit {
     console.log(this.secretaire);
     this.saveSecretaire();
   }
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
 
 }

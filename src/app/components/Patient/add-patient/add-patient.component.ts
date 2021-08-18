@@ -11,6 +11,7 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { PatientDesease } from 'src/app/model/PatientDesease';
 import { PatientDeseaseService } from 'src/app/_services/patient-desease.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-patient',
@@ -31,7 +32,7 @@ export class AddPatientComponent implements OnInit {
        phone :new FormControl('',Validators.required)
     })
   
-  constructor(private patientservice: PatientService,private router: Router ,private antecedentService:AntecedentService,private localisationService:LocalisationService, private patientDeseaseService: PatientDeseaseService) { }
+  constructor(public dialogRef: MatDialogRef<AddPatientComponent>,private patientservice: PatientService,private router: Router ,private antecedentService:AntecedentService,private localisationService:LocalisationService, private patientDeseaseService: PatientDeseaseService) { }
 
   ngOnInit(): void {
     this.getlistAntecedents();
@@ -58,6 +59,12 @@ savePatient
     }
     PatientDetails(patientdes: PatientDesease){
       this.router.navigate(['patient-details'],{state:patientdes});
+    }
+
+    onClose() {
+      // this.service.form.reset();
+      // this.service.initializeFormGroup();
+      this.dialogRef.close();
     }
 
  getlistLocalisations(){

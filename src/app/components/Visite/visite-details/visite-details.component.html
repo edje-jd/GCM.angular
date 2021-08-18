@@ -78,9 +78,9 @@
                                           <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" >
                                             <mat-icon >menu</mat-icon>
                                             <mat-menu   #menu="matMenu" >
-                                                <button mat-menu-item (click) = "DemandeOrdonance(visitepm)" *ngIf="showAdminBoard">add ordn</button>
-                                                <button mat-menu-item (click) = "DemandeAnnalyse(visitepm)" *ngIf="showAdminBoard">add anls</button>
-                                                <button mat-menu-item (click) = "DemandeHospitalisation(visitepm)" *ngIf="showAdminBoard">add hosp</button>
+                                                <button mat-menu-item (click) = "AddOrd()" *ngIf="showAdminBoard">add ordn</button>
+                                                <button mat-menu-item (click) = "AddAnls()" *ngIf="showAdminBoard">add anls</button>
+                                                <button mat-menu-item (click) = "AddHosp()" *ngIf="showAdminBoard">add hosp</button>
                                                 
                                                 </mat-menu>
                                             

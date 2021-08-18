@@ -18,7 +18,7 @@ export class ListHospitalisationComponent implements OnInit {
   i:any;
   visite!:Visite;
   
-  
+  displayedColumns: string[] = ['Id', 'patient.name', 'date_debut_hosp', 'date_fin_hosp','numLit','numChambre','nomUnite','traitement','medecin.name','Actions'];
   constructor(private hospitalisationVService: HospitalisationVService, private route: ActivatedRoute ,private router: Router) { }
 
   ngOnInit(): void {

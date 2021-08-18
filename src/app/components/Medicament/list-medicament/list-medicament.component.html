@@ -1,14 +1,55 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<div class="container" style="background-color: light; margin-left: 5% " >
- <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addMedicament"
-                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-plus-lg"></i> Ajouter Medicament</a></button>
+<div class="container" style="background-color: light; margin-left: 0% " >
+ <DIV CLASS="container">
+    <button  mat-mini-fab color="primary" style="margin-left: 95%; margin-top: 2%"  (click)="addMdc()"  aria-label="Example icon button with a home icon">
+        <mat-icon>add</mat-icon>
+      </button>
 
-<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    Listes des Medicaments</h2></DIV>
+<h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    Listes des Medicaments</h1></DIV>
   <hr STYLE="color: yellow; ">
-  <br>
+  
   <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search medicament..." required> <br>
+
+ 
+ 
+         <table mat-table [dataSource]="this.medicaments"  class="mat-elevation-z8">
+    
+      
+            <ng-container matColumnDef="id">
+                <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let medicament">  {{ medicament.id }} </td>
+                
+              </ng-container>
+          
+            <ng-container matColumnDef="typeMedc">
+              <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Type de medicament</th>
+              <td mat-cell *matCellDef="let medicament">  {{ medicament.typeMedc }}</td>
+              
+            </ng-container>
+            <ng-container matColumnDef="nomMedc">
+                <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Nom du Medicament</th>
+                <td mat-cell *matCellDef="let medicament">  {{medicament.nomMedc }} </td>
+                
+              </ng-container>
+          
+            <ng-container matColumnDef="Actions">
+              <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > Actions </th>
+              <td mat-cell *matCellDef="let medicament">
+                <button  mat-mini-fab color="warn" (click) = "updateMedicament(medicament)" aria-label="Example icon button with a home icon">
+                <mat-icon >update</mat-icon></button>&nbsp;
+                <button  mat-mini-fab color="accent" (click) = "deleteMedicament(medicament.id)"><mat-icon >delete</mat-icon></button>&nbsp;
+                
+            </td>
+              
+            </ng-container>
+          
+          
+            <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>   
+<!--                
 <table class = "table table-bordered">
     <thead class="thead-light">
         <tr>
@@ -33,6 +74,6 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
 </div> 
 

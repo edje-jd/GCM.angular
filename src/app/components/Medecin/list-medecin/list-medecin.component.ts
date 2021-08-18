@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/app/model/Medecin';
 import { MedecinPH } from 'src/app/model/MedecinPH';
@@ -6,6 +7,7 @@ import { Phoraire } from 'src/app/model/Phoraire';
 import { MedecinPHService } from 'src/app/_services/medecin-ph.service';
 import { MedecinService } from 'src/app/_services/medecin.service';
 import { PhoraireService } from 'src/app/_services/phoraire.service';
+import { AddMedecinComponent } from '../add-medecin/add-medecin.component';
 
 @Component({
   selector: 'app-list-medecin',
@@ -21,8 +23,9 @@ export class ListMedecinComponent implements OnInit {
   i:any;
   phoraire?: Phoraire;
   phoraires?:Phoraire[];
-  
-  constructor(private medecinPhService : MedecinPHService ,private medecinservice: MedecinService, private route: ActivatedRoute ,private router: Router,private phoraireService:PhoraireService) { }
+   
+  displayedColumns: string[] = ['id', 'medecin.name', 'medecin.specialicite','plage_Horaire.heure_deb','plage_Horaire.heure_fin', 'Actions'];
+  constructor(private dialog:MatDialog,private medecinPhService : MedecinPHService ,private medecinservice: MedecinService, private route: ActivatedRoute ,private router: Router,private phoraireService:PhoraireService) { }
 
   ngOnInit(): void {
     this.medecinPhs;
@@ -81,6 +84,16 @@ getPhorairebyId(id:number){
     }
   }
 
-
+  addMdc(){
+    // this.service.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(AddMedecinComponent,dialogConfig);
+  
+  }
+  
+  
 
 }

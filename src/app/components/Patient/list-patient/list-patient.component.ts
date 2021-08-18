@@ -1,6 +1,9 @@
 import { state } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -12,6 +15,7 @@ import { AntecedentService } from 'src/app/_services/antecedent.service';
 import { LocalisationService } from 'src/app/_services/localisation.service';
 import { PatientDeseaseService } from 'src/app/_services/patient-desease.service';
 import { PatientService } from 'src/app/_services/patient.service';
+import { AddPatientComponent } from '../add-patient/add-patient.component';
 
 @Component({
   selector: 'app-list-patient',
@@ -32,11 +36,25 @@ export class ListPatientComponent implements OnInit {
   Name!: string;
   p:number=1;
 
+  displayedColumns: string[] = ['Id', 'name', 'phone', 'date_naissance','sexe','adresse','nom_malade','nom_moghata','Actions'];
+
   
-  constructor(private patientservice: PatientService, private patientDeseaseservice: PatientDeseaseService, private route: ActivatedRoute ,private router: Router,private antecedentService:AntecedentService,private localisationService:LocalisationService) { }
- 
+  constructor(private dialog:MatDialog,private patientservice: PatientService, private patientDeseaseservice: PatientDeseaseService, private route: ActivatedRoute ,private router: Router,private antecedentService:AntecedentService,private localisationService:LocalisationService) { }
+  
+  
+
+  // dataSource = new MatTableDataSource<PatientDesease>(this.patientsDeseases);
+  // @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // @ViewChild(MatSort) sort!: MatSort;
+  
+  
   ngOnInit(): void {
+   
+   
     this.patientsDeseases;
+    
+    
+
     this.getPatientsD()
     this.i=this.route.snapshot.params['i'];
     this.antecedent=new Antecedent()
@@ -76,7 +94,19 @@ deletePatientDesease(id: any){
     this.getPatientsD();
   })
 }
-
+openUtil(){
+  // this.service.initializeFormGroup();
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "60%";
+  this.dialog.open(AddPatientComponent,dialogConfig);
+  // this.dialog.open(AddPatientComponent, {
+  //   height: '600px',
+  //   width: '700px',
+    
+  // });
+}
 
 
    public Search(key: string): void {

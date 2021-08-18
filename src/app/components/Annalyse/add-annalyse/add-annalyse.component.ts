@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Annalyse } from 'src/app/model/Annalyse';
 import { AnnalyseV } from 'src/app/model/AnnlyseV';
@@ -24,7 +25,7 @@ export class AddAnnalyseComponent implements OnInit {
     nomAnls : new FormControl('',Validators.required),
     nom_labo :new FormControl('',Validators.required)
  })
-  constructor(private visitepmservice:VisitePMService,private annalyseVService:AnnalyseVService , private router:Router,private visiteService:VisiteService) { 
+  constructor(public dialogRef: MatDialogRef<AddAnnalyseComponent>,private visitepmservice:VisitePMService,private annalyseVService:AnnalyseVService , private router:Router,private visiteService:VisiteService) { 
     this.visitePM = history.state
     this.annalyseV.annalyse= new Annalyse();
   }
@@ -54,6 +55,11 @@ export class AddAnnalyseComponent implements OnInit {
   }
   Retour(){
     window.history.back();
+  }
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
   }
 
 }

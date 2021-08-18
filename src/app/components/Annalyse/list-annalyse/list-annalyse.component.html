@@ -3,7 +3,8 @@
 <div class="container" style="background-color: light; margin-left: 0% " >
  <DIV CLASS="container">
                        
-                            <mat-icon style="margin-left: 98%;margin-top: 2%" color="primary" (click) = "Retour()">assignment_return</mat-icon>
+    <button  mat-mini-fab color="warn" style="margin-left: 98%;margin-top: 2%" color="primary" (click) = "Retour()">
+        <mat-icon >assignment_return</mat-icon></button>
                           
 
 <h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 35%;"  >    List des Annalyses</h1></DIV>
@@ -12,6 +13,59 @@
     <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
     name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
   </div><br>
+
+  <div class="mat-elevation-z8">
+<table mat-table [dataSource]="this.annalyseVs">
+
+  
+    <ng-container matColumnDef="id">
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef> Id &nbsp;<i class="fa fa-sort"></i></th>
+      <td mat-cell *matCellDef="let annalyseV" class ="hidden"> {{ annalyseV.annalyse.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="patient.name">
+        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Nom Patient</th>
+        <td mat-cell *matCellDef="let  annalyseV"> {{ annalyseV.visitePM.patient.name }} </td>
+        
+      </ng-container>
+  
+    <ng-container matColumnDef="nomAnls">
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Nom d'analyse</th>
+      <td mat-cell *matCellDef="let annalyseV"> {{ annalyseV.annalyse.nomAnls }} </td>
+      
+    </ng-container>
+  
+    <ng-container matColumnDef="nom_labo">
+      <th style="color: blue;font-family: 'Georgia';font-size:14px;" mat-header-cell *matHeaderCellDef> Nom de l'aboratoire</th>
+      <td mat-cell *matCellDef="let annalyseV"> {{ annalyseV.annalyse.nom_labo }} </td>
+      
+    </ng-container>
+   
+  
+   
+    
+    <ng-container matColumnDef="Actions">
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > Actions </th>
+      <td mat-cell *matCellDef="let annalyseV">
+        <button  mat-mini-fab color="warn" (click) = "updateAnnalyse(annalyseV.annalyse)" aria-label="Example icon button with a home icon">
+        <mat-icon >update</mat-icon></button>&nbsp;
+        <button  mat-mini-fab color="accent" (click) = "deleteAnnalyse(annalyseV.id)"><mat-icon >delete</mat-icon></button>&nbsp;
+        <button  mat-mini-fab color="primary"  ><mat-icon >info</mat-icon></button>
+    </td>
+      
+    </ng-container>
+  
+  
+    <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator></div>
+
+<!--   
 <table class = "table table-hover" >
     <thead>
         <tr class="bg-primary">
@@ -34,12 +88,12 @@
          <td>
               <mat-icon  color="primary" (click) = "updateAnnalyse(annalyseV.annalyse)">update</mat-icon>
                   <mat-icon color="accent" (click) ="deleteAnnalyse(annalyseV.id)">delete</mat-icon>
-                  <!-- <mat-icon color="warn" (click) = "HospitalisationDetails(hospitalisationV)" >info</mat-icon> -->
+                
                 
                 
             
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
 </div> 

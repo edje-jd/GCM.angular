@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Medecin } from 'src/app/model/Medecin';
 import { MedecinPH } from 'src/app/model/MedecinPH';
@@ -19,7 +20,7 @@ export class AddMedecinComponent implements OnInit {
   phoraires?:Phoraire[];
   phoraire!:Phoraire;
   id?:any;
-  constructor(private medecinPhService:MedecinPHService, private medecinservice: MedecinService,private router: Router ,private phoraireService:PhoraireService) { }
+  constructor(public dialogRef: MatDialogRef<AddMedecinComponent>,private medecinPhService:MedecinPHService, private medecinservice: MedecinService,private router: Router ,private phoraireService:PhoraireService) { }
 
   ngOnInit(): void {
     this.getlistPhoraires()
@@ -30,6 +31,7 @@ export class AddMedecinComponent implements OnInit {
         console.log(data);
 
         this.goToMedecinList();
+        this.reloadPage();
       },
       error => console.log(error));
   }
@@ -46,5 +48,14 @@ export class AddMedecinComponent implements OnInit {
     this.medecinPh.medecin= this.medecin;
     this.saveMedecin();
   }
+  reloadPage(): void {
+    window.location.reload();
+  }
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
+  
 
 }

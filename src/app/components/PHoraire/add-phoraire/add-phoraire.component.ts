@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Phoraire } from 'src/app/model/Phoraire';
 import { PhoraireService } from 'src/app/_services/phoraire.service';
@@ -11,7 +12,7 @@ import { PhoraireService } from 'src/app/_services/phoraire.service';
 export class AddPhoraireComponent implements OnInit {
 phoraire:Phoraire= new Phoraire();
 
-  constructor(private phoraireService:PhoraireService , private router:Router) { }
+  constructor(public dialogRef: MatDialogRef<AddPhoraireComponent>,private phoraireService:PhoraireService , private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,7 @@ phoraire:Phoraire= new Phoraire();
         console.log(data);
 
         this.goToPhoraireList();
+        this.reloadPage();
       },
       error => console.log(error))
   }
@@ -29,6 +31,16 @@ phoraire:Phoraire= new Phoraire();
   onSubmit(){
     console.log(this.phoraire);
     this.savePhoraire();
+  }
+  
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
 

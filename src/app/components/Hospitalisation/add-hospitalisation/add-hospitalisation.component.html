@@ -1,3 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    
+  <mat-toolbar>
+    <span style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter une Hospitalisation</span>
+    <button  mat-mini-fab color="warn" style="margin-left: 37%;"  (click)="onClose()" aria-label="Example icon button with a home icon">
+      <mat-icon>close</mat-icon>
+    </button>
+  
+  </mat-toolbar>
+
+
+<div class="container">
+   
+  <form action="/action_page.php" (ngSubmit) = "onSubmit()">
+  <div class="row">
+    <div class="col-25">
+      <label for="date_debut_hosp" class="required" style="color: blue;font-family: 'Georgia'">Date debut d'hospitalisation</label>
+    </div>
+    <div class="col-75">
+      <input type="date"  class="form-control"id = "date_debut_hosp" placeholder="Date debut d'hospitalisation"
+      [(ngModel)] = "hospitalisationV.hospitalisation.date_debut_hosp" name = "date_debut_hosp"
+      >
+
+         
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="date_fin_hosp" style="color: blue;font-family: 'Georgia'">Date fin d'hospitalisation</label>
+    </div>
+    <div class="col-75">
+      <input type="date"   class="form-control" id = "date_fin_hosp" placeholder="Date fin d'hospitalisation"
+      [(ngModel)] = "hospitalisationV.hospitalisation.date_fin_hosp" name = "date_fin_hosp">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="nomUnite" style="color: blue;font-family: 'Georgia'">Nom d'unité</label>
+    </div>
+    <div class="col-75">
+      <input type="text"  class="form-control"  id = "nomUnite" placeholder="Nom d'unite"
+      [(ngModel)] = "hospitalisationV.hospitalisation.nomUnite  " name = "nomUnite">
+    </div>
+  </div>
+  
+
+  <div class="row">
+    <div class="col-25">
+      <label for="numChambre" style="color: blue;font-family: 'Georgia'">Numéro du chambre</label>
+    </div>
+    <div class="col-75">
+        <input type="number" id="adresse" class="form-control" id = "numChambre" placeholder="numero de chambre"
+        [(ngModel)] = "hospitalisationV.hospitalisation.numChambre " name = "numChambre">
+    </div>
+  </div>
+
+  
+
+  <div class="row">
+    <div class="col-25">
+      <label for="numLit" style="color: blue;font-family: 'Georgia'">Numéro du lit</label>
+    </div>
+    <div class="col-75">
+        <input type="number" id="adresse" class="form-control" id = "numLit" placeholder="Numéro de lit"
+        [(ngModel)] = "hospitalisationV.hospitalisation.numLit " name = "numLit">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="traitement" style="color: blue;font-family: 'Georgia'">Traitement</label>
+    </div>
+    <div class="col-75">
+        <input type="text" id="adresse" class="form-control"  id = "traitement" placeholder="Traitement donnee"
+        [(ngModel)] = "hospitalisationV.hospitalisation.traitement " name = "traitement">
+    </div>
+  </div>
+ 
+
+  <div class="row">
+
+    <!-- <button  mat-mini-fab color="warn" style="margin-left: 2%;" color="primary" (click) = "Retour()">
+        <mat-icon >assignment_return</mat-icon></button> -->
+    <input type="submit" style="margin-left: 50%;" value="Ajouter" mat-dialog-close>
+    <!-- <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button> -->
+   
+   
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
+<!-- 
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light; margin-left: 10% " >
@@ -65,4 +166,4 @@
       <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
     </form>
 </div>
-</div>
+</div> -->

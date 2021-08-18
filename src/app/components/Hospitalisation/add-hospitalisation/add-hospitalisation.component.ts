@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Hospitalisation } from 'src/app/model/Hospitalisation';
 import { HospitalisationV } from 'src/app/model/HospitalisationV';
@@ -27,7 +28,7 @@ export class AddHospitalisationComponent implements OnInit {
     nomUnite : new FormControl('',Validators.required),
     traitement :new FormControl('',Validators.required)
  })
-  constructor(private visitepmservice:VisitePMService,private hospitalisationVService:HospitalisationVService,private router: Router,private visiteService:VisiteService) {
+  constructor(public dialogRef: MatDialogRef<AddHospitalisationComponent>,private visitepmservice:VisitePMService,private hospitalisationVService:HospitalisationVService,private router: Router,private visiteService:VisiteService) {
     this.visitepm = history.state
     this.hospitalisationV.hospitalisation=new Hospitalisation();
    }
@@ -64,6 +65,11 @@ export class AddHospitalisationComponent implements OnInit {
   }
   Retour(){
     window.history.back();
+  }
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
   }
 
 }

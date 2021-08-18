@@ -1,4 +1,4 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="w3-sidebar w3-card " style="width:14%;
 color: rgba(16,18,76,0.66); font-weight: bold; "  >
@@ -22,4 +22,22 @@ color: rgba(16,18,76,0.66); font-weight: bold; "  >
         <li class="active"> <a routerLink="/listAnnalyse" style="color: blue;font-family: 'Georgia'">Annalyse</a></li>     
       </ul>
   </div>
+   -->
+<h1 mat-dialog-title style="color: right;font-family: 'Georgia';text-align: center;" mat-dialog-close>Liste des utilisateurs</h1>
+<mat-dialog-content>
+    <div class="text-left p-2" id="nav">
+        <ul class="navbar-nav flex-column w-100 justify-content-center">
+        <li class="nav-item" >
+          <button mat-button mat-dialog-close routerLink="/listMedecin" style="margin-left: 0%;" >Liste des Medecins</button>
+        </li>
+        <li class="nav-item" >
+            <button mat-button mat-dialog-close routerLink="/listSecretaire" style="margin-left: 0%;" >Liste des Secretaires</button>
+          </li>
+        </ul>
+    </div>  
+   
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close style="margin-left: 0%;" >close</button>
+</mat-dialog-actions>
   

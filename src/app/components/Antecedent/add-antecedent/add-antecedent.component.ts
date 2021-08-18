@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Antecedent } from 'src/app/model/Antecedent';
 import { AntecedentService } from 'src/app/_services/antecedent.service';
@@ -11,7 +12,7 @@ import { AntecedentService } from 'src/app/_services/antecedent.service';
 export class AddAntecedentComponent implements OnInit {
   antecedent : Antecedent= new Antecedent();
 
-  constructor(private antecedentService: AntecedentService,private router: Router ,private rout:ActivatedRoute) { }
+  constructor(public dialogRef: MatDialogRef<AddAntecedentComponent>,private antecedentService: AntecedentService,private router: Router ,private rout:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,7 @@ export class AddAntecedentComponent implements OnInit {
         console.log(data);
 
         this.goToAntecedentList();
+        this.reloadPage();
       },
       error => console.log(error));
   }
@@ -29,6 +31,15 @@ export class AddAntecedentComponent implements OnInit {
   onSubmit(){
     console.log(this.antecedent);
     this.saveAntecedent();
+  }
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
 }

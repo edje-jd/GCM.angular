@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Medicament } from 'src/app/model/Medicament';
 import { Ordonance } from 'src/app/model/Ordonance';
@@ -31,7 +32,7 @@ export class AddOrdonanceComponent implements OnInit {
     dosage : new FormControl('',Validators.required),
     medicament :new FormControl('',Validators.required)
  })
-  constructor(private visitepmservice:VisitePMService,private ordonancemvservice:OrdonanceMVService,private ordonanceService: OrdonanceService,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) {
+  constructor(public dialogRef: MatDialogRef<AddOrdonanceComponent>,private visitepmservice:VisitePMService,private ordonancemvservice:OrdonanceMVService,private ordonanceService: OrdonanceService,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) {
     this.visitepm = history.state
     this.ordonancemv.ordonance=new Ordonance();
    }
@@ -72,6 +73,12 @@ export class AddOrdonanceComponent implements OnInit {
   }
   Retour(){
     window.history.back();
+  }
+
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
   }
 
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Medicament } from 'src/app/model/Medicament';
 import { MedicamentService } from 'src/app/_services/medicament.service';
+import { AddMedecinComponent } from '../../Medecin/add-medecin/add-medecin.component';
+import { AddMedicamentComponent } from '../add-medicament/add-medicament.component';
 
 @Component({
   selector: 'app-list-medicament',
@@ -13,7 +16,8 @@ export class ListMedicamentComponent implements OnInit {
   medicaments!: Medicament[];
   id: any;
   i:any;
-  constructor(private medicamentService:MedicamentService, private route: ActivatedRoute ,private router: Router) { }
+  displayedColumns: string[] = ['id', 'typeMedc', 'nomMedc', 'Actions'];
+  constructor(private dialog:MatDialog,private medicamentService:MedicamentService, private route: ActivatedRoute ,private router: Router) { }
 
   ngOnInit(): void {
     this.getMedicaments();
@@ -52,6 +56,17 @@ public Search(key: string): void {
     this.getMedicaments();
   }
 }
+
+addMdc(){
+  // this.service.initializeFormGroup();
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "60%";
+  this.dialog.open(AddMedicamentComponent,dialogConfig);
+
+}
+
 
 
 }

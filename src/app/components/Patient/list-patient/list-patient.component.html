@@ -4,19 +4,84 @@
 
 
 <div class="container" style="background-color: light; margin-left: 0% " >
- <DIV CLASS="container" > <button class="bnt btn-primary" style="margin-left: 87%; margin-top: 2%"><a routerLink="/addPatient"
-                        style="color: black;font-family: 'Georgia'  "><i class="bi bi-person-plus-fill"></i> Ajouter patients</a></button>
+ <DIV CLASS="container" >
+  <button  mat-mini-fab color="primary" style="margin-left: 95%; margin-top: 2%"   (click)="openUtil()" aria-label="Example icon button with a home icon">
+    <mat-icon>add</mat-icon>
+  </button>
+    <!-- <button class="bnt btn-primary" style="margin-left: 87%; margin-top: 2%"><a routerLink="/addPatient"
+                        style="color: black;font-family: 'Georgia'  "><i class="bi bi-person-plus-fill"></i> Ajouter patients</a></button> -->
 
 <h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;margin-right: 52%; " >   Liste des patients</h1></DIV>
   <hr STYLE="color: yellow; ">
 <div>
-  <!-- <input type="test" class="form-control" name="Name" [(ngModel)]="Name" (ngModelChange)="Search()"
-  placeholder="Entrer you name to search"> -->
+  
   <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required> 
     
 </div><br>
+<div  class="mat-elevation-z8">
+<table mat-table [dataSource]="this.patientsDeseases">
 
+  
+  <ng-container matColumnDef="Id">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef> Id &nbsp;<i class="fa fa-sort"></i></th>
+    <td mat-cell *matCellDef="let patientDes" class ="hidden"> {{patientDes.patient.id }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef> Nom Pérnom</th>
+    <td mat-cell *matCellDef="let patientDes"> {{patientDes.patient.name }} </td>
+    
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef>Téléphone</th>
+    <td mat-cell *matCellDef="let patientDes"> {{patientDes.patient.phone }} </td>
+    
+  </ng-container>
+
+  
+  <ng-container matColumnDef="date_naissance">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef> Date de naissance</th>
+    <td mat-cell *matCellDef="let patientDes"> {{patientDes.patient.date_naissance|date: 'dd/MM/yyyy'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="sexe">
+    <th style="color: blue;font-family: 'Georgia' ;font-size: 16px;" mat-header-cell *matHeaderCellDef>Sexe</th>
+    <td mat-cell *matCellDef="let patientDes"> {{patientDes.patient.sexe}} </td>
+    
+  </ng-container>
+  <ng-container matColumnDef="adresse">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef> Adresse</th>
+    <td mat-cell *matCellDef="let patientDes"> {{patientDes.patient.adresse }} </td>
+    
+  </ng-container>
+  <ng-container matColumnDef="nom_malade">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef>Maladie</th>
+    <td mat-cell *matCellDef="let patientDes"> {{patientDes.antcedent.nom_malade }} </td>
+    
+  </ng-container>
+  <ng-container matColumnDef="nom_moghata">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef>Localisation</th>
+    <td  mat-cell *matCellDef="let patientDes">{{patientDes.localisation.nom_moghata}}</td>
+    
+  </ng-container>
+  <ng-container matColumnDef="Actions">
+    <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef > Actions </th>
+    <td mat-cell *matCellDef="let patientDes">
+      <button  mat-mini-fab color="warn" (click) = "updatePatient(patientDes.patient)"  aria-label="Example icon button with a home icon">
+      <mat-icon >update</mat-icon></button>&nbsp;
+      <button  mat-mini-fab color="accent" (click) = "deletePatientDesease(patientDes.id)"><mat-icon >delete</mat-icon></button>&nbsp;
+      <button  mat-mini-fab color="primary" (click) = "PatientDetails(patientDes)" ><mat-icon >info</mat-icon></button></td>
+    
+  </ng-container>
+
+
+  <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<!-- Angular 8 pagination -->
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+<!-- 
 <table class = "table table-hover" >
     <thead >
         <tr  class="bg-primary">
@@ -44,14 +109,12 @@
           <td> {{patientDes.patient.adresse }} </td>
           <td> {{patientDes.antcedent.nom_malade }} </td>
           <td>{{patientDes.localisation.nom_moghata}}</td>
-
-          <!-- <td><div *ngFor="let item of patient.localisations">{{item.nom_moghata}}</div></td>  -->
           
            <td>
                 
-                  <mat-icon  color="primary" (click) = "updatePatient(patientDes.patient)">update</mat-icon>
+                  <mat-icon  color="warn" (click) = "updatePatient(patientDes.patient)">update</mat-icon>
                   <mat-icon color="accent" (click) = "deletePatientDesease(patientDes.id)">delete</mat-icon>
-                  <mat-icon color="warn" (click) = "PatientDetails(patientDes)">info</mat-icon>
+                  <mat-icon color="primary" (click) = "PatientDetails(patientDes)">info</mat-icon>
                
             </td>
         </tr>
@@ -64,6 +127,6 @@
 <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons 
                  aria-label="Select page of periodic elements">
-  </mat-paginator>  
+  </mat-paginator>   -->
 <router-outlet></router-outlet>
 </div> 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog ,MatDialogConfig} from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Antecedent } from 'src/app/model/Antecedent';
 import { Localisation } from 'src/app/model/Localisation';
@@ -6,6 +7,7 @@ import { patient } from 'src/app/model/Patient';
 import { PatientDesease } from 'src/app/model/PatientDesease';
 import { PatientDeseaseService } from 'src/app/_services/patient-desease.service';
 import { PatientService } from 'src/app/_services/patient.service';
+import { AddVisiteComponent } from '../../Visite/add-visite/add-visite.component';
 
 @Component({
   selector: 'app-patient-details',
@@ -24,7 +26,7 @@ export class PatientDetailsComponent implements OnInit {
   antcedents!:Antecedent[];
   localisations!:Localisation[];
   constructor(private patientdesService :PatientDeseaseService,private router:Router,
-    private route: ActivatedRoute) {this.patientd=history.state;
+    private route: ActivatedRoute,private dialog:MatDialog) {this.patientd=history.state;
       
       }
 
@@ -43,6 +45,14 @@ export class PatientDetailsComponent implements OnInit {
       this.patientdes = data;
     });
 
+}
+openUtil(){
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "60%";
+  this.dialog.open(AddVisiteComponent,dialogConfig);
+ 
 }
 Retour(){
   window.history.back();

@@ -9,9 +9,10 @@ import { LocalisationService } from 'src/app/_services/localisation.service';
   styleUrls: ['./list-localisation.component.css']
 })
 export class ListLocalisationComponent implements OnInit {
-  localisations?: Localisation[];
+  localisations!: Localisation[];
   id: any;
   i:any;
+  displayedColumns: string[] = ['id', 'nom_moghata','nom_commune','Actions'];
   constructor(private localisationService:LocalisationService, private route: ActivatedRoute ,private router: Router) { }
 
   ngOnInit(): void {

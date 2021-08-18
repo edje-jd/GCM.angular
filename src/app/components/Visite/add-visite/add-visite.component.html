@@ -1,3 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    
+  <mat-toolbar>
+    <span style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter une visite</span>
+    <button  mat-mini-fab color="warn" style="margin-left: 45%;"  (click)="onClose()" aria-label="Example icon button with a home icon">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+<div class="container">
+   
+  <form action="/action_page.php" (ngSubmit) = "onSubmit()">
+  <div class="row">
+    <div class="col-25">
+      <label for="date_visit" class="required" style="color: blue;font-family: 'Georgia'">Date de visite</label>
+    </div>
+    <div class="col-75">
+      <input type="date" class="form-control" id = "date_visit" placeholder="Date de  Visite"
+      [(ngModel)] = "visitepm.visite.date_visit" name = "date_visit">
+      <!-- formControlName="date_visit"
+        [ngClass]="{'is-invalid':form.get('date_visit')?.touched && form.get('date_visit')?.invalid}">
+
+        <div class="invalid-feedback">
+            <div> Date de visite est obligatoire</div>
+        </div>  -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="objet_visit" style="color: blue;font-family: 'Georgia'">Obet visite</label>
+    </div>
+    <div class="col-75">
+      <input type="text"   class="form-control" id = "objet_visit" placeholder="Objet de Visite"
+      [(ngModel)] = "visitepm.visite.objet_visit" name = "objet_visit">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="type_visite" style="color: blue;font-family: 'Georgia'">Type de visite</label>
+    </div>
+    <div class="col-75">
+      <mat-select id="sexe" class="form-control" id = "type_visite" placeholder="Type de visite"
+      [(ngModel)] = "visitepm.visite.type_visite" name = "type_visite">
+        <mat-option value="Homme">Consultation</mat-option>
+        <mat-option value="Femme">Rend-Vous</mat-option>
+        
+      </mat-select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="prix_cons" style="color: blue;font-family: 'Georgia'">Prix de consultation</label>
+    </div>
+    <div class="col-75">
+      <input type="number"  class="form-control" id = "prix_cons" placeholder="Prix de Consultation"
+      [(ngModel)] = "visitepm.visite.prix_cons" name = "prix_cons">
+    </div>
+  </div>
+  
+ 
+  <div class="row">
+    <div class="col-25">
+      <label for="date_der_con" style="color: blue;font-family: 'Georgia'">Date de derénier consultation</label>
+    </div>
+    <div class="col-75">
+        <input type="date"  class="form-control" id = " date_h_RDV"  placeholder="date Rdv"
+        [(ngModel)] = "visitepm.visite.date_der_con"   name = "date_h_RDV">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+    <label for="medecinPH" style="color: blue;font-family: 'Georgia'" >Medecin visité</label></div>
+    <div class="col-75">
+        <mat-select   type="text" class ="form-control" id = " M_Id"  placeholder="Nom de Medecin"
+        [(ngModel)]="visitepm.medecinPH" name = "M_Id" >
+        <!-- formControlName="visitepm"
+        [ngClass]="{'is-invalid':form.get('visitepm')?.touched && form.get('visitepm')?.invalid}">
+
+        <div class="invalid-feedback">
+            <div> Name Medcin visite is required</div>
+        </div> -->
+
+            <mat-option *ngFor = "let item of medecinphs" [value]="item">
+                <tr >
+                    {{item.id}}
+                    {{item.medecin.id}}
+                    {{item.medecin.name}} 
+                    {{item.medecin.specialicite}}
+                    {{item.plage_Horaire.id}}
+                    {{item.plage_Horaire.heure_deb}}
+                    {{item.plage_Horaire.heure_fin}}
+                    
+                
+            </tr>
+            </mat-option>
+
+        </mat-select></div></div>
+
+  <div class="row">
+    
+    <input type="submit" style="margin-left: 50%;" value="Ajouter" mat-dialog-close>
+    <!-- <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button> -->
+   
+   
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
+
+<!-- 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light; margin-left: 10% " >
@@ -19,11 +135,7 @@
             <label for="date_visit" class="required" style="color: blue;font-family: 'Georgia'">Date de visite</label>
             <input type="date" class ="form-control" id = "date_visit" placeholder="Date de  Visite"
                 [(ngModel)] = "visitepm.visite.date_visit" name = "date_visit"> 
-                <!-- formControlName="date_visit"
-                [ngClass]="{'is-invalid':form.get('date_visit')?.touched && form.get('date_visit')?.invalid}">
-                <div class="invalid-feedback">
-                    <div>date of visite is required</div>
-                </div> -->
+               
         </div>
 
 
@@ -36,12 +148,7 @@
             <label for="type_visite" class="required" style="color: blue;font-family: 'Georgia'">Type de visite</label>
         <mat-select (selectionChange)="changeVisit()" class ="form-control" id = "TypenVisite" placeholder="Type de visite"
                 [(ngModel)] = "visitepm.visite.type_visite" name = "TYPE_Visite">
-                 <!-- formControlName="type_visite"
-                [ngClass]="{'is-invalid':form.get('type_visite')?.touched && form.get('type_visite')?.invalid}">
-
-                <div class="invalid-feedback">
-                    <div>type of visite is required</div>
-                </div> -->
+                
                 <mat-option *ngFor = "let option of options" [value]="option">
                     {{option}}
                 </mat-option>
@@ -66,12 +173,7 @@
         <label for="visitepm" class="required" style="color: blue;font-family: 'Georgia'">Medecin visité</label>
         <mat-select   type="text" class ="form-control" id = " M_Id"  placeholder="Nom de Medecin"
         [(ngModel)]="visitepm.medecinPH" name = "M_Id" >
-        <!-- formControlName="visitepm"
-        [ngClass]="{'is-invalid':form.get('visitepm')?.touched && form.get('visitepm')?.invalid}">
-
-        <div class="invalid-feedback">
-            <div> Name Medcin visite is required</div>
-        </div> -->
+        
 
             <mat-option *ngFor = "let item of medecinphs" [value]="item">
                 <tr >
@@ -88,24 +190,11 @@
             </mat-option>
 
         </mat-select></div>
-        <!-- <select  type="text" class ="form-control" id = " S_Id"  placeholder="id Secretaire"
-        [(ngModel)]="secretaire" name = "S_Id">
-
-            <option  *ngFor = "let item of secretaires"  [value]="item">
-                <tr>
-                    {{item.id}}
-                    {{item.nom_sec}} 
-                    {{item.email}}
-                    {{item.num_tel}}
-                
-            </tr>
-            </option>
-
-        </select><br> -->
+      
    
         
       <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
     </form>
 </div>
-</div>
+</div> -->
 

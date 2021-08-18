@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/app/model/Medecin';
 import { patient } from 'src/app/model/Patient';
@@ -34,10 +37,17 @@ export class ListVisiteComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  constructor(private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService,private secretaireService:SecretaireService) { }
 
+  displayedColumns: string[] = ['Id', 'date_visit', 'patient.name', 'objet_visit','medecinPH.medecin.name','type_visite','prix_cons','date_der_con','Actions'];
+  constructor(private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService,private secretaireService:SecretaireService) { }
+  dataSource = new MatTableDataSource<VisitePM>(this.visitepms);
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();

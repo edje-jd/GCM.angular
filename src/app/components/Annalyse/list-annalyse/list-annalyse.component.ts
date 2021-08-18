@@ -15,6 +15,7 @@ export class ListAnnalyseComponent implements OnInit {
   annalyseVs!: AnnalyseV[];
   id: any;
   i:any;
+  displayedColumns: string[] = ['id', 'patient.name', 'nomAnls', 'nom_labo','Actions'];
   constructor(private annalyseVService: AnnalyseVService,private annalyseService:AnnalyseServiceService, private route: ActivatedRoute ,private router: Router) { }
 
   ngOnInit(): void {

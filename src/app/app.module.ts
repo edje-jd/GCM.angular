@@ -64,6 +64,9 @@ import { UpdateAnnalyseComponent } from './components/Annalyse/update-annalyse/u
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { UpdateVisiteComponent } from './components/Visite/update-visite/update-visite.component'; 
+import { MatTableModule } from '@angular/material/table' ;
+import {MatDialogModule} from '@angular/material/dialog'; 
+
 
 @NgModule({
   declarations: [
@@ -148,6 +151,7 @@ import { UpdateVisiteComponent } from './components/Visite/update-visite/update-
     
     UpdateVisiteComponent
   ],
+  entryComponents:[HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -164,9 +168,12 @@ import { UpdateVisiteComponent } from './components/Visite/update-visite/update-
     Ng2OrderModule,
     NgxPaginationModule,
     MatPaginatorModule,
+    
     MatSelectModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatTableModule,
+    MatDialogModule
 
   
 

@@ -1,35 +1,48 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<div class="container" style="background-color: light; margin-left: 5% " >
- <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addAntecedent"
-                        style="color: black;font-family: 'Script MT Bold'  "> <i class="bi bi-plus-lg"></i>Ajouter Antecedent</a></button>
+<div class="container" style="background-color: light; margin-left: 0% " >
+ <DIV CLASS="container"> 
+   <button  mat-mini-fab color="primary" style="margin-left: 95%; margin-top: 2%"   (click)="addAntec()" aria-label="Example icon button with a home icon">
+    <mat-icon>add</mat-icon>
+  </button>
 
-<h2 style="color: rgba(0, 0, 255, 0.719); font-family: 'Georgia', Times, serif; margin-left: 20%;" >    List des Maladies</h2></DIV>
+<h1 style="color:blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    List des Maladies</h1></DIV>
   <hr STYLE="color: yellow; ">
-  <br><br>
-<table class = "table table-bordered">
-    <thead class="thead-light">
-        <tr>
-            <th>Id</th>
-            <th> Name </th>
+  <br>
+
+  
+ 
+    <table mat-table [dataSource]="this.antecedents"  class="mat-elevation-z8">
+    
+      
+        <ng-container matColumnDef="id">
+            <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let  antecedent"> {{ antecedent.id }}</td>
             
-            <th> Actions </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let antecedent of antecedents "  >
+          </ng-container>
+      
+        <ng-container matColumnDef="nom_malade">
+          <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Nom de Malade</th>
+          <td mat-cell *matCellDef="let antecedent">  {{ antecedent.nom_malade }} </td>
           
-            <th class ="hidden"> {{ antecedent.id }} </th>
-            <td> {{ antecedent.nom_malade }} </td>
+        </ng-container>
+      
+      
+        <ng-container matColumnDef="Actions">
+          <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > Actions </th>
+          <td mat-cell *matCellDef="let antecedent">
+            <button  mat-mini-fab color="warn" (click) = "updateAntecedent(antecedent)" aria-label="Example icon button with a home icon">
+            <mat-icon >update</mat-icon></button>&nbsp;
+            <button  mat-mini-fab color="accent" (click) = "deleteAntecedent(antecedent.id)"><mat-icon >delete</mat-icon></button>&nbsp;
+            
+        </td>
           
-            
-         <td>
-                  <button (click) = "updateAntecedent(antecedent)" class = "btn btn-primary"> <i class="bi bi-pencil-square"></i></button>
-                <button (click) = "deleteAntecedent(antecedent.id)" class = "btn btn-danger" style="margin-left: 10px"> <i class="bi bi-trash-fill"></i></button>
-            
-            </td>
-        </tr>
-    </tbody>
-    <!--<pagination-controls (pageChange)="p=$event"></pagination-controls>-->
-</table>
+        </ng-container>
+      
+      
+        <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+     
+
 </div> 
