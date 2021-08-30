@@ -4,8 +4,8 @@ import { patient } from "./Patient";
 
 export class PatientDesease{
     id?: number;
-    antcedent!:Antecedent;
+    
     patient!:patient;
-    localisation!:Localisation;
+   
     
 }

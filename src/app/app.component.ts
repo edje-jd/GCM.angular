@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   
   openDialog() {
     this.dialogRef = this.dialog.open(HomeComponent, {
-      height: '400px',
+      height: '450px',
       width: '400px',
       
     });
@@ -54,7 +54,11 @@ export class AppComponent implements OnInit {
   });
   }
   openUtil(){
-    this.dialog.open(BoardAdminComponent);
+    this.dialog.open(BoardAdminComponent, {
+      height: '300px',
+      width: '300px',
+      
+    });
   }
 
   isShow(){

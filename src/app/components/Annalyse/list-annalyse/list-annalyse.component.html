@@ -15,28 +15,28 @@
   </div><br>
 
   <div class="mat-elevation-z8">
-<table mat-table [dataSource]="this.annalyseVs">
+<table mat-table [dataSource]="dataSource" matSort>
 
   
     <ng-container matColumnDef="id">
-      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef> Id &nbsp;<i class="fa fa-sort"></i></th>
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header> Id &nbsp;<i class="fa fa-sort"></i></th>
       <td mat-cell *matCellDef="let annalyseV" class ="hidden"> {{ annalyseV.annalyse.id }}</td>
     </ng-container>
 
     <ng-container matColumnDef="patient.name">
-        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Nom Patient</th>
+        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header>Nom Patient</th>
         <td mat-cell *matCellDef="let  annalyseV"> {{ annalyseV.visitePM.patient.name }} </td>
         
       </ng-container>
   
     <ng-container matColumnDef="nomAnls">
-      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Nom d'analyse</th>
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header>Nom d'analyse</th>
       <td mat-cell *matCellDef="let annalyseV"> {{ annalyseV.annalyse.nomAnls }} </td>
       
     </ng-container>
   
     <ng-container matColumnDef="nom_labo">
-      <th style="color: blue;font-family: 'Georgia';font-size:14px;" mat-header-cell *matHeaderCellDef> Nom de l'aboratoire</th>
+      <th style="color: blue;font-family: 'Georgia';font-size:14px;" mat-header-cell *matHeaderCellDef mat-sort-header> Nom de l'aboratoire</th>
       <td mat-cell *matCellDef="let annalyseV"> {{ annalyseV.annalyse.nom_labo }} </td>
       
     </ng-container>
@@ -59,11 +59,7 @@
     <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-</mat-paginator></div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator></div>
 
 <!--   
 <table class = "table table-hover" >

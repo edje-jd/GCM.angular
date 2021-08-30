@@ -6,12 +6,13 @@ import { patient } from 'src/app/model/Patient';
 import { AntecedentService } from 'src/app/_services/antecedent.service';
 import { LocalisationService } from 'src/app/_services/localisation.service';
 import { PatientService } from 'src/app/_services/patient.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { PatientDesease } from 'src/app/model/PatientDesease';
 import { PatientDeseaseService } from 'src/app/_services/patient-desease.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NodeWithI18n } from '@angular/compiler';
 
 @Component({
   selector: 'app-add-patient',
@@ -27,23 +28,51 @@ export class AddPatientComponent implements OnInit {
   id?:any;
   patientDesease: PatientDesease = new PatientDesease();
   options = ['Homme','Femme'];
-    form = new FormGroup({
-       name : new FormControl('',Validators.required),
-       phone :new FormControl('',Validators.required)
-    })
+    
+
+    addressForm = this.fb.group({
+      name: null,
+      phone: [null, Validators.required],
+      age: [null, Validators.required],
+      sexe: [null, Validators.required],
+      
+      adresse: [null, Validators.required],
+      antecedent:null,
+      
+      
+    });
+    
   
-  constructor(public dialogRef: MatDialogRef<AddPatientComponent>,private patientservice: PatientService,private router: Router ,private antecedentService:AntecedentService,private localisationService:LocalisationService, private patientDeseaseService: PatientDeseaseService) { }
+
+ 
+  
+  constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddPatientComponent>,private patientservice: PatientService,private router: Router ,private antecedentService:AntecedentService,private localisationService:LocalisationService, private patientDeseaseService: PatientDeseaseService) { }
 
   ngOnInit(): void {
+   
     this.getlistAntecedents();
     this.getlistLocalisations();
   }
 savePatient
   (){
+   
+          
+  
+  //  console.log(this.patient);
+  // this.patient==this.addressForm;
+  this.patient.name = this.addressForm.controls.name.value;
+  this.patient.age = this.addressForm.controls.age.value;
+  this.patient.phone = this.addressForm.controls.phone.value;
+  this.patient.sexe =  this.addressForm.controls.sexe.value;
+  this.patient.adresse =  this.addressForm.controls.adresse.value;
+  this.patient.antecedent =  this.addressForm.controls.antecedent.value;
+  
+  console.log("patient: ", this.patient)
 
-    this.patientDeseaseService.addPatientDesease(this.patientDesease).subscribe(data => {
+    
+    this.patientservice.addPatient(this.patient).subscribe(data => {
       console.log(data)
-       this.PatientDetails(this.patientDesease);
+       this.PatientDetails(data);
         // this.goToPatientList();
       },
       error => console.log(error));
@@ -57,8 +86,8 @@ savePatient
     this.antcedents=data;
     })
     }
-    PatientDetails(patientdes: PatientDesease){
-      this.router.navigate(['patient-details'],{state:patientdes});
+    PatientDetails(patient: patient){
+      this.router.navigate(['patient-details'],{state:patient});
     }
 
     onClose() {
@@ -73,12 +102,13 @@ savePatient
       })
        }
   onSubmit(){
-    this.patientDesease.antcedent= this.antcedent;
-    this.patientDesease.patient= this.patient;
-    this.patientDesease.localisation=this.localisation
-
     
+    
+    
+  if(this.addressForm.status === "VALID"){
     this.savePatient();
+    this.dialogRef.close();
+  } 
   }
   Retour(){
     window.history.back();

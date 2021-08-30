@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Medicament } from 'src/app/model/Medicament';
 import { Ordonance } from 'src/app/model/Ordonance';
 import { OrdonanceMV } from 'src/app/model/OrdonanceMV';
@@ -15,7 +19,7 @@ import { VisiteService } from 'src/app/_services/visite.service';
   templateUrl: './list-ordonance.component.html',
   styleUrls: ['./list-ordonance.component.css']
 })
-export class ListOrdonanceComponent implements OnInit {
+export class ListOrdonanceComponent implements OnInit ,OnDestroy{
 
   ordonances?: Ordonance[];
   id: any;
@@ -29,10 +33,22 @@ export class ListOrdonanceComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'patient.name', 'date_ord', 'dosage','nomMedc','medecin.name','Actions'];
   constructor(private ordonanceService:OrdonanceService,private ordonanceMVService: OrdonanceMVService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) { }
-
+  
+  subscribe!:Subscription;
+  dataSource!:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   ngOnInit(): void {
+    this.subscribe= this.ordonanceMVService.getOrdonanceMVList().subscribe(data => {
+      this.dataSource= new MatTableDataSource<OrdonanceMV>(data);
+      this.dataSource.paginator= this.paginator;
+      this.dataSource.sort= this.sort;
+    });
     this.getOrdonanceMVs();
    
+  }
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
   }
 
   private getOrdonanceMVs(){

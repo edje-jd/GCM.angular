@@ -48,6 +48,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PatientDetailsComponent } from './components/Patient/patient-details/patient-details.component';
 import { ListHospitalisationComponent } from './components/Hospitalisation/list-hospitalisation/list-hospitalisation.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 import { ListAnnalyseComponent } from './components/Annalyse/list-annalyse/list-annalyse.component';
 import { AddAnnalyseComponent } from './components/Annalyse/add-annalyse/add-annalyse.component';
 import { AddHospitalisationComponent } from './components/Hospitalisation/add-hospitalisation/add-hospitalisation.component';
@@ -66,7 +67,17 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { UpdateVisiteComponent } from './components/Visite/update-visite/update-visite.component'; 
 import { MatTableModule } from '@angular/material/table' ;
 import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCardModule} from '@angular/material/card';
 
+import { MatTreeModule } from '@angular/material/tree';
+import { ExempleComponent } from './components/Visite/exemple/exemple.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DossierPatientComponent } from './components/DosdierPatient/dossier-patient/dossier-patient.component'; 
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -149,10 +160,21 @@ import {MatDialogModule} from '@angular/material/dialog';
     
     UpdateAnnalyseComponent,
     
-    UpdateVisiteComponent
+    UpdateVisiteComponent,
+    
+    ExempleComponent,
+    
+    DossierPatientComponent,
+    
+    
+    
+    
   ],
-  entryComponents:[HomeComponent],
+  entryComponents:[HomeComponent,AddVisiteComponent,ExempleComponent],
   imports: [
+    MatNativeDateModule,
+  
+    MatGridListModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -173,7 +195,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule,
+    MatCardModule,
+    MatSortModule,
+    MatTreeModule,
+    MatInputModule,
+    MatRadioModule,
 
   
 

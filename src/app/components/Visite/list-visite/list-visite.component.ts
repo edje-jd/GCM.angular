@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,6 +15,7 @@ import { SecretaireService } from 'src/app/_services/secretaire.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { VisitePMService } from 'src/app/_services/visite-pm.service';
 import { VisiteService } from 'src/app/_services/visite.service';
+import { UpdateVisiteComponent } from '../update-visite/update-visite.component';
 
 @Component({
   selector: 'app-list-visite',
@@ -22,6 +24,7 @@ import { VisiteService } from 'src/app/_services/visite.service';
 })
 export class ListVisiteComponent implements OnInit {
   visitepms!:VisitePM[];
+  visitepm!:VisitePM;
   visite!: Visite[];
   id: any;
   i:any;
@@ -37,17 +40,31 @@ export class ListVisiteComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-
-  displayedColumns: string[] = ['Id', 'date_visit', 'patient.name', 'objet_visit','medecinPH.medecin.name','type_visite','prix_cons','date_der_con','Actions'];
-  constructor(private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService,private secretaireService:SecretaireService) { }
-  dataSource = new MatTableDataSource<VisitePM>(this.visitepms);
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  displayedColumnss:string[]=['patient.name','medecinPH.medecin.name','type_visite','Actions']
+  displayedColumns: string[] = [ 'patient.name', 'medecinPH.medecin.name','type_visite','Actions'];
+  constructor(private dialog:MatDialog,private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService,private secretaireService:SecretaireService) { }
+  dataSource !:any ;
+  dataSource2 !:any;
+  currentDate = new Date().toLocaleDateString("fr-FR", 
+  { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  // @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator2!: MatPaginator;
+  @ViewChild(MatSort) sort2!: MatSort;
   ngOnInit(): void {
+    this.visitepmservice.getVisitePMList().subscribe(data => {
+      this.dataSource= new MatTableDataSource<VisitePM>(data.filter(_visitepm => !_visitepm.visite.effectue));
+     
+      // this.dataSource.paginator= this.paginator;
+      // this.dataSource.sort=this.sort;
+      this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm => _visitepm.visite.effectue));
+      this.dataSource2.paginator = this.paginator2;
+      this.dataSource2.sort=this.sort2;
+    })
+   
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
@@ -85,22 +102,32 @@ detalVisite(visitepm:VisitePM){
 updateVisite(visite: Visite){
   this.router.navigate(['update-visite'],{state:visite});
 }
-public Search(key: string): void {
-  console.log(key);
-  const results: VisitePM[] = [];
-  for (const visitepm of this.visitepms) {
-    if (visitepm.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
-    || visitepm.medecinPH.medecin.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-    || visitepm.visite.type_visite.toLowerCase().indexOf(key.toLowerCase()) !== -1
-     ) {
-      results.push(visitepm);
-    }
-  }
-  this.visitepms = results;
-  if (results.length === 0 || !key) {
-    this.getVisitePMs();
-  }
+findPatientByName(name:HTMLInputElement){
+  this.applyFilter(name.value);
+
 }
+applyFilter(filterValue:string){
+  filterValue= filterValue.trim();
+  filterValue= filterValue.toLocaleLowerCase();
+  this.dataSource.filter = filterValue;
+ }
+
+// public Search(key: string): void {
+//   console.log(key);
+//   const results: VisitePM[] = [];
+//   for (const visitepm of this.dataSource) {
+//     if (visitepm.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+//     || visitepm.medecinPH.medecin.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+//     || visitepm.visite.type_visite.toLowerCase().indexOf(key.toLowerCase()) !== -1
+//      ) {
+//       results.push(visitepm);
+//     }
+//   }
+//   this.visitepms = results;
+//   if (results.length === 0 || !key) {
+//     this.dataSource;
+//   }
+// }
 
 deleteVisite(id: any){
   this.visitepmservice.deleteVisitePM(id).subscribe( data => {
@@ -130,6 +157,18 @@ getSecretairebyId(id:number){
   this.secretaireService.getSecretaireById(id).subscribe(data=>{
   this.secretaire=data;
   })
-   }  
+   } 
+   
+  //  updateVisite(){
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.autoFocus = true;
+  //   dialogConfig.width = "45%";
+  //   dialogConfig.height = "65%";
+  //   dialogConfig.data = {VisitePM: this.dataSource.visite}
+    
+  //   this.dialog.open(UpdateVisiteComponent,dialogConfig);
+   
+  // }
 
 }

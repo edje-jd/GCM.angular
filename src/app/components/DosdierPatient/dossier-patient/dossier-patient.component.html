@@ -1,0 +1,84 @@
+
+ <div class="container" style="background-color: light; margin-left: 0% " >
+    <div class="container">&nbsp;</div>
+    <div class="container">&nbsp;</div>
+    <DIV CLASS="container" >
+     
+       
+   
+   <h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;margin-right: 48%; " > Adeptes du cabinet</h1></DIV>
+   <div>
+     <mat-form-field class="example-full-width">
+       <input
+         matInput
+        
+         placeholder="Recherche par nom..." #name (keyup)="findPatientByName(name)"
+        
+       />
+       </mat-form-field> 
+   <!--   
+     <input type="search" (ngModelChange)="Search(key.value)" #key="ngModel" ngModel
+            name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patient..." required>  -->
+       
+   </div>  
+   <div class="mat-elevation-z8">
+   
+   <table mat-table [dataSource]="dataSource"  matSort>
+   
+    <ng-container matColumnDef="date_visit">
+      <th style="color: blue;font-family: 'Georgia';font-size:14px;" mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let visitepm" > {{visitepm.visite.date_visit|date: 'dd/MM/yyyy'}} </td>
+      
+    </ng-container> 
+     
+     <ng-container matColumnDef="patient.name">
+       <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Patient</th>
+       <td mat-cell *matCellDef="let visitepm"> {{visitepm.patient.name}} </td>
+       
+     </ng-container>
+   
+     <ng-container matColumnDef="patient.phone">
+       <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Téléphone</th>
+       <td mat-cell *matCellDef="let visitepm"> {{visitepm.patient.phone}} </td>
+       
+     </ng-container>
+   
+     <ng-container matColumnDef="medecinPH.medecin.name">
+       <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Medecin</th>
+       <td  mat-cell *matCellDef="let visitepm">{{visitepm.medecinPH.medecin.name}}</td>
+       
+     </ng-container>
+     <ng-container matColumnDef="type_visite">
+       <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef> Type de visite</th>
+       <td mat-cell *matCellDef="let visitepm"> {{ visitepm.visite.type_visite}} </td>
+     </ng-container>
+    
+     <ng-container matColumnDef="patient.age">
+      <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header> Age &nbsp;<i class="fa fa-sort"></i></th>
+      <td mat-cell *matCellDef="let visitepm" class ="hidden"> {{visitepm.patient.age}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="patient.adresse">
+      <th style="color: blue;font-family: 'Georgia';font-size:14px;" mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
+      <td mat-cell *matCellDef="let visitepm" > {{visitepm.patient.adresse}} </td>
+      
+    </ng-container> 
+    
+    
+     
+     <ng-container matColumnDef="Actions">
+       <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef >  Actions </th>
+       <td mat-cell *matCellDef="let visitepm">
+        
+         <button  mat-mini-fab color="primary" (click) = "detalVisite(visitepm)" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="info"><mat-icon >info</mat-icon></button></td>
+       
+     </ng-container>
+   
+   
+     <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+   <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator></div>
+   <router-outlet></router-outlet>
+   </div> 
+   

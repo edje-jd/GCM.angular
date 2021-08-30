@@ -1,3 +1,107 @@
+<!-- <div class="row">
+    <div class="container">&nbsp;</div>
+    <div class="container">&nbsp;</div>
+    <div class="col-sm-4">
+<mat-card class="example-card">
+    <mat-card-title>Détail du patient {{this.patient.name}}</mat-card-title>
+    <img mat-card-image img src="https://as2.ftcdn.net/jpg/02/14/64/25/500_F_214642505_6kkV06wDk1j1NpXjmCeepDMt3j64ul0r.jpg">
+    <mat-card-footer>SISTA.sarl</mat-card-footer>
+</mat-card>
+</div>
+<div class="col-sm-8">
+    <div class="container">&nbsp;</div>
+    <div class="container">&nbsp;</div>
+    
+<div class="mat-elevation-z8" >
+
+    <table mat-table  [dataSource]="dataSource" matSort>
+    
+      
+      <ng-container matColumnDef="Id">
+        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Id &nbsp;<i class="fa fa-sort"></i></th>
+        <td mat-cell *matCellDef="let patient" class ="hidden"> {{this.patient.id }} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="name">
+        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Nom et Pérnom</th>
+        <td mat-cell *matCellDef="let patient" > {{this.patient.name }} </td>
+        
+      </ng-container>
+    
+      <ng-container matColumnDef="phone">
+        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header>Téléphone</th>
+        <td mat-cell *matCellDef="let patient"> {{this.patient.phone }} </td>
+        
+      </ng-container>
+    
+      
+      <ng-container matColumnDef="age">
+        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Age</th>
+        <td mat-cell *matCellDef="let patient"> {{this.patient.age}} </td>
+      </ng-container>
+      <ng-container matColumnDef="sexe">
+        <th style="color: blue;font-family: 'Georgia' ;font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header>Sexe</th>
+        <td mat-cell *matCellDef="let patient"> {{this.patient.sexe}} </td>
+        
+      </ng-container>
+      <ng-container matColumnDef="adresse">
+        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Adresse</th>
+        <td mat-cell *matCellDef="let patient"> {{this.patient.adresse }} </td>
+        
+      </ng-container>
+       <ng-container matColumnDef="antecedent">
+        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header>antecedent</th>
+        <td mat-cell *matCellDef="let patient"> {{this.patient.antecedent}} </td>
+        
+      </ng-container>
+      
+      
+    
+    
+      <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    </div> -->
+<!--  
+ <table class = "table table-hover">
+    <thead>
+        <tr class="bg-primary">
+           
+            <th > Id</th>
+            
+            <th >Patient</th>
+          <th >Phone</th>
+          <th >Age</th> 
+            <th >Sexe</th>
+          <th >Adresse</th>
+          <th >Antecedent</th>
+          
+         
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr  >
+          
+            
+            <td > {{this.patient.id }} </td>
+          <td > {{this.patient.name}} </td>
+          <td > {{this.patient.phone }} </td>
+          <td>  {{this.patient.age }}</td>
+          <td > {{this.patient.sexe }}</td>
+          <td > {{this.patient.adresse}}</td> 
+          <td > {{this.patient.antecedent }} </td>
+          
+          
+     
+    
+        </tr>
+        <tr> <button  mat-mini-fab color="primary"   (click)="openUtil()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="ajouter un nouveau visite">
+            <mat-icon>add</mat-icon>
+          </button></tr>
+    </tbody>
+</table>   -->
+
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -9,8 +113,13 @@
       <div class="page-content page-container" id="page-content">
         <div class="padding">
             <div class="row container d-flex justify-content-center">
-                <div class="col-xl-8 col-md-12">
-                    <div class="card user-card-full">
+                <div class="col-xl-4 col-md-4"> <mat-card class="example-card">
+                    <mat-card-title>Détail du patient {{this.patient.name && this.patient.name.length <= 5 ?  this.patient.name : this.patient.name?.slice(0,5) + ".."}}</mat-card-title>
+                    <img mat-card-image img src="https://as2.ftcdn.net/jpg/02/14/64/25/500_F_214642505_6kkV06wDk1j1NpXjmCeepDMt3j64ul0r.jpg">
+                    <mat-card-footer>SISTA.sarl</mat-card-footer>
+                </mat-card></div>
+                <div class="col-xl-8 col-md-8">
+                    <div class="card user-card-full card-patient">
                        
                         <div id="id-print" >
                         <div class="row m-l-0 m-r-0">
@@ -20,71 +129,64 @@
                                 <div class="card-block text-center text-white">
                                     
                                     <br>
-                                     <header   style="margin-left: 5%; size: 25ch; font-family: Georgia,  'Times New Roman', Times, serif, Times, serif;font-weight: bold; color: blue;"><b>Fiche de Patient</b> </header>
+                                     <header   style="margin-left: 5%; size: 25ch; font-family: Georgia,  'Times New Roman', Times, serif, Times, serif;font-weight: bold; color: blue;"><b>Fiché du Patient</b> </header>
                                         <br>
                                     <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png"
                                         class="img-radius" alt="User-Profile-Image"> </div>
                                  
                                     <h6 class="f-w-600" style="color: blue;"><b>Identifiant du patient</b></h6>
-                                    <p style="color: black;">{{patientd.patient.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                    <p style="color: black;font-family: 'Georgia';font-size: 16px;">{{patient.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="card-block">
-                                     
-    <!-- <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button> -->
-    <button  mat-mini-fab style="margin-left: 80%;margin-top: 2%" color="accent" (click) = "Retour()"  aria-label="Example icon button with a home icon">
+
+    <button  mat-mini-fab style="margin-left: 80%;margin-top: 2%" color="accent" (click) = "Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="retour">
         <mat-icon>assignment_return</mat-icon>
       </button>
       
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: blue"><b>Patient Information</b></h6>
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: blue;font-family: 'Georgia';font-size: 16px;"><b>les information du {{patient.name}}</b></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">NOM</p>
-                                            <h6 class="text-muted f-w-400"> {{patientd.patient.name}}</h6>
+                                            <p class="m-b-10 f-w-600" style="color: blue">Nom et prénom</p>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 16px;"> {{patient.name}}</h6>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Phone</p>
-                                            <h6 class="text-muted f-w-400">{{patientd.patient.phone}}</h6>
+                                            <p class="m-b-10 f-w-600" style="color: blue">Téléphone</p>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 16px;">{{patient.phone}}</h6>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Date de naissance</p>
+                                            <p class="m-b-10 f-w-600" style="color: blue">Age</p>
     
-                                            <h6 class="text-muted f-w-400">{{patientd.patient.date_naissance}}</h6>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 16px;">{{patient.age}}</h6>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Patient Sexe</p>
-                                            <h6 class="text-muted f-w-400">{{patientd.patient.sexe}}</h6>
+                                            <p class="m-b-10 f-w-600" style="color: blue">Sexe</p>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 16px;">{{patient.sexe}}</h6>
                                         </div>
                                       
                                      <br>
                                     <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600" style="color: blue">Patient Adresse</p>
+                                        <p class="m-b-10 f-w-600" style="color: blue">Adresse</p>
     
-                                        <h6 class="text-muted f-w-400">{{patientd.patient.adresse}}</h6>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 16px;">{{patient.adresse}}</h6>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600" style="color: blue">Patient antecedent </p>
-                                        <h6 class="text-muted f-w-400">{{patientd.antcedent.nom_malade}}</h6>
+                                        <p class="m-b-10 f-w-600" style="color: blue">Maladie antecedent </p>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 16px;" >{{patient.antecedent}}</h6>
                                     </div>
                     
-                                <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600" style="color: blue">Patient Localisation</p>
-    
-                                    <h6 class="text-muted f-w-400">{{patientd.localisation.nom_moghata}}</h6>
-                                </div>
+                                
                                 
                             
                                 </div>
                                 </div>
                                 <footer style="margin-left: 80%; color: rgb(180, 12, 12); ">
                                     <h6 class="m-b-20 p-b-5 b-b-default f-w-600" >
-                                        <button  mat-mini-fab color="primary"   (click)="openUtil()" aria-label="Example icon button with a home icon">
+                                        <button  mat-mini-fab color="primary"   (click)="openUtil()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="ajouter un nouveau visite">
                                             <mat-icon>add</mat-icon>
                                           </button>
-                                        <!-- <button  mat-mini-fab color="primary" (click) = "DemandeVisite(patientd.patient)"  aria-label="Example icon button with a home icon">
-                                            <mat-icon>add</mat-icon>
-                                          </button><br> -->
+                                         
                                     <b> GCM.SISTA</b></h6></footer>
                     </div>
                
@@ -93,7 +195,7 @@
                 
                         </div>
                         <i class="far fa-print">
-                            <!-- [useExistingCss]="true"  -->
+                            
                             <button 
                            
                                 printSectionId="id-print" 
@@ -111,4 +213,4 @@
     
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>    

@@ -11,5 +11,6 @@ export class Visite{
     type_visite!:string;
     prix_cons: number = 0;
     date_der_con:Date | undefined = undefined;
+    effectue:boolean=false;
     
 }

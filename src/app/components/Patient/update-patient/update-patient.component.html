@@ -22,7 +22,7 @@
       <div class="form-group">
 
         <input type="text" class ="form-control" id = "date_naissance" placeholder="Date de naissance"
-               [(ngModel)] = "patient.date_naissance" name = "date_naissance">
+               [(ngModel)] = "patient.age" name = "age">
       </div>
       <div class="form-group">
 
@@ -35,66 +35,143 @@
                 [(ngModel)] = "patient.adresse" name = "adresse">
 
       </div>
-      <!-- <div class="form-group">
+      <div class="form-group">
 
-        <input  type="text" class ="form-control" id = "antcedents" placeholder="Patient Antecedent"
-                [(ngModel)] = "Patient.antcedents"name = "antcedents">
+        <input  type="text" class ="form-control" id = "antcedent" placeholder="Patient Antecedent"
+                [(ngModel)] = "patient.antecedent"name = "antcedent">
 
-      </div> -->
-      <!-- <div class="form-group">
-
-        <input  type="text" class ="form-control" id = "localisations" placeholder="Patient localisations"
-                [(ngModel)] = "Patient.localisations" name = "localisations">
-
-      </div> -->
+      </div>
+     
       <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Update</button>
 
     </form>
   </div>
 </div> 
-<!-- 
-<div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-     <div class="modal-content">
-        <div class="modal-header">
-           
-           <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Patient {{Patient?.name}}</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-           </button>
-        </div>
-        <div class="modal-body">
-           <form #editForm="ngForm">
-              <div class="form-group">
-                 <label for="name">Name</label>
-                 <input type="text" ngModel="{{Patient?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
-              </div>
-              <input type="hidden" ngModel="{{Patient.id}}" name="id" class="form-control" id="id" placeholder="Email">
+
+
+
+<!-- <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  
+    
+  
+   <mat-card class="shipping-card">
+     <mat-card-header>
+       <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Modifier un Patient</mat-card-title>
+         <button mat-icon-button (click)="onClose()" style="margin-left: 54%;" color="basic" aria-label="Example icon button with a menu icon">
+           <mat-icon>close</mat-icon>
+         </button>
+      
+     </mat-card-header>
+     <mat-card-content>
+       <div class="row">
+         <div class="col">
+           <mat-form-field class="full-width">
+             <input
+               matInput
+               placeholder="Nom et Prénom"
+               formControlName="name.value"
+              
+               name="name"
+             />
+           </mat-form-field>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col">
+           <mat-form-field class="full-width">
+             <input
+               matInput
+               placeholder="Téléphone"
+               formControlName="phone.value"
+               
+               name="phone"
+             />
+             <mat-error
+               *ngIf="addressForm.controls['phone'].hasError('required')"
+             >
+               Numéro de téléphone est <strong>obligatoire</strong>
+             </mat-error>
+           </mat-form-field>
+         </div>
+         <div class="col">
+           <mat-form-field class="full-width">
+             <input
+               matInput
+               type="number"
+               placeholder="Age"
+               formControlName="age.value"
+               
+               name="age"
+             />
+ 
+             <mat-error
+               *ngIf="
+                 addressForm.controls['age'].hasError('required')
+               "
+             >
+               date de naissance est <strong>obligatoire</strong>
+             </mat-error>
+           </mat-form-field>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col">
+           <mat-form-field class="full-width">
+             <mat-select
+               placeholder="Sexe"
+               formControlName="sexe.value"
+               
+               name="sexe"
+             >
+               <mat-option value="Homme">Homme</mat-option>
+               <mat-option value="Femme">Femme</mat-option>
+             </mat-select>
+             <mat-error
+               *ngIf="addressForm.controls['sexe'].hasError('required')"
+             >
+               Sexe est <strong>obligatoire</strong>
+             </mat-error>
+           </mat-form-field>
+         </div>
+       </div>
+ 
+       <div class="row">
+         <div class="col">
+           <mat-form-field class="full-width">
+             <textarea
+               matInput
+               placeholder="Maladie antecedent"
+               formControlName="antecedent.value"
+               
+               name="antecedent"
+             ></textarea>
              
-              <div class="form-group">
-                 <label for="phone">Phone</label>
-                 <input type="text" ngModel="{{Patient.phone}}" name="phone" class="form-control" id="phone" placeholder="Phone">
-              </div>
-              <div class="form-group">
-                 <label for="date_naissance">Date Naissance</label>
-                 <input type="date" ngModel="{{Patient.date_naissance}}" name="date_naissance" class="form-control" id="date_naissance" placeholder="Date naissance">
-              </div>
-              <div class="form-group">
-                 <label for="sexe">Sexe</label>
-                 <input type="text" ngModel="{{Patient.sexe}}" name="sexe" class="form-control" id="sexe" name="sexe" placeholder="Sexe">
-              </div>
-              <div class="form-group">
-                 <label for="adresse">Adresse</label>
-                 <input type="text" ngModel="{{Patient.adresse}}" name="adresse" class="form-control" id="adresse" placeholder="Adresse">
-              </div>
-              <div class="modal-footer">
-                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                 <button (click)="onUpdateEmloyee(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
-              </div>
-           </form>
-        </div>
-     </div>
-  </div>
-</div>  -->
-
-
+             
+           </mat-form-field>
+         </div>
+         <div class="col">
+           <mat-form-field class="full-width">
+             <input
+               matInput
+               placeholder="Adresse"
+               formControlName="adresse.value"
+               
+               name="adresse"
+             >
+             
+             <mat-error
+               *ngIf="addressForm.controls['adresse'].hasError('required')"
+             >
+               Adresse est <strong>Obligatoire</strong>
+             </mat-error>
+           </mat-form-field>
+         </div>
+        
+       </div>
+       
+     </mat-card-content>
+     <mat-card-actions>
+       <button mat-raised-button color="primary"  style="margin-left: 0%;"type="submit" >Ajouter</button>
+     </mat-card-actions>
+   </mat-card>
+ </form>  -->

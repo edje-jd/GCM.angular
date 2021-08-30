@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { patient } from 'src/app/model/Patient';
 import { PatientService } from 'src/app/_services/patient.service';
@@ -12,9 +14,21 @@ import { PatientService } from 'src/app/_services/patient.service';
 export class UpdatePatientComponent implements OnInit {
 id:any;
 patient: patient=new patient();
+// addressForm = this.fb.group({
+//   name: null,
+//   phone: [null, Validators.required],
+//   age: [null, Validators.required],
+//   sexe: [null, Validators.required],
+  
+//   adresse: [null, Validators.required],
+//   antecedent:null,
+  
+  
+// });
 
-  constructor(private patientService :PatientService, private route: ActivatedRoute, private router: Router
-    ) { this.patient = history.state; console.log(this.patient)}
+  constructor(private fb: FormBuilder,private patientService :PatientService, private route: ActivatedRoute, private router: Router
+    ) { 
+      this.patient = history.state; console.log(this.patient)}
 
   ngOnInit(): void {
     
@@ -33,6 +47,10 @@ patient: patient=new patient();
   goToPatientList(){
     this.router.navigate(['/listPatient']);
   }
- 
+  // onClose() {
+  //   // this.service.form.reset();
+  //   // this.service.initializeFormGroup();
+  //   this.dialogRef.close();
+  
 
 }

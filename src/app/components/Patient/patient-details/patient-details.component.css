@@ -1,0 +1,14 @@
+.div{
+    margin:2rem;
+    width: 10rem;
+    height: 15rem;
+}
+
+.card-patient {
+    
+    padding-bottom: 15px;
+}
+
+.example-card {
+    max-width: 300px;
+  }

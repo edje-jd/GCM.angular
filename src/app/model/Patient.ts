@@ -3,9 +3,10 @@ export class patient{
     id?: number;
     name?: string;
     phone?:string;
-    date_naissance?:Date;
+    age?:number;
     sexe?:string;
     adresse?:string;
+    antecedent?:string;
     
     
 }

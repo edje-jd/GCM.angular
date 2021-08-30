@@ -4,7 +4,9 @@ table {
   th.mat-sort-header-sorted {
     color: black;
   }
-  
+  .example-full-width {
+    width: 100%;
+  }
 
   .custom-mat-mini-fab {
     position: absolute;

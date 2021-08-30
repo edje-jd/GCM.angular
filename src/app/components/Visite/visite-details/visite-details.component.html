@@ -9,7 +9,12 @@
       <div class="page-content page-container" id="page-content">
         <div class="padding">
             <div class="row container d-flex justify-content-center">
-                <div class="col-xl-8 col-md-12">
+                <div class="col-xl-4 col-md-4"> <mat-card class="example-card">
+                    <mat-card-title>{{this.visitepm.patient.name && this.visitepm.patient.name.length <= 5 ?  this.visitepm.patient.name : this.visitepm.patient.name?.slice(0,5) + ".."}}</mat-card-title>
+                    <img mat-card-image img src="https://as2.ftcdn.net/jpg/02/14/64/25/500_F_214642505_6kkV06wDk1j1NpXjmCeepDMt3j64ul0r.jpg">
+                    <mat-card-footer>SISTA.sarl</mat-card-footer>
+                </mat-card></div>
+                <div class="col-xl-8 col-md-8">
                     <div class="card user-card-full">
                        
                         <div id="id-print" >
@@ -26,47 +31,47 @@
                                         class="img-radius" alt="User-Profile-Image"> </div>
                                  
                                     <h6 class="f-w-600" style="color: blue;"><b>Identifiant du patient</b></h6>
-                                    <p style="color: black;">{{visitepm.visite.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                    <p style="color: black;font-family: 'Georgia';font-size: 14px;">{{visitepm.visite.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="card-block">
                                     
-    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
+    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="retour"><i class="bi bi-arrow-right-circle-fill"></i></button>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Nom de patient</p>
-                                            <h6 class="text-muted f-w-400"> {{visitepm.patient.name}}</h6>
+                                            <p class="m-b-10 f-w-600" style="color: blue">Patient</p>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;"> {{visitepm.patient.name}}</h6>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Date de visite</p>
-                                            <h6 class="text-muted f-w-400">{{visitepm.visite.date_visit}}</h6>
+                                            <p class="m-b-10 f-w-600" style="color: blue">Date du visite</p>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{visitepm.visite.date_visit|date: 'dd/MM/yyyy'}}</h6>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Objet de visite</p>
+                                            <p class="m-b-10 f-w-600" style="color: blue">Motif</p>
     
-                                            <h6 class="text-muted f-w-400">{{visitepm.visite.objet_visit!}}</h6>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{visitepm.visite.objet_visit!}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600" style="color: blue">Type de visite</p>
-                                            <h6 class="text-muted f-w-400">{{visitepm.visite.type_visite!}}</h6>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{visitepm.visite.type_visite!}}</h6>
                                         </div>
                                       
                                      <br>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600" style="color: blue">Prix de consultation</p>
     
-                                        <h6 class="text-muted f-w-400">{{visitepm.visite.prix_cons}}</h6>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{visitepm.visite.prix_cons}}</h6>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600" style="color: blue">Date derinier consultation </p>
-                                        <h6 class="text-muted f-w-400">{{visitepm.visite.date_der_con}}</h6>
+                                        <p class="m-b-10 f-w-600" style="color: blue">Date du Rend-Vous</p>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{visitepm.visite.date_der_con|date: 'dd/MM/yyyy'}}</h6>
                                     </div>
                     
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600" style="color: blue">Nom de medecin</p>
+                                    <p class="m-b-10 f-w-600" style="color: blue">Medecin</p>
     
-                                    <h6 class="text-muted f-w-400">{{visitepm.medecinPH.medecin.name}}</h6>
+                                    <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{visitepm.medecinPH.medecin.name}}</h6>
                                 </div>
                                 
                             
@@ -75,12 +80,12 @@
                                 <footer style="margin-left: 80%; color: rgb(180, 12, 12); ">
                                     <h6 class="m-b-20 p-b-5 b-b-default f-w-600" >
 
-                                          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" >
+                                          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="resultat d'une visite">
                                             <mat-icon >menu</mat-icon>
                                             <mat-menu   #menu="matMenu" >
-                                                <button mat-menu-item (click) = "AddOrd()" *ngIf="showAdminBoard">add ordn</button>
-                                                <button mat-menu-item (click) = "AddAnls()" *ngIf="showAdminBoard">add anls</button>
-                                                <button mat-menu-item (click) = "AddHosp()" *ngIf="showAdminBoard">add hosp</button>
+                                                <button mat-menu-item (click) = "AddOrd()" *ngIf="showAdminBoard">ajouter un ordonnance</button>
+                                                <button mat-menu-item (click) = "AddAnls()" *ngIf="showAdminBoard">ajouter un analyse</button>
+                                                <button mat-menu-item (click) = "AddHosp()" *ngIf="showAdminBoard">ajouter une hospitalisation</button>
                                                 
                                                 </mat-menu>
                                             

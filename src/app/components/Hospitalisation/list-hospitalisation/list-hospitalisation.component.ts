@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Hospitalisation } from 'src/app/model/Hospitalisation';
 import { HospitalisationV } from 'src/app/model/HospitalisationV';
 import { Visite } from 'src/app/model/Visite';
@@ -20,8 +24,17 @@ export class ListHospitalisationComponent implements OnInit {
   
   displayedColumns: string[] = ['Id', 'patient.name', 'date_debut_hosp', 'date_fin_hosp','numLit','numChambre','nomUnite','traitement','medecin.name','Actions'];
   constructor(private hospitalisationVService: HospitalisationVService, private route: ActivatedRoute ,private router: Router) { }
-
+  subscribe!:Subscription;
+  dataSource!:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   ngOnInit(): void {
+
+    this.hospitalisationVService.getHospitalisationVList().subscribe(data => {
+      this.dataSource= new MatTableDataSource<HospitalisationV>(data);
+      this.dataSource.paginator= this.paginator;
+      this.dataSource.sort= this.sort;
+    });
   
     this.getHospitalisationV();
     this.i=this.route.snapshot.params['i'];

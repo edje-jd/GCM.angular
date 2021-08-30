@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Localisation } from 'src/app/model/Localisation';
 import { LocalisationService } from 'src/app/_services/localisation.service';
@@ -10,7 +11,7 @@ import { LocalisationService } from 'src/app/_services/localisation.service';
 })
 export class AddLocalisationComponent implements OnInit {
 localisation: Localisation = new Localisation();
-  constructor(private localisationService:LocalisationService , private router:Router) { }
+  constructor(public dialogRef: MatDialogRef<AddLocalisationComponent>,private localisationService:LocalisationService , private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +20,7 @@ localisation: Localisation = new Localisation();
         console.log(data);
 
         this.goToLocalisationList();
+        this.reloadPage();
       },
       error => console.log(error));
   }
@@ -29,5 +31,13 @@ localisation: Localisation = new Localisation();
     console.log(this.localisation);
     this.saveLocalisation();
   }
+  onClose() {
+    // this.service.form.reset();
+    // this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
 }

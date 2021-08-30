@@ -27,6 +27,7 @@ export class VisiteDetailsComponent implements OnInit {
     ,private dialog:MatDialog) {this.visitepm = history.state }
 
   ngOnInit(): void {
+    
 
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 

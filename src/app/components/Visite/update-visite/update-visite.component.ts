@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Visite } from 'src/app/model/Visite';
 import { VisiteService } from 'src/app/_services/visite.service';
@@ -13,15 +14,20 @@ export class UpdateVisiteComponent implements OnInit {
 
   id:any;
 visite: Visite=new Visite();
-form = new FormGroup({
-  type_visite : new FormControl('',Validators.required),
-  date_visit :new FormControl('',Validators.required)
-  
-})
+// addVisite = this.fb.group({
+//   date_visit: null,
+//   objet_visit: null, 
+//   type_visite: [null, Validators.required],
+//   prix_cons: null, 
+//   date_der_con: null,
+//   effectue: null, 
+//   medecinPH: [null, Validators.required]
+ 
+// });
 options = ['Consultation','Rend-Vous'];
-
-  constructor(private visiteService :VisiteService, private route: ActivatedRoute, private router: Router
-    ) { this.visite = history.state; }
+  constructor( private fb: FormBuilder,private visiteService :VisiteService, private route: ActivatedRoute, private router: Router
+    ) { this.visite = history.state; console.log(this.visite) 
+     }
 
   ngOnInit(): void {
     
@@ -40,5 +46,8 @@ options = ['Consultation','Rend-Vous'];
   goToVisiteList(){
     this.router.navigate(['/listVisite']);
   }
-
+  // onClose() {
+  
+  //   this.dialogRef.close();
+  // }
 }

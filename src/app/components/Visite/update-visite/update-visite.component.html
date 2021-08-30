@@ -1,4 +1,87 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- 
+<form [formGroup]="addVisite" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <button mat-icon-button (click)="onClose()" style="margin-left: 63%;" color="basic" aria-label="Example icon button with a menu icon">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Ajouter une visite</mat-card-title>
+      </mat-card-header>
+      <mat-card-content >
+        <div class="row">
+          <div class="col">
+            
+              
+              <mat-form-field  class="full-width">
+                <mat-label>Date de visite</mat-label>
+                <input matInput [matDatepicker]="picker1" placeholder="Date de visite" formControlName="date_visit">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <textarea matInput placeholder="Motif" formControlName="objet_visit"></textarea>
+              
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select  placeholder="Type de visite" formControlName="type_visite">
+          <mat-option value="Consultation">Consultation</mat-option>
+          <mat-option value="Rend-Vous">Rend-Vous</mat-option>
+          
+        </mat-select>
+              <mat-error *ngIf="addVisite.controls['type_visite'].hasError('required')">
+                Type de visite est <strong>Obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput type="number" placeholder="Prix de Consultation" formControlName="prix_cons">
+              <mat-error *ngIf="addVisite.controls['prix_cons'].hasError('required')">
+                Address is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        
+        
+       
+          <div class="col">
+            <mat-form-field  class="full-width">
+              <mat-label>Date de Rend-Vous</mat-label>
+              <input matInput [matDatepicker]="picker1" placeholder="Date de Rend-Vous" formControlName="date_der_con">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="effectué" formControlName="effectue">
+              
+            </mat-form-field>
+          </div> 
+          
+        </div>
+        
+       
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Ajouter</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>-->
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light; margin-left: 10% " >
 
@@ -6,17 +89,13 @@
     
     <h3 style="margin-left: 30%; font-family: 'Georgia', Times, serif; color: blue;" >Modifier une visite </h3>
   <hr STYLE="color: yellow; ">
-    <form (ngSubmit) = "onSubmit()" [formGroup]="form">
+    <form (ngSubmit) = "onSubmit()">
 
       
         <div class="form-group">
             <label for="date_visit" class="required" style="color: blue;font-family: 'Georgia'">Date de visite</label>
             <input type="date" class ="form-control" id = "date_visit" placeholder="Date de  Visite"
-                [(ngModel)] = "visite.date_visit" name = "date_visit" formControlName="date_visit"
-                [ngClass]="{'is-invalid':form.get('date_visit')?.touched && form.get('date_visit')?.invalid}">
-                <div class="invalid-feedback">
-                    <div>date of visite is required</div>
-                </div>
+                [(ngModel)] = "visite.date_visit" name = "date_visit">
         </div>
 
 
@@ -27,31 +106,32 @@
         </div>
         <div class="form-group">
             <label for="type_visite" class="required" style="color: blue;font-family: 'Georgia'">Type de visite</label>
-        <mat-select  class ="form-control" id = "TypenVisite" placeholder="Type de visite"
-                [(ngModel)] = "visite.type_visite" name = "TYPE_Visite" formControlName="type_visite"
-                [ngClass]="{'is-invalid':form.get('type_visite')?.touched && form.get('type_visite')?.invalid}">
-
-                <div class="invalid-feedback">
-                    <div>type of visite is required</div>
-                </div>
+        <mat-select  class ="form-control" id = "type_visite" placeholder="Type de visite"
+                [(ngModel)] = "visite.type_visite" name = "type_visite" >
                 <mat-option *ngFor = "let option of options" [value]="option">
                     {{option}}
                 </mat-option>
             </mat-select>
         </div>
-        <div class="form-group" *ngIf="visite.type_visite === 'Consultation'" >
+        <div class="form-group"  >
             <label for="prix_cons" class="required" style="color: blue;font-family: 'Georgia'">Prix de consultation</label>
             <input type="text" class ="form-control" id = "prix_cons" placeholder="Prix de Consultation"
                 [(ngModel)] = "visite.prix_cons" name = "prix_cons">
         </div>
-      <div class="form-group" *ngIf="visite.type_visite === 'Rend-Vous'">
+      <div class="form-group">
         <label for="date_h_RDV" class="required" style="color: blue;font-family: 'Georgia'">Date de derénier consultation</label>
-        <input  type="date"  class ="form-control" id = " date_h_RDV"  placeholder="date Rdv"
-        [(ngModel)] = "visite.date_der_con"   name = "date_h_RDV">
+        <input  type="date"  class ="form-control" id = " date_der_con"  placeholder="date Rdv"
+        [(ngModel)] = "visite.date_der_con"   name = "date_der_con">
 
 
       </div>
-      
+      <div class="form-group">
+        <label for="effectue" class="required" style="color: blue;font-family: 'Georgia'">effectué</label>
+        <input  type="text"  class ="form-control" id = " effectue"  placeholder="effectue"
+        [(ngModel)] = "visite.effectue"   name = "effectue">
+
+
+      </div>
 
     
    
@@ -59,6 +139,6 @@
       <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
     </form>
 </div>
-</div>
+</div> 
 
 

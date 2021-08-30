@@ -1,3 +1,13 @@
 table {
     width: 100%;
   }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  .centreVerticalement {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+   }

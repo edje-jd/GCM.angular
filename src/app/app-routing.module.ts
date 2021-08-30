@@ -43,11 +43,14 @@ import { UpdateHospitalisationComponent } from './components/Hospitalisation/upd
 import { DetailsHospitalisationComponent } from './components/Hospitalisation/details-hospitalisation/details-hospitalisation.component';
 import { UpdateAnnalyseComponent } from './components/Annalyse/update-annalyse/update-annalyse.component';
 import { UpdateVisiteComponent } from './components/Visite/update-visite/update-visite.component';
+import { DossierPatientComponent } from './components/DosdierPatient/dossier-patient/dossier-patient.component';
+
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
- 
+ {path:'DossierPatient',component: DossierPatientComponent},
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   
@@ -76,6 +79,7 @@ const routes: Routes = [
   {path:'addVisite',component:AddVisiteComponent},
   {path:'update-visite' , component:UpdateVisiteComponent},
   {path:'visiteDetails',component:VisiteDetailsComponent},
+ 
   {path:'listSecretaire' , component:ListSecretaireComponent},
   {path:'addSecretaire', component:AddSecretaireComponent},
   {path:'listOrdonance',component:ListOrdonanceComponent},
@@ -89,6 +93,7 @@ const routes: Routes = [
   {path:'listAnnalyse',component:ListAnnalyseComponent},
   {path:'addAnnalyse',component:AddAnnalyseComponent},
   {path:'update-annalyse',component:UpdateAnnalyseComponent},
+  
  
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

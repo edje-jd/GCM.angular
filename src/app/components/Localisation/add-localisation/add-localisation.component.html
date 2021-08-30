@@ -1,3 +1,70 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+  <mat-toolbar>
+    <span style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter une Localisation</span>
+    <button mat-icon-button (click)="onClose()" style="margin-left: 21%;" color="basic" aria-label="Example icon button with a menu icon">
+        <mat-icon>close</mat-icon>
+      </button>
+   <!-- <mat-icon style=" margin-left: 47%;margin-top: 0%;" (click)="onClose()">clear</mat-icon> -->
+  </mat-toolbar>
+<!-- <h1 style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter un analyse</h1> -->
+
+
+<div class="container">
+   
+  <form action="/action_page.php" (ngSubmit) = "onSubmit()">
+  <div class="row">
+    <div class="col-25">
+      <label for="nom_moghata" class="required" style="color: blue;font-family: 'Georgia'">Nom de Moughataa</label>
+    </div>
+    <div class="col-75">
+      <input type="text" class="form-control" id = "Nom Moughata" placeholder="Nom de Moughataa"
+      [(ngModel)] = "localisation.nom_moghata " name = "nom_moghata">
+      <!-- formControlName="date_visit"
+        [ngClass]="{'is-invalid':form.get('date_visit')?.touched && form.get('date_visit')?.invalid}">
+
+        <div class="invalid-feedback">
+            <div> Date de visite est obligatoire</div>
+        </div>  -->
+    </div>
+  </div>
+        <div class="row">
+            <div class="col-25">
+              <label for="nom_commune" style="color: blue;font-family: 'Georgia'">Nom du Commune</label>
+            </div>
+            <div class="col-75">
+                <input type="text"  class="form-control" id = "Nom Commune" placeholder="Nom du Commune"
+                [(ngModel)] = "localisation.nom_commune " name = "nom_commune">
+            </div>
+          </div>
+
+  <div class="row">
+
+    <!-- <button  mat-mini-fab color="warn" style="margin-left: 2%;" color="primary" (click) = "Retour()">
+        <mat-icon >assignment_return</mat-icon></button> -->
+    <input type="submit" style="margin-left: 50%;" value="Ajouter" mat-dialog-close>
+    <!-- <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button> -->
+   
+   
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
+
+<!-- 
+
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light; margin-left: 10% " >
@@ -25,4 +92,4 @@
       <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
       </form>
 </div>
-</div>
+</div> -->

@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Annalyse } from 'src/app/model/Annalyse';
 import { AnnalyseV } from 'src/app/model/AnnlyseV';
 import { AnnalyseServiceService } from 'src/app/_services/annalyse-service.service';
@@ -18,7 +22,16 @@ export class ListAnnalyseComponent implements OnInit {
   displayedColumns: string[] = ['id', 'patient.name', 'nomAnls', 'nom_labo','Actions'];
   constructor(private annalyseVService: AnnalyseVService,private annalyseService:AnnalyseServiceService, private route: ActivatedRoute ,private router: Router) { }
 
+  subscribe!:Subscription;
+  dataSource!:any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   ngOnInit(): void {
+    this.subscribe= this.annalyseVService.getAnnalyseVList().subscribe(data => {
+      this.dataSource= new MatTableDataSource<AnnalyseV>(data);
+      this.dataSource.paginator= this.paginator;
+      this.dataSource.sort= this.sort;
+    });
     this.getAnnalyseVs();
    
   }

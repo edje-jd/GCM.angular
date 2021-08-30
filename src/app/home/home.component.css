@@ -1,13 +1,13 @@
 button{
-    font-size: 2em;
+    font-size: 1em;
     font-family: Arial, Helvetica, sans-serif;
     padding: 6px;
     border: none;
     background-color: green;
-    color: black;
+    color: light;
     width: 100%;
     border-radius: 1px;
-    box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 5px 1px rgba(161, 113, 113, 0.3);
     cursor: pointer;
     outline: none;
     transition: 0.2s;

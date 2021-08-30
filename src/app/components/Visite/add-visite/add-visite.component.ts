@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Medecin } from 'src/app/model/Medecin';
 import { MedecinPH } from 'src/app/model/MedecinPH';
@@ -30,13 +30,24 @@ export class AddVisiteComponent implements OnInit {
   secretaire?:Secretaire;
   id?:any;
   options = ['Consultation','Rend-Vous'];
-  form = new FormGroup({
-    type_visite : new FormControl('',Validators.required),
-    date_visit :new FormControl('',Validators.required),
-    visitepm: new FormControl('',Validators.required)
- })
-  constructor(public dialogRef: MatDialogRef<AddVisiteComponent>,private visitepmservice:VisitePMService,private visiteService:VisiteService,private patientservice: PatientService,private router: Router ,private medecinphservice:MedecinPHService,private secretaireService:SecretaireService) {
-    this.patient = history.state
+  
+ addVisite = this.fb.group({
+  date_visit: null,
+  objet_visit: null, 
+  type_visite: [null, Validators.required],
+  prix_cons: null, 
+  date_der_con: null,
+  effectue: null, 
+  medecinPH: [null, Validators.required]
+ 
+});
+
+Consultation!:any;
+
+
+  constructor( @Inject(MAT_DIALOG_DATA) public data: {patient: patient}, public dialogRef: MatDialogRef<AddVisiteComponent>,private fb: FormBuilder,private visitepmservice:VisitePMService,private visiteService:VisiteService,private patientservice: PatientService,private router: Router ,private medecinphservice:MedecinPHService,private secretaireService:SecretaireService) {
+    this.visitepm.patient = this.data.patient;
+    console.log("patient: ", this.visitepm.patient)
     
     this.visitepm.visite = new Visite();
    }
@@ -44,14 +55,24 @@ export class AddVisiteComponent implements OnInit {
   ngOnInit(): void {
     this. getlistPatients();
     this.getlistMedecinPHs();
+    console.log(this.patient);
    
   }
 
   saveVisite(){
+    this.visitepm.visite.date_visit = this.addVisite.controls.date_visit.value;
+    this.visitepm.visite.objet_visit = this.addVisite.controls.objet_visit.value;
+    this.visitepm.visite.type_visite = this.addVisite.controls.type_visite.value;
+    this.visitepm.visite.prix_cons = this.addVisite.controls.prix_cons.value;
+    this.visitepm.visite.date_der_con = this.addVisite.controls.date_der_con.value;
+    this.visitepm.visite.effectue = this.addVisite.controls.effectue.value;
+    this.visitepm.medecinPH = this.addVisite.controls.medecinPH.value;
+    console.log("chewv 4e",this.visitepm);
+    
     this.visitepmservice.addVisitePM(this.visitepm).subscribe( data =>{
-      console.log(this.visitepm.patient)
-      console.log(this.visitepm.medecinPH)
+      
         console.log(data);
+       
 
         this.detalVisite(this.visitepm)
 
@@ -90,27 +111,22 @@ export class AddVisiteComponent implements OnInit {
   this.secretaires=data;
   })
 }
+// onSubmit(): void {
+//   alert('Thanks!');
+// }
 
   onSubmit(){
-   this.visitepm.patient = this.patient;
-   console.log(this.visitepm.medecinPH);
-   
-    // this.visitepm.medecinph= this.medecinph
-    // this.visitepm.visite=this.visite
-    
-    
-
-    
-    // this.visitepm.secretaire= this.secretaire
-    this.saveVisite();
+    if(this.addVisite.status === "VALID"){
+      this.saveVisite();
+      this.dialogRef.close();
+    } ;
   }
 
   Retour(){
     window.history.back();
   }
   onClose() {
-    // this.service.form.reset();
-    // this.service.initializeFormGroup();
+  
     this.dialogRef.close();
   }
 }

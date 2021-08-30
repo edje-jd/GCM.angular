@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light; margin-left: 0% " >
- <DIV CLASS="container"> <button class="bnt btn-primary" style="margin-left: 85%; margin-top: 2%"><a routerLink="/addLocalisation"
-                        style="color: black;font-family: 'Script MT Bold'  "><i class="bi bi-plus-lg"></i> Ajouter Localisation</a></button>
+ <DIV CLASS="container">
+  <button  mat-mini-fab color="primary" style="margin-left: 95%; margin-top: 2%"   (click)="addLoca()" aria-label="Example icon button with a home icon">
+    <mat-icon>add</mat-icon>
+  </button>
 
 <h1 style="color: blue; font-family: 'Georgia', Times, serif; margin-left: 30%;" >    List des Localisations</h1></DIV>
   <hr STYLE="color: yellow; ">
