@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MatDialog ,MatDialogConfig} from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Antecedent } from 'src/app/model/Antecedent';
 import { Localisation } from 'src/app/model/Localisation';
 import { patient } from 'src/app/model/Patient';
 import { PatientDesease } from 'src/app/model/PatientDesease';
+import { VisitePM } from 'src/app/model/VisitePM';
 import { PatientDeseaseService } from 'src/app/_services/patient-desease.service';
 import { PatientService } from 'src/app/_services/patient.service';
+import { VisitePMService } from 'src/app/_services/visite-pm.service';
 import { AddVisiteComponent } from '../../Visite/add-visite/add-visite.component';
 import { ExempleComponent } from '../../Visite/exemple/exemple.component';
 
@@ -28,21 +32,26 @@ export class PatientDetailsComponent implements OnInit {
   antcedents!:Antecedent[];
   localisations!:Localisation[];
 
-  displayedColumns: string[] = ['Id', 'name', 'phone', 'age','sexe','adresse','antecedent'];
+  displayedColumns: string[] = [ 'date_visit','objet_visit','medecinPH.medecin.name','type_visite','Actions'];
   constructor(private patientdesService :PatientDeseaseService,private router:Router,
-    private route: ActivatedRoute,private dialog:MatDialog ,private patientservice:PatientService) {this.patient=history.state;
+    private route: ActivatedRoute,private dialog:MatDialog ,private patientservice:PatientService
+    ,private visitepmservice:VisitePMService) {this.patient=history.state;
       
       }
       dataSource!:any;
-      
+      dataSource2!:any;
+      @ViewChildren(MatPaginator) paginators = new QueryList<MatPaginator>();
+      @ViewChildren(MatSort) sorts = new QueryList<MatSort>();  
   ngOnInit(): void {
     
     this.patientservice.getPatientList().subscribe(data => {
       this.dataSource= new MatTableDataSource<patient>(data);
-     
       
-      
-      
+    });
+    this.visitepmservice.getVisitePMList().subscribe(data => {
+      this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm => _visitepm.visite.effectue && _visitepm.patient.name==this.patient.name));
+      this.dataSource2.paginator= this.paginators.toArray()[0];
+      this.dataSource2.sort=this.sorts.toArray()[0];
     });
     
 
@@ -52,7 +61,9 @@ export class PatientDetailsComponent implements OnInit {
  
  
   }
- 
+  detalVisite(visitepm:VisitePM){
+    this.router.navigate(['visiteDetails'], {state: visitepm});
+  }
   DemandeVisite(patient:patient){
     this.router.navigate(['addVisite'], {state: patient});
   }
@@ -75,5 +86,8 @@ openUtil(){
 }
 Retour(){
   window.history.back();
+}
+printPage() {
+  window.print();
 }
 }

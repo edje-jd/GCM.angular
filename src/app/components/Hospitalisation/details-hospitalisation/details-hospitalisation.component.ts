@@ -37,5 +37,8 @@ export class DetailsHospitalisationComponent implements OnInit {
 Retour(){
   window.history.back();
 }
+printPage() {
+  window.print();
+}
 
 }

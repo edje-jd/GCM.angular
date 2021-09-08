@@ -24,7 +24,7 @@ export class VisiteDetailsComponent implements OnInit {
  private roles: string[] = [];
   constructor(private visitepmService :VisitePMService,
     private route: ActivatedRoute,private router:Router,private tokenStorageService: TokenStorageService
-    ,private dialog:MatDialog) {this.visitepm = history.state }
+    ,private dialog1:MatDialog,private dialog2:MatDialog,private dialog3:MatDialog) {this.visitepm = history.state }
 
   ngOnInit(): void {
     
@@ -69,8 +69,9 @@ AddOrd(){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus = true;
-  dialogConfig.width = "60%";
-  this.dialog.open(AddOrdonanceComponent,dialogConfig);
+  dialogConfig.width = "600px";
+  dialogConfig.height= "400px";
+  this.dialog1.open(AddOrdonanceComponent,dialogConfig);
 
 }
 
@@ -79,8 +80,9 @@ AddAnls(){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus = true;
-  dialogConfig.width = "60%";
-  this.dialog.open(AddAnnalyseComponent,dialogConfig);
+  dialogConfig.width = "400px";
+  dialogConfig.height= "300px";
+  this.dialog2.open(AddAnnalyseComponent,dialogConfig);
 
 }
 AddHosp(){
@@ -88,9 +90,12 @@ AddHosp(){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus = true;
-  dialogConfig.width = "60%";
-  this.dialog.open(AddHospitalisationComponent,dialogConfig);
+  dialogConfig.width = "700px";
+  dialogConfig.height= "450px";
+  this.dialog3.open(AddHospitalisationComponent,dialogConfig);
 
 }
-
+printPage() {
+  window.print();
+}
 }

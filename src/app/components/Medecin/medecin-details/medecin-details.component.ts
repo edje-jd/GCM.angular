@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { MedecinPH } from 'src/app/model/MedecinPH';
 import { Phoraire } from 'src/app/model/Phoraire';
@@ -21,10 +22,13 @@ export class MedecinDetailsComponent implements OnInit {
   Plage_horaire!:Phoraire[];
  
   constructor(private medecinphService :MedecinPHService,
-    private route: ActivatedRoute) {this.medecinph = history.state }
-
+    private route: ActivatedRoute) {this.medecinph = history.state 
+    console.log(this.medecinph)}
+ dataSource:any;
   ngOnInit(): void {
-    this.getMedecinPh();
+    this.medecinphService.getMedecinPhList().subscribe(data => {
+      this.dataSource= new MatTableDataSource<MedecinPH>(data);
+    });
    
 
  

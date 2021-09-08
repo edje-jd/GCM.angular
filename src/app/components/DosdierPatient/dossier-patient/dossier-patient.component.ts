@@ -34,7 +34,9 @@ export class DossierPatientComponent implements OnInit {
     })
   }
 
-  detalVisite(visitepm:VisitePM){}
+  detalVisite(visitepm:VisitePM){
+    this.router.navigate(['Dosier-Detail'],{state:visitepm});
+  }
 
   findPatientByName(name:HTMLInputElement){
     this.applyFilter(name.value);

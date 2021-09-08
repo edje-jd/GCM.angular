@@ -70,6 +70,9 @@ public Search(key: string): void {
     this.getAnnalyseVs();
   }
 }
+annalyseDetail(annalyseV: AnnalyseV){
+  this.router.navigate(['annalyse-detail'],{state:annalyseV});
+}
 Retour(){
   window.history.back();
 }

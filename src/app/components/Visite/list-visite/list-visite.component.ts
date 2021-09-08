@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -40,27 +42,30 @@ export class ListVisiteComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  displayedColumnss:string[]=['patient.name','medecinPH.medecin.name','type_visite','Actions']
-  displayedColumns: string[] = [ 'patient.name', 'medecinPH.medecin.name','type_visite','Actions'];
+  displayedColumnss:string[]=['date_visit','patient.name','medecinPH.medecin.name','type_visite','Actions']
+  displayedColumns: string[] = ['date_visit', 'patient.name', 'medecinPH.medecin.name','type_visite','Actions'];
   constructor(private dialog:MatDialog,private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService,private secretaireService:SecretaireService) { }
   dataSource !:any ;
   dataSource2 !:any;
   currentDate = new Date().toLocaleDateString("fr-FR", 
   { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatPaginator) paginator2!: MatPaginator;
-  @ViewChild(MatSort) sort2!: MatSort;
-  ngOnInit(): void {
+  @ViewChildren(MatPaginator) paginators = new QueryList<MatPaginator>();
+  @ViewChildren(MatSort) sorts = new QueryList<MatSort>();
+
+  setDataSources() {
     this.visitepmservice.getVisitePMList().subscribe(data => {
       this.dataSource= new MatTableDataSource<VisitePM>(data.filter(_visitepm => !_visitepm.visite.effectue));
      
-      // this.dataSource.paginator= this.paginator;
-      // this.dataSource.sort=this.sort;
+      this.dataSource.paginator= this.paginators.toArray()[0];
+      this.dataSource.sort=this.sorts.toArray()[0];
       this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm => _visitepm.visite.effectue));
-      this.dataSource2.paginator = this.paginator2;
-      this.dataSource2.sort=this.sort2;
-    })
+      this.dataSource2.paginator = this.paginators.toArray()[1];
+      this.dataSource2.sort= this.sorts.toArray()[1];
+    });
+  }
+  ngOnInit(): void {
+   
+  this.setDataSources()
    
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -136,16 +141,8 @@ deleteVisite(id: any){
   })
 }
 
-getPatientbyId(id:number){
-  this.patientservice.getPatientById(id).subscribe(data=>{
-  this.patient=data;
-  })
 
 
-}
-VisiteDetails(id: any){
-  this.router.navigate(['visite-details']);
-}
 
 
 getMedecinbyId(id:number){
@@ -153,11 +150,17 @@ getMedecinbyId(id:number){
   this.medecin=data;
   })
 }
-getSecretairebyId(id:number){
-  this.secretaireService.getSecretaireById(id).subscribe(data=>{
-  this.secretaire=data;
-  })
-   } 
+
+moveTo(visitepm:VisitePM, effectue: boolean){
+    visitepm.visite.effectue=effectue;
+    console.log(visitepm.visite.effectue)
+    this.visiteService.updateVisite(visitepm.visite.id,visitepm.visite).subscribe( data => {
+      this.setDataSources()
+    })
+
+}
+
+
    
   //  updateVisite(){
   //   const dialogConfig = new MatDialogConfig();

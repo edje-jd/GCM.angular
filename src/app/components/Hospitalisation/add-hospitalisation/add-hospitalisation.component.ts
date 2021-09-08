@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Hospitalisation } from 'src/app/model/Hospitalisation';
@@ -24,11 +24,17 @@ export class AddHospitalisationComponent implements OnInit {
   visite!:Visite ;
  
   id?:any;
-  form = new FormGroup({
-    nomUnite : new FormControl('',Validators.required),
-    traitement :new FormControl('',Validators.required)
- })
-  constructor(public dialogRef: MatDialogRef<AddHospitalisationComponent>,private visitepmservice:VisitePMService,private hospitalisationVService:HospitalisationVService,private router: Router,private visiteService:VisiteService) {
+  addHosp = this.fb.group({
+    date_debut_hosp: [null, Validators.required],
+    date_fin_hosp: [null, Validators.required], 
+    nomUnite: [null, Validators.required], 
+    numChambre:[null, Validators.required], 
+    numLit: [null, Validators.required],
+    traitement: null, 
+   
+   
+  });
+  constructor(private fb:FormBuilder,public dialogRef: MatDialogRef<AddHospitalisationComponent>,private visitepmservice:VisitePMService,private hospitalisationVService:HospitalisationVService,private router: Router,private visiteService:VisiteService) {
     this.visitepm = history.state
     this.hospitalisationV.hospitalisation=new Hospitalisation();
    }
@@ -39,10 +45,19 @@ export class AddHospitalisationComponent implements OnInit {
   }
 
   saveHospitalisation(){
+
+    this.hospitalisationV.hospitalisation.date_debut_hosp = this.addHosp.controls.date_debut_hosp.value;
+    this.hospitalisationV.hospitalisation.date_fin_hosp = this.addHosp.controls.date_fin_hosp.value;
+    this.hospitalisationV.hospitalisation.nomUnite = this.addHosp.controls.nomUnite.value;
+    this.hospitalisationV.hospitalisation.numChambre = this.addHosp.controls.numChambre.value;
+    this.hospitalisationV.hospitalisation.numLit= this.addHosp.controls.numLit.value;
+    this.hospitalisationV.hospitalisation.traitement = this.addHosp.controls.traitement.value;
+
+    console.log("enchewvou 4e",this.hospitalisationV);
     this.hospitalisationVService.addHospitalisationV(this.hospitalisationV).subscribe( data =>{
       console.log(data);
 
-        this.goToOrdonanceList();
+        this.HospitalisationDetails(this.hospitalisationV);
       },
       error => console.log(error));
   }
@@ -55,13 +70,18 @@ export class AddHospitalisationComponent implements OnInit {
     })
      }
 
-
+     HospitalisationDetails(hospitalisationV:HospitalisationV){
+      this.router.navigate(['details-hospitalisation'],{state:hospitalisationV});
+    }
   onSubmit(){
-    // this.ordonancemv.medicament=this.medicament;
-    // this.ordonancemv.ordonance=this.ordonance;
-    this.hospitalisationV.visitePM=this.visitepm;
+    if(this.addHosp.status === "VALID"){
+      this.hospitalisationV.visitePM=this.visitepm;
+      this.saveHospitalisation();
+      this.dialogRef.close();
+    } ;
     
-    this.saveHospitalisation();
+    
+    
   }
   Retour(){
     window.history.back();

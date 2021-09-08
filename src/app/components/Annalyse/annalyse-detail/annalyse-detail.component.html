@@ -1,0 +1,82 @@
+<div class="col-xl-10 col-md-10">
+    <div class="container">&nbsp;</div>
+<div class="container">&nbsp;</div>
+    <mat-card class="example-card">
+        
+            <div class="row">
+                <div class="col-sm-5">
+                    <mat-card-title style="text-align: left;">Cabinet medicale </mat-card-title>
+                    <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
+               </div>
+               <div class="col-sm-2" >
+                   <div class="image">
+                  <img mat-card-image img src="https://www.trimeche.labo.tn/images/logo.png"></div>
+               </div>
+               <div class="col-sm-3"></div>
+               <div class="col-sm-2">
+                <div class="container">&nbsp;</div>
+                <div class="mr">
+                <img mat-card-image img src="../assets/images/mr.png"> </div>  
+               </div>
+            </div> 
+            <hr style="background-color: blue;border-radius: 10rem;border: 2;">
+
+            <mat-card-title style="text-align: center;">Bilan d'annalyse </mat-card-title>
+            <mat-card-subtitle style="text-align: center;">Code du patient:  {{annalysev.visitePM.patient.id}}</mat-card-subtitle>
+            <div class="container">&nbsp;</div>
+            <div class="container">&nbsp;</div>
+            <div class="row">
+                <div class="col-sm-8">
+                    
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;"> Nom et prénom :{{annalysev.visitePM.patient.name}}</mat-card-subtitle>
+                </div>
+                <div class="col-sm-4">
+                    
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Date : {{annalysev.annalyse.dateAnls  |date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Nom des analyses : {{annalysev.annalyse.nomAnls}}</mat-card-subtitle>
+                </div>
+                <div class="col-sm-4">
+                   
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Nom d'aboratoire : {{annalysev.annalyse.nom_labo}}</mat-card-subtitle>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Resultat des analyses :</mat-card-subtitle>
+                </div>
+            </div>
+            
+            <div class="container">&nbsp;</div>
+            <div class="container">&nbsp;</div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <button  mat-mini-fab color="primary" (click) = "Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="Page précédent"><mat-icon >
+                        arrow_back
+                      </mat-icon></button>
+                </div>
+                <div class="col-sm-8">
+                    <i class="far fa-print">
+                        
+                        <button 
+                       
+                                (click)="printPage()"  
+                                ngxPrint style=" margin-left: 80%;" class = "btn btn-success" type ="submit">
+                                  Imprimer</button>
+                    </i>
+                </div>
+                
+                <div class="col-sm-2"> 
+                     </div>
+            </div>
+            <mat-card-footer style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">SISTA.sarl</mat-card-footer>
+            </mat-card>
+            </div>
+    

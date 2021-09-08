@@ -1,109 +1,158 @@
-<!-- <div class="row">
-    <div class="container">&nbsp;</div>
-    <div class="container">&nbsp;</div>
-    <div class="col-sm-4">
-<mat-card class="example-card">
-    <mat-card-title>Détail du patient {{this.patient.name}}</mat-card-title>
-    <img mat-card-image img src="https://as2.ftcdn.net/jpg/02/14/64/25/500_F_214642505_6kkV06wDk1j1NpXjmCeepDMt3j64ul0r.jpg">
-    <mat-card-footer>SISTA.sarl</mat-card-footer>
-</mat-card>
-</div>
-<div class="col-sm-8">
-    <div class="container">&nbsp;</div>
-    <div class="container">&nbsp;</div>
-    
-<div class="mat-elevation-z8" >
 
-    <table mat-table  [dataSource]="dataSource" matSort>
-    
-      
-      <ng-container matColumnDef="Id">
-        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Id &nbsp;<i class="fa fa-sort"></i></th>
-        <td mat-cell *matCellDef="let patient" class ="hidden"> {{this.patient.id }} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="name">
-        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Nom et Pérnom</th>
-        <td mat-cell *matCellDef="let patient" > {{this.patient.name }} </td>
-        
-      </ng-container>
-    
-      <ng-container matColumnDef="phone">
-        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header>Téléphone</th>
-        <td mat-cell *matCellDef="let patient"> {{this.patient.phone }} </td>
-        
-      </ng-container>
-    
-      
-      <ng-container matColumnDef="age">
-        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Age</th>
-        <td mat-cell *matCellDef="let patient"> {{this.patient.age}} </td>
-      </ng-container>
-      <ng-container matColumnDef="sexe">
-        <th style="color: blue;font-family: 'Georgia' ;font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header>Sexe</th>
-        <td mat-cell *matCellDef="let patient"> {{this.patient.sexe}} </td>
-        
-      </ng-container>
-      <ng-container matColumnDef="adresse">
-        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header> Adresse</th>
-        <td mat-cell *matCellDef="let patient"> {{this.patient.adresse }} </td>
-        
-      </ng-container>
-       <ng-container matColumnDef="antecedent">
-        <th style="color: blue;font-family: 'Georgia';font-size: 16px;" mat-header-cell *matHeaderCellDef mat-sort-header>antecedent</th>
-        <td mat-cell *matCellDef="let patient"> {{this.patient.antecedent}} </td>
-        
-      </ng-container>
-      
-      
-    
-    
-      <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    </div> -->
-<!--  
- <table class = "table table-hover">
-    <thead>
-        <tr class="bg-primary">
-           
-            <th > Id</th>
+
+    <div class="col-xl-10 col-md-10">
+        <div class="container">&nbsp;</div>
+    <div class="container">&nbsp;</div>
+        <mat-card class="example-card">
             
-            <th >Patient</th>
-          <th >Phone</th>
-          <th >Age</th> 
-            <th >Sexe</th>
-          <th >Adresse</th>
-          <th >Antecedent</th>
-          
-         
-            
-        </tr>
-    </thead>
-    <tbody>
-        <tr  >
-          
-            
-            <td > {{this.patient.id }} </td>
-          <td > {{this.patient.name}} </td>
-          <td > {{this.patient.phone }} </td>
-          <td>  {{this.patient.age }}</td>
-          <td > {{this.patient.sexe }}</td>
-          <td > {{this.patient.adresse}}</td> 
-          <td > {{this.patient.antecedent }} </td>
-          
-          
-     
-    
-        </tr>
-        <tr> <button  mat-mini-fab color="primary"   (click)="openUtil()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="ajouter un nouveau visite">
-            <mat-icon>add</mat-icon>
-          </button></tr>
-    </tbody>
-</table>   -->
+                <div class="row">
+                    <div class="col-sm-5">
+                        <mat-card-title style="text-align: left;">Cabinet medicale </mat-card-title>
+                        <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
+                   </div>
+                   <div class="col-sm-2" >
+                       <div class="image">
+                      <img mat-card-image img src="https://as2.ftcdn.net/jpg/02/14/64/25/500_F_214642505_6kkV06wDk1j1NpXjmCeepDMt3j64ul0r.jpg"></div>
+                   </div>
+                   <div class="col-sm-3"><div class="container">&nbsp;</div></div>
+                   <div class="col-sm-2">
+                    <div class="mr">
+                    <img mat-card-image img src="../assets/images/mr.png"> </div>  
+                   </div>
+                </div> 
+                <hr style="background-color: blue;border-radius: 10rem;border: 2;">
 
+                <mat-card-title style="text-align: center;"> Fiche patient</mat-card-title>
+               
+                <mat-card-subtitle style="text-align: center;">Identifiant :  {{patient.id}}</mat-card-subtitle>
+                <div class="container">&nbsp;</div>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <mat-card-title style="text-align: center;">Nom et prénom : {{patient.name}}</mat-card-title>
 
+                    </div>
+                </div>
+                <div class="row">    
+                    <div class="col-sm-12">
+                        <mat-card-subtitle style="text-align: center;">Téléphone : {{patient.phone}}</mat-card-subtitle>
+                        
+                    </div>
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Age : {{patient.age}}</mat-card-subtitle>
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Sexe : {{patient.sexe}}</mat-card-subtitle>
 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Adresse: {{patient.adresse}}</mat-card-subtitle>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Maladie antecedent : {{patient.antecedent}}</mat-card-subtitle>
+
+                    </div>
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <mat-card class="example-card">
+                            <mat-card-title>Visites </mat-card-title>
+                            <div class="mat-elevation-z8">
+
+                                <table mat-table [dataSource]="dataSource2"  matSort>
+                                
+                                <ng-container matColumnDef="date_visit">
+                                    <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Date </th>
+                                    <td mat-cell *matCellDef="let visitepm"> {{visitepm.visite.date_visit|date: 'dd/MM/yyyy'}}</td>
+                                    
+                                </ng-container>
+                                <!-- <ng-container matColumnDef="patient.name">
+                                    <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Patient</th>
+                                    <td mat-cell *matCellDef="let visitepm"> {{visitepm.patient.name}} </td>
+                                    
+                                </ng-container> -->
+                                
+                                
+                                <ng-container matColumnDef="objet_visit">
+                                        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Motif du visite</th>
+                                        <td mat-cell *matCellDef="let visitepm"> {{visitepm.visite.objet_visit}} </td>
+                                        
+                                    </ng-container>
+                                
+                                
+                                <ng-container matColumnDef="medecinPH.medecin.name">
+                                    <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Medecin</th>
+                                    <td  mat-cell *matCellDef="let visitepm"> {{visitepm.medecinPH.medecin.name}}</td>
+                                    
+                                </ng-container>
+                                <ng-container matColumnDef="type_visite">
+                                    <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef> Type de visite</th>
+                                    
+                                    <td mat-cell *matCellDef="let visitepm">  {{ visitepm.visite.type_visite}} </td>
+                                </ng-container>
+                                
+                                
+                                
+                                
+                                
+                                <ng-container matColumnDef="Actions">
+                                    <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > &nbsp; &nbsp;&nbsp;&nbsp; Actions </th>
+                                    <td mat-cell *matCellDef="let visitepm">
+                                        &nbsp; &nbsp;&nbsp;&nbsp;
+                                    <!-- <button  mat-mini-fab color="warn" (click) = "updateVisite(visitepm.visite)"  aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="modifier">
+                                    <mat-icon >update</mat-icon></button> -->
+                                    <!-- <button  mat-mini-fab color="accent" (click) = "deleteVisite(visitepm.id)" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="supprimer"><mat-icon >delete</mat-icon></button>&nbsp; -->
+                                    <button  mat-mini-fab color="primary" (click) = "detalVisite(visitepm)" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="info"><mat-icon >info</mat-icon></button></td>
+                                    
+                                </ng-container>
+                        
+                        
+                          <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator></div></mat-card></div>
+                </div>
+               
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button  mat-mini-fab color="primary" (click) = "Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="Page précédent"><mat-icon >
+                            arrow_back
+                          </mat-icon></button>
+                    </div>
+                    <div class="col-sm-6">
+                        <i class="far fa-print">
+                            
+                            <button 
+                           
+                            (click)="printPage()" 
+                                    ngxPrint style=" margin-left: 3%;" class = "btn btn-success" type ="submit">
+                                      Imprimer</button>
+                        </i>
+                    </div>
+                    
+                    <div class="col-sm-2"> 
+                        <button  mat-mini-fab color="primary"   (click)="openUtil()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="ajouter un nouveau visite">
+                            <mat-icon>add</mat-icon>
+                          </button>
+                         </div>
+                </div>
+                <mat-card-footer style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">SISTA.sarl</mat-card-footer>
+                </mat-card>
+                </div>
+<!-- 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
     
@@ -213,4 +262,4 @@
     
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>     -->

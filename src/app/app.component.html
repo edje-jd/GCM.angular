@@ -3,26 +3,26 @@
   <nav class="navbar navbar-expand-lg navbar-dark navbar-full bg-primary">
     
       
-      <button mat-icon-button (click)="isShow()" color="basic" aria-label="Example icon button with a menu icon">
+      <button mat-icon-button (click)="isShow()" color="basic" aria-label="Example icon button with a menu icon" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
         <mat-icon>menu</mat-icon>
       </button>
    
-    <a  class="navbar-brand mx-0 font-weight-bold  text-nowrap"style="color: black;font-family: 'Georgia'" >GCM.SISTA</a>
+    <a  class="navbar-brand mx-0 font-weight-bold  text-nowrap" style="color: lightblue;font-family: 'Georgia';font-size: 20px;" >Gestion du cabinet médicale</a>
  
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       
       <li class="nav-item">
-        <a href="/login" class="navbar-brand mx-0 font-weight-bold  text-nowrap"style="color: black;font-family: 'Georgia'"  routerLink="login">Login</a>
+        <a href="/login" class="navbar-brand mx-0 font-weight-bold  text-nowrap"  style="color: lightblue;font-family: 'Georgia'"  routerLink="login">Login</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/profile" class="navbar-brand mx-0 font-weight-bold  text-nowrap"  style="color: black;font-family: 'Georgia'" routerLink="profile">{{ username }}</a>
+        <a href="/profile" class="navbar-brand mx-0 font-weight-bold  text-nowrap"  style="color: lightblue;font-family: 'Georgia'" routerLink="profile">{{ username }}</a>
       </li>
       <li class="nav-item">
-        <a href class="nav-link"  style="color: black;font-family: 'Georgia'" (click)="logout()">LogOut</a>
+        <a href class="nav-link"  style="color: lightblue;font-family: 'Georgia'" (click)="logout()">LogOut</a>
       </li>
     </ul>
   </nav>
@@ -31,22 +31,22 @@
       <nav  class="navbar navbar-expand-md navbar-dark  bg-primary flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
         
         <div class="text-center p-2">
-          <img src="../assets/images/sisita.jpg" alt="profile picture" class="img-fluid rounded-circle my-2 p-1 d-none d-md-block shadow"/>
+          <img src="../assets/images/mr.png" alt="profile picture" class="img-fluid rounded-circle my-2 p-1 d-none d-md-block shadow"/>
         </div>
            
-        <hr style="height:2px; width:100%; border-width:0; color:lightblue; background-color:lightblue">
+        <hr style="height:2px; width:90%; border-width:0; color:lightblue; background-color:lightblue">
 
         <div class="text-left p-2" id="nav">
           <ul class="navbar-nav flex-column w-100 justify-content-center">
           <li class="nav-item" >
-            <button mat-button routerLink="/listPatient" style="margin-left: 0%;" >
-              <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
+            <button mat-button routerLink="/listPatient" class="navbar-brand mx-0 font-weight-bold  text-nowrap" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button  color="Basic" aria-label="Example icon button with a home icon" >
                 <mat-icon>person</mat-icon>
-              </button>Gestion des Patients</button>
+              </button >Gestion des Patients</button>
            
           </li>
           <li class="nav-item" >
-            <button mat-button routerLink="/listVisite" style="margin-left: 0%;" >
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/listVisite" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 
                 <mat-icon>timer</mat-icon>
@@ -54,16 +54,16 @@
             
           </li>
           <li class="nav-item" >
-            <button mat-button routerLink="/DossierPatient" style="margin-left: 0%;" >
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/DossierPatient" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 <mat-icon> local_hospital</mat-icon>
               </button>Dossier du Patient</button>
             
           </li>
           
-          <hr style="height:2px; width:100%; border-width:0; color:lightblue; background-color:lightblue">
+          <hr style="height:2px; width:90%; border-width:0; color:lightblue; background-color:lightblue">
           <li class="nav-item" >
-            <button mat-button style="margin-left: 0%;" (click)="openDialog()">
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" style="margin-left: 0%;" (click)="openDialog()" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 <mat-icon>settings</mat-icon>
               </button>Paramétrage</button>
@@ -72,7 +72,7 @@
           </li>
 
           <li class="nav-item" >
-            <button mat-button  (click)="openUtil()" style="margin-left: 0%;" >
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" (click)="openUtil()" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 <mat-icon>build</mat-icon>
               </button>Gestion d'utilisateur</button>

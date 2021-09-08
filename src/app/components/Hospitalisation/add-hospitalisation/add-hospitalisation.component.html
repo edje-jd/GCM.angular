@@ -1,3 +1,92 @@
+<div class="container">
+<form [formGroup]="addHosp" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <button mat-icon-button (click)="onClose()" style="margin-left: 45%;" color="basic" aria-label="Example icon button with a menu icon">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Ajouter une Hospitalisation</mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+      <div class="row">
+        <div class="col">
+          
+            
+            <mat-form-field  class="full-width">
+              
+              <input matInput [matDatepicker]="picker1"  placeholder="Date debut d'hospitalisation" formControlName="date_debut_hosp">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error *ngIf="addHosp.controls['date_debut_hosp'].hasError('required')">
+                Date debut est <strong>Obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
+          
+        </div>
+        </div>
+        <div class="row">
+        <div class="col">
+          
+            
+          <mat-form-field  class="full-width">
+            
+            <input matInput [matDatepicker]="picker2"  placeholder="Date fin d'hospitalisation" formControlName="date_fin_hosp">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="addHosp.controls['date_fin_hosp'].hasError('required')">
+              Date fin est <strong>Obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nom d'unité" formControlName="nomUnite">
+          <mat-error *ngIf="addHosp.controls['nomUnite'].hasError('required')">
+            Nom d'unité est <strong>Obligatoire</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      </div>
+      <div class="row">
+       
+        <div class="col">
+          <mat-form-field class="full-width"> 
+            <input matInput type="number"  placeholder="Numéro du chambre" formControlName="numChambre">
+            <mat-error *ngIf="addHosp.controls['numChambre'].hasError('required')">
+              Numéro du chambre est <strong>Obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="number" placeholder="Numéro du lit" formControlName="numLit">
+            <mat-error *ngIf="addHosp.controls['numLit'].hasError('required')">
+              Numéro du lit <strong>Obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        
+        <div class="col">
+          <mat-form-field class="full-width">
+          <textarea matInput  placeholder="Traitement" formControlName="traitement"></textarea>
+          </mat-form-field> 
+        </div>
+      </div>
+     
+      
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Ajouter</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+</div>
+
+<!-- 
 
 <!DOCTYPE html>
 <html>
@@ -85,10 +174,9 @@
 
   <div class="row">
 
-    <!-- <button  mat-mini-fab color="warn" style="margin-left: 2%;" color="primary" (click) = "Retour()">
-        <mat-icon >assignment_return</mat-icon></button> -->
+    
     <input type="submit" style="margin-left: 50%;" value="Ajouter" mat-dialog-close>
-    <!-- <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button> -->
+    
    
    
   </div>
@@ -96,74 +184,4 @@
 </div>
 
 </body>
-</html>
-<!-- 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-<div class="container" style="background-color: light; margin-left: 10% " >
-
-<div class="col-md-6 offset-md-3 " STYLE="margin-left: 20% ; width: 40%"   >
-    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
-    <h3 style="margin-left: 20%; font-family: 'Georgia', Times, serif; color: blue;" > Ajouter une Hospitalisation</h3>
-  <hr STYLE="color: yellow; ">
-    <form (ngSubmit) = "onSubmit()" [formGroup]="form">
-
-        <div class="form-group">
-            <input type="hidden" class ="form-control" id = "id" placeholder="Identifiant"
-                [(ngModel)] = "hospitalisationV.hospitalisation.id" name = "id">
-        </div>
-
-        <div class="form-group">
-            <label for="date_debut_hosp"  style="color: blue;font-family: 'Georgia'">Date debut d'hospitalisation</label>
-            <input type="date"  class ="form-control" id = "date_debut_hosp" placeholder="Date debut d'hospitalisation"
-                [(ngModel)] = "hospitalisationV.hospitalisation.date_debut_hosp" name = "date_debut_hosp">
-               
-                  
-        </div>
-
-        <div class="form-group">
-            <label for="date_fin_hosp"  style="color: blue;font-family: 'Georgia'">Date fin d'hospitalisation</label>
-            <input type="date" class ="form-control" id = "date_fin_hosp" placeholder="Date fin d'hospitalisation"
-                [(ngModel)] = "hospitalisationV.hospitalisation.date_fin_hosp" name = "date_fin_hosp">
-        </div>
-        <div class="form-group">
-            <label for="nomUnite" class="required" style="color: blue;font-family: 'Georgia'">Nom d'unité</label>
-            <input type="text" class ="form-control" id = "nomUnite" placeholder="Nom d'unite"
-                [(ngModel)] = "hospitalisationV.hospitalisation.nomUnite  " name = "nomUnite" formControlName="nomUnite"
-                [ngClass]="{'is-invalid':form.get('nomUnite')?.touched && form.get('nomUnite')?.invalid}">
-                <div class="invalid-feedback">
-                    <div>unite name is required</div>
-                </div>
-        </div>
-        <div class="form-group">
-            <label for="numChambre" style="color: blue;font-family: 'Georgia'">Numéro de chambre</label>
-            <input type="number" class ="form-control" id = "numChambre" placeholder="numerau de chambre"
-                [(ngModel)] = "hospitalisationV.hospitalisation.numChambre " name = "numChambre">
-        </div>
-        <div class="form-group">
-            <label for="numLit"  style="color: blue;font-family: 'Georgia'">Numéro de lit </label>
-            <input type="number" class ="form-control" id = "numLit" placeholder="numerau de lit"
-                [(ngModel)] = "hospitalisationV.hospitalisation.numLit " name = "numLit">
-        </div>
-        
-   
-        <div class="form-group">
-
-            <label for="traitement" class="required" style="color: blue;font-family: 'Georgia'">Traitement </label>
-            <input type="text" class ="form-control" id = "traitement" placeholder="Traitement donnee"
-                [(ngModel)] = "hospitalisationV.hospitalisation.traitement " name = "traitement" formControlName="traitement"
-                [ngClass]="{'is-invalid':form.get('traitement')?.touched && form.get('traitement')?.invalid}">
-                <div class="invalid-feedback">
-                    <div>Traitement is required</div>
-                </div>
-        </div>
-    
-    
-        
-   
-        
-      <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button>
-    </form>
-</div>
-</div> -->
+</html> -->

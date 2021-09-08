@@ -37,4 +37,7 @@ Retour(){
   window.history.back();
 }
 
+printPage() {
+  window.print();
+}
 }

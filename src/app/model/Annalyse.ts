@@ -4,4 +4,5 @@ export class Annalyse{
     id!:number;
     nomAnls?:string ;
     nom_labo?:string;
+    dateAnls?:Date;
 }

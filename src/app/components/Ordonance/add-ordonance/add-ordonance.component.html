@@ -1,4 +1,87 @@
 
+
+<form [formGroup]="addOrd" novalidate (ngSubmit)="onSubmit()" class="formm">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <button mat-icon-button (click)="onClose()" style="margin-left: 45%;" color="basic" aria-label="Example icon button with a menu icon">
+        <mat-icon>close</mat-icon>
+      </button>
+          <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Ajouter un Ordonnance</mat-card-title>
+       
+        
+          
+       
+      
+     
+    </mat-card-header>
+    <mat-card-content >
+      <div class="row">
+        <div class="col">
+          
+            
+            <mat-form-field  class="full-width">
+              
+              <input matInput [matDatepicker]="picker1" placeholder="Date d'ordonnance" formControlName="date_ord">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select    placeholder="Medicament" formControlName="medicament" >
+           
+    
+                
+            <mat-option *ngFor = "let item of medicaments" [value]="item" >
+                <tr >
+                   
+                   
+                    {{item.nomMedc}}
+                
+                </tr>
+            </mat-option>
+    
+            </mat-select>
+            <mat-error *ngIf="addOrd.controls['medicament'].hasError('required')">
+              le nom du Medicament est <strong>obligatoire</strong>
+            </mat-error>
+            
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput  placeholder="Dosage" formControlName="dosage"></textarea>
+            <mat-error *ngIf="addOrd.controls['dosage'].hasError('required')">
+              dosage est <strong>Obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput  placeholder="Prochaine Rend-Vous" formControlName="datePrdv">
+            <mat-error *ngIf="addOrd.controls['datePrdv'].hasError('required')">
+              date du Prochaine Rend-Vous est <strong>Obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Ajouter</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+
+<!-- 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +89,6 @@
 </head>
 <body>
 
-<!--     
-<h1 style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter un ordonnance</h1> -->
 <mat-toolbar>
   <span style=" margin-left: 30%;font-family: 'Georgia', Times, serif; color: blue;">Ajouter un Ordonnance</span>
   <button mat-icon-button (click)="onClose()" style="margin-left: 40%;" color="basic" aria-label="Example icon button with a menu icon">
@@ -25,12 +106,7 @@
     <div class="col-75">
       <input type="date" class="form-control"  id = "date_ord" placeholder="Date d'ordonance"
       [(ngModel)] = "ordonancemv.ordonance.date_ord" name = "date_ord">
-      <!-- formControlName="date_visit"
-        [ngClass]="{'is-invalid':form.get('date_visit')?.touched && form.get('date_visit')?.invalid}">
-
-        <div class="invalid-feedback">
-            <div> Date de visite est obligatoire</div>
-        </div>  -->
+      
     </div>
   </div>
   
@@ -44,12 +120,7 @@
     <div class="col-75">
         <mat-select   type="text" class ="form-control"id = " M_Id"  placeholder="id Medicament"
         [(ngModel)]="ordonancemv.medicament" name = "M_Id" >
-        <!-- formControlName="visitepm"
-        [ngClass]="{'is-invalid':form.get('visitepm')?.touched && form.get('visitepm')?.invalid}">
-
-        <div class="invalid-feedback">
-            <div> Name Medcin visite is required</div>
-        </div> -->
+       
 
             
         <mat-option *ngFor = "let item of medicaments" [value]="item" >
@@ -75,10 +146,9 @@
 
   <div class="row">
 
-    <!-- <button  mat-mini-fab color="warn" style="margin-left: 2%;" color="primary" (click) = "Retour()">
-        <mat-icon >assignment_return</mat-icon></button> -->
+    
     <input type="submit" style="margin-left: 50%;" value="Ajouter" mat-dialog-close>
-    <!-- <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Ajouter</button> -->
+   
    
    
   </div>
@@ -88,7 +158,7 @@
 </body>
 </html>
 
-
+ -->
 
 
 

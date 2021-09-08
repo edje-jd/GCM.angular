@@ -15,7 +15,7 @@
   name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search medecin..." required> <br>
 
 
-  <table mat-table [dataSource]="this.medecinPhs"  class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
     
       
     <ng-container matColumnDef="id">
@@ -34,7 +34,17 @@
         <td mat-cell *matCellDef="let medecinPh">  {{medecinPh.medecin.specialicite }} </td>
         
       </ng-container>
-
+      <ng-container matColumnDef="medecin.numPhone">
+        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Téléphone</th>
+        <td mat-cell *matCellDef="let medecinPh">  {{medecinPh.medecin.numPhone }} </td>
+        
+      </ng-container>
+      <ng-container matColumnDef="medecin.email">
+        <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef> Adresse Email </th>
+        <td mat-cell *matCellDef="let medecinPh">  {{medecinPh.medecin.email }} </td>
+        
+      </ng-container>
+      
       <ng-container matColumnDef="plage_Horaire.heure_deb">
         <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Heure debut</th>
         <td mat-cell *matCellDef="let medecinPh"> {{medecinPh.plage_Horaire.heure_deb}}</td>

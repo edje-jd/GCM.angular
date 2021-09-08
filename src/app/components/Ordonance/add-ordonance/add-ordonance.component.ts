@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Medicament } from 'src/app/model/Medicament';
 import { Ordonance } from 'src/app/model/Ordonance';
@@ -28,30 +29,46 @@ export class AddOrdonanceComponent implements OnInit {
   medicaments!:Medicament[];
   medicament!:Medicament;
   id?:any;
-  form = new FormGroup({
-    dosage : new FormControl('',Validators.required),
-    medicament :new FormControl('',Validators.required)
- })
-  constructor(public dialogRef: MatDialogRef<AddOrdonanceComponent>,private visitepmservice:VisitePMService,private ordonancemvservice:OrdonanceMVService,private ordonanceService: OrdonanceService,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) {
+  ordonnance:any;
+  addOrd = this.fb.group({
+    date_ord: null,
+    medicament: [null, Validators.required], 
+    dosage: [null, Validators.required],
+    datePrdv: [null, Validators.required],
+    
+   
+  });
+  constructor(private fb: FormBuilder,private ordonanceMVService:OrdonanceMVService,public dialogRef: MatDialogRef<AddOrdonanceComponent>,private visitepmservice:VisitePMService,private ordonancemvservice:OrdonanceMVService,private ordonanceService: OrdonanceService,private router: Router,private visiteService:VisiteService,private medicamentService:MedicamentService) {
     this.visitepm = history.state
     this.ordonancemv.ordonance=new Ordonance();
    }
 
   ngOnInit(): void {
+    this.ordonanceMVService.getOrdonanceMVList().subscribe(data => {
+      this.ordonnance= new MatTableDataSource<OrdonanceMV>(data.filter(_ordonnance =>  _ordonnance.visitepm.patient.name==this.visitepm.patient.name));
+    });
     this.getlistMedicaments();
     this.getlistVisitePMs();
   }
 
   saveOrdonance(){
+    this.ordonancemv.ordonance.date_ord = this.addOrd.controls.date_ord.value;
+    this.ordonancemv.medicament = this.addOrd.controls.medicament.value;
+    this.ordonancemv.ordonance.dosage = this.addOrd.controls.dosage.value;
+    this.ordonancemv.ordonance.datePrdv = this.addOrd.controls.datePrdv.value;
+    console.log("chew4e",this.ordonancemv);
     this.ordonancemvservice.addOrdonanceMV(this.ordonancemv).subscribe( data =>{
       console.log(data);
 
-        this.goToOrdonanceList();
+      this.ordoranceDetails(this.ordonancemv);
       },
       error => console.log(error));
   }
   goToOrdonanceList(){
     this.router.navigate(['/listOrdonance']);
+  }
+  goToDossierPatient(){
+    this.router.navigate(['/Dosier-Detail']);
   }
   getlistVisitePMs(){
     this.visitepmservice.getVisitePMList().subscribe(data=>{
@@ -64,12 +81,20 @@ export class AddOrdonanceComponent implements OnInit {
       this.medicaments=data;
       })
        }
+       ordoranceDetails(ordonancemv:OrdonanceMV){
+        this.router.navigate(['ordonance-details'],{state:ordonancemv});
+      }
   onSubmit(){
-    // this.ordonancemv.medicament=this.medicament;
-    // this.ordonancemv.ordonance=this.ordonance;
-    this.ordonancemv.visitepm=this.visitepm;
-    console.log(this.ordonancemv.medicament);
-    this.saveOrdonance();
+   
+    
+    
+    
+    if(this.addOrd.status === "VALID"){
+      this.ordonancemv.visitepm=this.visitepm;
+      this.saveOrdonance();
+      this.dialogRef.close();
+    } ;
+
   }
   Retour(){
     window.history.back();

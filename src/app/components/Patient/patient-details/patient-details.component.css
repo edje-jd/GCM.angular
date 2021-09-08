@@ -9,6 +9,11 @@
     padding-bottom: 15px;
 }
 
-.example-card {
-    max-width: 300px;
+.mr{
+    width: 100px;
+    height: 100px;
+    
+}
+table {
+    width: 100%;
   }

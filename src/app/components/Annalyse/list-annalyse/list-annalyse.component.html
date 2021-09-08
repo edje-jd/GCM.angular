@@ -50,7 +50,7 @@
         <button  mat-mini-fab color="warn" (click) = "updateAnnalyse(annalyseV.annalyse)" aria-label="Example icon button with a home icon">
         <mat-icon >update</mat-icon></button>&nbsp;
         <button  mat-mini-fab color="accent" (click) = "deleteAnnalyse(annalyseV.id)"><mat-icon >delete</mat-icon></button>&nbsp;
-        <button  mat-mini-fab color="primary"  ><mat-icon >info</mat-icon></button>
+        <button  mat-mini-fab color="primary"  (click) = "annalyseDetail(annalyseV)"><mat-icon >info</mat-icon></button>
     </td>
       
     </ng-container>

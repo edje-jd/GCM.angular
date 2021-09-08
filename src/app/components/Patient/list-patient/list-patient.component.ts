@@ -123,6 +123,7 @@ openUtil(){
   dialogConfig.autoFocus = true;
   dialogConfig.width = "600px";
   dialogConfig.height= "500px";
+  
   this.dialog.open(AddPatientComponent,dialogConfig);
   // this.dialog.open(AddPatientComponent, {
   //   height: '600px',

@@ -52,6 +52,7 @@ export class AddPatientComponent implements OnInit {
    
     this.getlistAntecedents();
     this.getlistLocalisations();
+   
   }
 savePatient
   (){
@@ -95,6 +96,9 @@ savePatient
       // this.service.initializeFormGroup();
       this.dialogRef.close();
     }
+    changePosition() {
+      this.dialogRef.updatePosition({ top: '50px', left: '50px' });
+  }
 
  getlistLocalisations(){
       this.localisationService.getLocalisationList().subscribe(data=>{

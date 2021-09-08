@@ -1,4 +1,4 @@
-
+<!-- 
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -10,7 +10,12 @@
       <div class="page-content page-container" id="page-content">
         <div class="padding">
             <div class="row container d-flex justify-content-center">
-                <div class="col-xl-8 col-md-12">
+                <div class="col-xl-4 col-md-4"> <mat-card class="example-card">
+                    <mat-card-title> {{this.hospitalisationv.visitePM.patient.name && this.hospitalisationv.visitePM.patient.name.length <= 8?  this.hospitalisationv.visitePM.patient.name : this.hospitalisationv.visitePM.patient.name?.slice(0,5) + ".."}}</mat-card-title>
+                    <img mat-card-image img src="https://as2.ftcdn.net/jpg/02/14/64/25/500_F_214642505_6kkV06wDk1j1NpXjmCeepDMt3j64ul0r.jpg">
+                    <mat-card-footer>SISTA.sarl</mat-card-footer>
+                </mat-card></div>
+                <div class="col-xl-8 col-md-8">
                     <div class="card user-card-full">
                        
                         <div id="id-print" >
@@ -27,51 +32,51 @@
                                         class="img-radius" alt="User-Profile-Image"> </div>
                                  
                                     <h6 class="f-w-600" style="color: blue;"><b>Identifiant du patient</b></h6>
-                                    <p style="color: black;">{{hospitalisationv.visitePM.patient.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                    <p style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.visitePM.patient.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="card-block">
                                     <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: blue"><b>Hospitalisation Information</b></h6>
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: blue;font-family: 'Georgia';font-size: 16px;"><b>Hospitalisation Information</b></h6>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600" style="color: blue">Nom patient</p>
-                                            <h6 class="text-muted f-w-400"> {{hospitalisationv.visitePM.patient.name}}</h6>
+                                            <h6 class="text-muted f-w-400"style="color: black;font-family: 'Georgia';font-size: 14px;"> {{hospitalisationv.visitePM.patient.name}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600" style="color: blue">Date debut d'hospitalisation</p>
-                                            <h6 class="text-muted f-w-400">{{hospitalisationv.hospitalisation.date_debut_hosp}}</h6>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.hospitalisation.date_debut_hosp|date: 'dd/MM/yyyy'}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600" style="color: blue">Date fin d'hospitalisation</p>
     
-                                            <h6 class="text-muted f-w-400">{{hospitalisationv.hospitalisation.date_fin_hosp}}</h6>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.hospitalisation.date_fin_hosp|date: 'dd/MM/yyyy'}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600" style="color: blue">Numero de lit</p>
-                                            <h6 class="text-muted f-w-400">{{hospitalisationv.hospitalisation.numLit}}</h6>
+                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.hospitalisation.numLit}}</h6>
                                         </div>
                                       
                                      <br>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600" style="color: blue">Numero du chambre</p>
     
-                                        <h6 class="text-muted f-w-400">{{hospitalisationv.hospitalisation.numChambre}}</h6>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.hospitalisation.numChambre}}</h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600" style="color: blue">Nom d'unite</p>
     
-                                        <h6 class="text-muted f-w-400">{{hospitalisationv.hospitalisation.nomUnite}}</h6>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.hospitalisation.nomUnite}}</h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600" style="color: blue">Traitement donne</p>
     
-                                        <h6 class="text-muted f-w-400">{{hospitalisationv.hospitalisation.traitement}}</h6>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.hospitalisation.traitement}}</h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="m-b-10 f-w-600" style="color: blue">Nom de medecin </p>
-                                        <h6 class="text-muted f-w-400">{{hospitalisationv.visitePM.medecinPH.medecin.name}}</h6>
+                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{hospitalisationv.visitePM.medecinPH.medecin.name}}</h6>
                                     </div>
                     
                                 
@@ -89,7 +94,7 @@
                 
                         </div>
                         <i class="far fa-print">
-                            <!-- [useExistingCss]="true"  -->
+                            
                             <button 
                            
                                 printSectionId="id-print" 
@@ -107,4 +112,109 @@
     
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script> -->
+
+    <div class="col-xl-10 col-md-10">
+        <div class="container">&nbsp;</div>
+    <div class="container">&nbsp;</div>
+        <mat-card class="example-card">
+            
+                <div class="row">
+                    <div class="col-sm-5">
+                        <mat-card-title style="text-align: left;">Cabinet medicale </mat-card-title>
+                        <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
+                   </div>
+                   <div class="col-sm-2" >
+                       <div class="image">
+                      <img mat-card-image img src="../assets/images/24.jpg"></div>
+                   </div>
+                   <div class="col-sm-3"></div>
+                
+                   <div class="col-sm-2">
+                    <div class="container">&nbsp;</div>
+                    <div class="mr">
+                    <img mat-card-image img src="../assets/images/mr.png"> </div>  
+                   </div>
+                </div> 
+                <hr style="background-color: blue;border-radius: 10rem;border: 2;">
+
+                <mat-card-title style="text-align: center;">Information d'hospitalisation  </mat-card-title>
+                <mat-card-subtitle style="text-align: center;">Code du patient:  {{hospitalisationv.visitePM.patient.id}}</mat-card-subtitle>
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        
+                        <mat-card-title style="text-align: center;">Nom et prénom :{{hospitalisationv.visitePM.patient.name}}</mat-card-title>
+                    </div>
+                    
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-6">
+                      
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Date debut d'hospitalisation :{{hospitalisationv.hospitalisation.date_debut_hosp|date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+                    </div>
+                    <div class="col-sm-6">
+                       
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Date fin d'hospitalisation :{{hospitalisationv.hospitalisation.date_fin_hosp|date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                       
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Nom d'unité : {{hospitalisationv.hospitalisation.nomUnite}}</mat-card-subtitle>
+                    </div>
+                    <div class="col-sm-6">
+                       
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Numéro du chambre : {{hospitalisationv.hospitalisation.numChambre}}</mat-card-subtitle>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Numéro du lit : {{hospitalisationv.hospitalisation.numLit}}</mat-card-subtitle>
+                    </div>
+                    <div class="col-sm-6">
+
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Traitement : {{hospitalisationv.hospitalisation.traitement}}{{hospitalisationv.visitePM.medecinPH.medecin.name}}</mat-card-subtitle>
+                    </div>
+                    
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-8"></div>
+                    <div class="col-sm-4">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Medecin :{{hospitalisationv.visitePM.medecinPH.medecin.name}}</mat-card-subtitle>
+                    </div>
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button  mat-mini-fab color="primary" (click) = "Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="Page précédent"><mat-icon >
+                            arrow_back
+                          </mat-icon></button>
+                    </div>
+                    <div class="col-sm-8">
+                        <i class="far fa-print">
+                            
+                            <button 
+                           
+                            (click)="printPage()"
+                                    ngxPrint style=" margin-left: 80%;" class = "btn btn-success" type ="submit">
+                                      Imprimer</button>
+                        </i>
+                    </div>
+                    
+                    <div class="col-sm-2"> 
+                         </div>
+                </div>
+                <mat-card-footer style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">SISTA.sarl</mat-card-footer>
+                </mat-card>
+                </div>
+        
+

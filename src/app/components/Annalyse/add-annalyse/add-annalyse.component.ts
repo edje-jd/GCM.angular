@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Annalyse } from 'src/app/model/Annalyse';
@@ -21,11 +21,15 @@ export class AddAnnalyseComponent implements OnInit {
   visitePM!:VisitePM;
   visitepms!:VisitePM[];
   visite!:Visite;
-  form = new FormGroup({
-    nomAnls : new FormControl('',Validators.required),
-    nom_labo :new FormControl('',Validators.required)
- })
-  constructor(public dialogRef: MatDialogRef<AddAnnalyseComponent>,private visitepmservice:VisitePMService,private annalyseVService:AnnalyseVService , private router:Router,private visiteService:VisiteService) { 
+  addAnls = this.fb.group({
+    dateAnls: null,
+    nomAnls: [null, Validators.required], 
+    nom_labo: [null, Validators.required]
+    
+    
+   
+  });
+  constructor(private fb:FormBuilder,public dialogRef: MatDialogRef<AddAnnalyseComponent>,private visitepmservice:VisitePMService,private annalyseVService:AnnalyseVService , private router:Router,private visiteService:VisiteService) { 
     this.visitePM = history.state
     this.annalyseV.annalyse= new Annalyse();
   }
@@ -34,12 +38,19 @@ export class AddAnnalyseComponent implements OnInit {
     this.getlistVisitePMs();
   }
   saveAnnalyse(){
+    this.annalyseV.annalyse.dateAnls = this.addAnls.controls.dateAnls.value;
+    this.annalyseV.annalyse.nomAnls = this.addAnls.controls.nomAnls.value;
+    this.annalyseV.annalyse.nom_labo = this.addAnls.controls.nom_labo.value;
+    console.log("enchewv",this.annalyseV);
     this.annalyseVService.addAnnalyseV(this.annalyseV).subscribe( data =>{
         console.log(data);
 
-        this.goToAnnalyseList();
+        this. AnalyseDetails(this.annalyseV);
       },
       error => console.log(error));
+  }
+  AnalyseDetails(analysev:AnnalyseV){
+    this.router.navigate(['annalyse-detail'],{state:analysev});
   }
   goToAnnalyseList(){
     this.router.navigate(['/listAnnalyse']);
@@ -50,8 +61,14 @@ export class AddAnnalyseComponent implements OnInit {
     })
      }
   onSubmit(){
-    this.annalyseV.visitePM=this.visitePM;
-    this.saveAnnalyse();
+    
+    
+
+    if(this.addAnls.status === "VALID"){
+      this.annalyseV.visitePM=this.visitePM;
+      this.saveAnnalyse();;
+      this.dialogRef.close();
+    } ;
   }
   Retour(){
     window.history.back();

@@ -78,6 +78,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DossierPatientComponent } from './components/DosdierPatient/dossier-patient/dossier-patient.component'; 
 import { MatNativeDateModule } from '@angular/material/core';
+import { DosierDetailComponent } from './components/DosdierPatient/dosier-detail/dosier-detail.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AnnalyseDetailComponent } from './components/Annalyse/annalyse-detail/annalyse-detail.component'; 
 
 @NgModule({
   declarations: [
@@ -166,6 +169,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     
     DossierPatientComponent,
     
+    DosierDetailComponent,
+    
+    AnnalyseDetailComponent,
+    
     
     
     
@@ -173,7 +180,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   entryComponents:[HomeComponent,AddVisiteComponent,ExempleComponent],
   imports: [
     MatNativeDateModule,
-  
+    MatSnackBarModule,
     MatGridListModule,
     BrowserModule,
     AppRoutingModule,
