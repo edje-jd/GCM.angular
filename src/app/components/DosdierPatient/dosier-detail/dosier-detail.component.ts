@@ -104,6 +104,7 @@ displayedColumnsA: string[] = ['dateAnls','nomAnls', 'Actions'];
     dialogConfig.autoFocus = true;
     dialogConfig.width = "600px";
     dialogConfig.height= "400px";
+    dialogConfig.position= {bottom:'50px',right:'20px'};
     this.dialog.open(AddOrdonanceComponent,dialogConfig);
   
   }
@@ -114,6 +115,7 @@ displayedColumnsA: string[] = ['dateAnls','nomAnls', 'Actions'];
     dialogConfig.autoFocus = true;
     dialogConfig.width = "700px";
    dialogConfig.height= "450px";
+   dialogConfig.position= {bottom: '50px',left:'300px'};
     this.dialog.open(AddHospitalisationComponent,dialogConfig);
   
   }
@@ -124,6 +126,7 @@ displayedColumnsA: string[] = ['dateAnls','nomAnls', 'Actions'];
     dialogConfig.autoFocus = true;
     dialogConfig.width = "600px";
     dialogConfig.height= "450px";
+    dialogConfig.position= {top: '50px',right:'20px'};
     this.dialog.open(AddAnnalyseComponent,dialogConfig);
   
   }
@@ -131,8 +134,9 @@ displayedColumnsA: string[] = ['dateAnls','nomAnls', 'Actions'];
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "45%";
-    dialogConfig.height = "65%";
+    dialogConfig.width = "650px";
+    dialogConfig.height= "600px";
+    dialogConfig.position= {top: '50px',left:'270px'};
     dialogConfig.data = {patient: this.visitepm.patient}
     
     this.dialog.open(AddVisiteComponent,dialogConfig);}

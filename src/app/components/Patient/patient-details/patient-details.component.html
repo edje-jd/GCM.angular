@@ -7,7 +7,7 @@
             
                 <div class="row">
                     <div class="col-sm-5">
-                        <mat-card-title style="text-align: left;">Cabinet medicale </mat-card-title>
+                        <mat-card-title style="text-align: left;">Cabinet médicale </mat-card-title>
                         <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
                         <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
                         <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
@@ -64,6 +64,15 @@
                 </div>
                 <div class="container">&nbsp;</div>
                 <div class="row">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2">
+                        <button  mat-mini-fab color="primary"   (click)="openUtil()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="ajouter un nouveau visite">
+                            <mat-icon>add</mat-icon>
+                          </button>
+                    </div>
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
                     <div class="col-sm-12">
                         <mat-card class="example-card">
                             <mat-card-title>Visites </mat-card-title>
@@ -76,11 +85,7 @@
                                     <td mat-cell *matCellDef="let visitepm"> {{visitepm.visite.date_visit|date: 'dd/MM/yyyy'}}</td>
                                     
                                 </ng-container>
-                                <!-- <ng-container matColumnDef="patient.name">
-                                    <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef>Patient</th>
-                                    <td mat-cell *matCellDef="let visitepm"> {{visitepm.patient.name}} </td>
-                                    
-                                </ng-container> -->
+                               
                                 
                                 
                                 <ng-container matColumnDef="objet_visit">
@@ -109,9 +114,7 @@
                                     <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > &nbsp; &nbsp;&nbsp;&nbsp; Actions </th>
                                     <td mat-cell *matCellDef="let visitepm">
                                         &nbsp; &nbsp;&nbsp;&nbsp;
-                                    <!-- <button  mat-mini-fab color="warn" (click) = "updateVisite(visitepm.visite)"  aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="modifier">
-                                    <mat-icon >update</mat-icon></button> -->
-                                    <!-- <button  mat-mini-fab color="accent" (click) = "deleteVisite(visitepm.id)" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="supprimer"><mat-icon >delete</mat-icon></button>&nbsp; -->
+                                   
                                     <button  mat-mini-fab color="primary" (click) = "detalVisite(visitepm)" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="info"><mat-icon >info</mat-icon></button></td>
                                     
                                 </ng-container>
@@ -132,22 +135,18 @@
                             arrow_back
                           </mat-icon></button>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         <i class="far fa-print">
                             
                             <button 
                            
                             (click)="printPage()" 
-                                    ngxPrint style=" margin-left: 3%;" class = "btn btn-success" type ="submit">
+                                    ngxPrint style=" margin-left: 80%;" class = "btn btn-success" type ="submit">
                                       Imprimer</button>
                         </i>
                     </div>
                     
-                    <div class="col-sm-2"> 
-                        <button  mat-mini-fab color="primary"   (click)="openUtil()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="ajouter un nouveau visite">
-                            <mat-icon>add</mat-icon>
-                          </button>
-                         </div>
+                    
                 </div>
                 <mat-card-footer style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">SISTA.sarl</mat-card-footer>
                 </mat-card>

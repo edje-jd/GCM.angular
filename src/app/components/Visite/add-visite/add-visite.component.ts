@@ -55,7 +55,6 @@ Consultation!:any;
   ngOnInit(): void {
     this. getlistPatients();
     this.getlistMedecinPHs();
-    console.log(this.patient);
    
   }
 

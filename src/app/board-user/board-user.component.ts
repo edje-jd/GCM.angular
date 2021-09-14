@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 
 @Component({
@@ -8,10 +9,19 @@ import { UserService } from '../_services/user.service';
 })
 export class BoardUserComponent implements OnInit {
   content?: string;
-
-  constructor(private userService: UserService) { }
+  currentUser:any;
+  showAdminBoard:any;
+  roles: string[] = [];
+  isLoggedIn = false;
+  constructor(private tokenStorageService: TokenStorageService,private userService: UserService,private token: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+    this.showAdminBoard = this.roles.includes('ROLE_ADMIN');};
+    this.roles = this.tokenStorageService.getUser().roles;
     this.userService.getUserBoard().subscribe(
       data => {
         this.content = data;

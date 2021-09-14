@@ -7,7 +7,7 @@
         <mat-icon>menu</mat-icon>
       </button>
    
-    <a  class="navbar-brand mx-0 font-weight-bold  text-nowrap" style="color: lightblue;font-family: 'Georgia';font-size: 20px;" >Gestion du cabinet médicale</a>
+    <a  class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/board-user" style="color: lightblue;font-family: 'Georgia';font-size: 20px;" >Gestion du cabinet médicale</a>
  
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
@@ -53,7 +53,7 @@
               </button> Visites et Liste d'attentes</button>
             
           </li>
-          <li class="nav-item" >
+          <li class="nav-item" *ngIf="showAdminBoard">
             <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/DossierPatient" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 <mat-icon> local_hospital</mat-icon>
@@ -71,7 +71,7 @@
             
           </li>
 
-          <li class="nav-item" >
+          <li class="nav-item" *ngIf="showAdminBoard">
             <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" (click)="openUtil()" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 <mat-icon>build</mat-icon>

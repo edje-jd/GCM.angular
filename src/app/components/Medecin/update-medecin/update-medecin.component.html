@@ -4,7 +4,7 @@
 <div class="container" style="background-color: light;  " >
 
   <div class="col-md-6 offset-md-3 " STYLE="margin-left: 10% ; width: 45%"   ><BR>
-    <h3 style="margin-left: 5%; font-family: 'Georgia', Times, serif; color: blue;" > Modifier une medicament</h3>
+    <h3 style="margin-left: 5%; font-family: 'Georgia', Times, serif; color: blue;" > Modifier un medecin</h3>
     <hr STYLE="color: yellow; ">
     <form (ngSubmit) = "onSubmit()">
 
@@ -15,8 +15,18 @@
 
       <div class="form-group">
 
-        <input type="text" class ="form-control" id = "nomMedc" placeholder="Nom de medicament"
-               [(ngModel)] = "medecin.specialicite" name = "nomMedc">
+        <input type="text" class ="form-control" id = "email" placeholder="Email"
+               [(ngModel)] = "medecin.email" name = "email">
+      </div>
+      <div class="form-group">
+
+        <input type="text" class ="form-control" id = "specialicite" placeholder="Specialité"
+               [(ngModel)] = "medecin.specialicite" name = "specialicite">
+      </div>
+      <div class="form-group">
+
+        <input type="text" class ="form-control" id = "numPhone" placeholder="Telephone"
+               [(ngModel)] = "medecin.numPhone" name = "numPhone">
       </div>
 
       <!-- <mat-select  type="text" class ="form-control" id = " Ph_Id"  placeholder="id Phoraire"

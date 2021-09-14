@@ -1,1 +1,9 @@
-
+.example-card{
+    width: 700px;
+    height: 480px;
+}
+.matbu{
+    font-size: 1em;
+    background-color: blue;
+    color: light;
+}

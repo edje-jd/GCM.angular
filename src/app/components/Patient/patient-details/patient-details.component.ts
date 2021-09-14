@@ -77,8 +77,9 @@ openUtil(){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus = true;
-  dialogConfig.width = "45%";
-  dialogConfig.height = "65%";
+  dialogConfig.width = "650px";
+  dialogConfig.height= "600px";
+  dialogConfig.position= {top: '50px'};
   dialogConfig.data = {patient: this.patient}
   
   this.dialog.open(AddVisiteComponent,dialogConfig);

@@ -13,7 +13,8 @@
     <DIV CLASS="container">
     
   
-  <h1 style="color: red; font-family: 'Georgia', Times, serif; margin-left: 0%;" > Liste d'attente pour {{currentDate}} </h1></DIV>
+  <h1 style="color: red; font-family: 'Georgia', Times, serif; margin-left: 0%;" > Liste d'attente pour {{currentDate.toLocaleDateString("fr-FR", 
+    { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}} </h1></DIV>
     
     <div>
       <mat-form-field class="example-full-width">
@@ -75,7 +76,7 @@
     <tr  mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnss;"></tr>
   </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[3,5, 10, 15]" showFirstLastButtons></mat-paginator>
   </div>
   </div>
 </div>
@@ -83,7 +84,7 @@
 <div class="col-sm-12">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <div class="container">&nbsp;</div>
-    <div class="container">&nbsp;</div>
+    
 <div class="container" style="background-color:light; margin-left: 0% " >
  <DIV CLASS="container">
     
@@ -95,7 +96,7 @@
       <input
         matInput
        
-        placeholder="Recherche par nom..." #name (keyup)="findPatientByName(name)"
+        placeholder="Recherche par nom..."
        
       />
       </mat-form-field> 
@@ -167,7 +168,7 @@
   <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator></div>
+<mat-paginator [pageSizeOptions]="[3,5, 10, 15]" showFirstLastButtons></mat-paginator></div>
 </div>
 </div>
 </div> 

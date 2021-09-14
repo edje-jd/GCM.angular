@@ -1,4 +1,4 @@
-
+<!-- 
   <div class="wrapper">
     <div class="sidebar hidden-phone">
     </div>
@@ -22,4 +22,44 @@ color: lightblue; font-weight: bold; "  >
   </div>
 
     </div>
+</div> -->
+<div class="container">
+  <div class="container">&nbsp;</div>
+  <div class="container">&nbsp;</div>
+  <div class="container">&nbsp;</div>
+  <div class="row">
+     <div class="col-sm-2"></div>
+     <div class="col-sm-8"> 
+      <mat-card class="example-card">
+        <mat-card-title>BienVenue 😊😊😊...  </mat-card-title>
+        <mat-card-title>{{ currentUser.username }} vous étes connecteé en tanque {{roles}}</mat-card-title>
+        <img src="../assets/5.jpg"  width="600px" height="320px"  style=" box-shadow: rgba(16,18,76,0.66);">
+        <div class="container">&nbsp;</div>
+        <div class="row">
+          
+          <div class="col-sm-4"> 
+              <button mat-button class="matbu" routerLink="/listPatient" color="primary" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button  color="basic" aria-label="Example icon button with a home icon" >
+                <mat-icon>person</mat-icon>
+              </button >Gestion des Patients</button>
+          </div>
+          <div class="col-sm-4">
+            <button mat-button class="matbu" routerLink="/listVisite" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button color="basic" aria-label="Example icon button with a home icon">
+                
+                <mat-icon>timer</mat-icon>
+              </button>Liste d'attentes</button>
+          </div>
+          <div class="col-sm-4">
+            <button mat-button class="matbu" routerLink="/DossierPatient" style="margin-left: 0%;" style="color:lightblue;font-family: 'Georgia';font-size: 16px;">
+            <button mat-icon-button color="basic" aria-label="Example icon button with a home icon">
+              <mat-icon> local_hospital</mat-icon>
+            </button>Dossier du Patient</button></div>
+
+        </div>
+      </mat-card>
+     </div>
+     <div class="col-sm-2"></div>
+     
+  </div>
 </div>

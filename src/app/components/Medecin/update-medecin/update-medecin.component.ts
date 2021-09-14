@@ -18,7 +18,8 @@ export class UpdateMedecinComponent implements OnInit {
   medecin: Medecin=new Medecin();
   plage_Horaires!:Phoraire[];
     constructor(private medecinService :MedecinService, private route: ActivatedRoute,private phoraireService:PhoraireService, private router: Router
-      ) { this.medecin = history.state; }
+      ) { this.medecin = history.state;
+          console.log(this.medecin) }
   
     ngOnInit(): void {
       this.getlistPhoraires()

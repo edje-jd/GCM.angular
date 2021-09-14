@@ -97,6 +97,7 @@ const routes: Routes = [
   {path:'addAnnalyse',component:AddAnnalyseComponent},
   {path:'update-annalyse',component:UpdateAnnalyseComponent},
   {path:'annalyse-detail',component:AnnalyseDetailComponent},
+  {path:'board-user',component:BoardUserComponent},
   
  
   { path: '', redirectTo: 'login', pathMatch: 'full' }

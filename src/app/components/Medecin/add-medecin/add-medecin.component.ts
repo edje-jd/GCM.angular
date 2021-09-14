@@ -16,7 +16,7 @@ import { PhoraireService } from 'src/app/_services/phoraire.service';
 })
 export class AddMedecinComponent implements OnInit {
 
-  medecin!:Medecin;
+  
   medecinPh:MedecinPH =new MedecinPH() ;
   phoraires?:Phoraire[];
   phoraire!:Phoraire;
@@ -38,12 +38,12 @@ export class AddMedecinComponent implements OnInit {
 
   saveMedecin(){
     
-    // this.medecinPh.medecin.name = this.addMedc.controls.name.value;
-    // this.medecinPh.medecin.specialicite = this.addMedc.controls.numPhone.value;
-    // this.medecinPh.medecin.numPhone = this.addMedc.controls.name.value;
-    // this.medecinPh.medecin.email = this.addMedc.controls.email.value;
-    // this.medecinPh.plage_Horaire = this.addMedc.controls.phoraire.value;
-    // console.log("chewv 4e",this.medecinPh);
+    this.medecinPh.medecin.name = this.addMedc.controls.name.value;
+    this.medecinPh.medecin.specialicite = this.addMedc.controls.numPhone.value;
+    this.medecinPh.medecin.numPhone = this.addMedc.controls.name.value;
+    this.medecinPh.medecin.email = this.addMedc.controls.email.value;
+    this.medecinPh.plage_Horaire = this.addMedc.controls.phoraire.value;
+    console.log("chewv 4e",this.medecinPh);
     this.medecinPhService.addMedecinPh(this.medecinPh).subscribe( data =>{
         console.log(data);
 
@@ -61,15 +61,14 @@ export class AddMedecinComponent implements OnInit {
     })
      }
   onSubmit(){
-    this.medecinPh.plage_Horaire= this.phoraire;
-      this.medecinPh.medecin= this.medecin;
-      this.saveMedecin();
-    // if(this.addMedc.status === "VALID"){
-    //   this.medecinPh.plage_Horaire= this.phoraire;
+    // this.medecinPh.plage_Horaire= this.phoraire;
     //   this.medecinPh.medecin= this.medecin;
     //   this.saveMedecin();
-    //   this.dialogRef.close();
-    // } ;    
+    if(this.addMedc.status === "VALID"){
+      
+      this.saveMedecin();
+      this.dialogRef.close();
+    } ;    
   }
   reloadPage(): void {
     window.location.reload();

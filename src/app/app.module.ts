@@ -179,6 +179,7 @@ import { AnnalyseDetailComponent } from './components/Annalyse/annalyse-detail/a
   ],
   entryComponents:[HomeComponent,AddVisiteComponent,ExempleComponent],
   imports: [
+    
     MatNativeDateModule,
     MatSnackBarModule,
     MatGridListModule,

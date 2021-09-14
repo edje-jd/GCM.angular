@@ -1,5 +1,92 @@
 
+    <div class="col-xl-10 col-md-10">
+        <div class="container">&nbsp;</div>
+    <div class="container">&nbsp;</div>
+        <mat-card class="example-card">
+            
+                <div class="row">
+                    <div class="col-sm-5">
+                        <mat-card-title style="text-align: left;">Cabinet médicale </mat-card-title>
+                        <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
+                   </div>
+                   <div class="col-sm-2" >
+                       <div class="image">
+                      <img mat-card-image img src="../assets/images/medecin.jpg"></div>
+                   </div>
+                   <div class="col-sm-3"><div class="container">&nbsp;</div></div>
+                   <div class="col-sm-2">
+                    <div class="mr">
+                    <img mat-card-image img src="../assets/images/mr.png"> </div>  
+                   </div>
+                </div> 
+                <hr style="background-color: blue;border-radius: 10rem;border: 2;">
 
+                <mat-card-title style="text-align: center;"> Detail medecin</mat-card-title>
+               
+                <mat-card-subtitle style="text-align: center;">Identifiant :  {{medecinph.medecin.id}}</mat-card-subtitle>
+                <div class="container">&nbsp;</div>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <mat-card-title style="text-align: center;">Nom et prénom : {{medecinph.medecin.name}}</mat-card-title>
+
+                    </div>
+                </div>
+                <div class="row">    
+                    <div class="col-sm-12">
+                        <mat-card-subtitle style="text-align: center;">Téléphone : {{medecinph.medecin.numPhone}}</mat-card-subtitle>
+                        
+                    </div>
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Email : {{medecinph.medecin.email}}</mat-card-subtitle>
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Specialité : {{medecinph.medecin.specialicite}}</mat-card-subtitle>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Heure debut : {{medecinph.plage_Horaire.heure_deb}}</mat-card-subtitle>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Heure fin : {{medecinph.plage_Horaire.heure_fin}}</mat-card-subtitle>
+
+                    </div>
+                </div>
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="container">&nbsp;</div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button  mat-mini-fab color="primary" (click) = "Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="Page précédent"><mat-icon >
+                            arrow_back
+                          </mat-icon></button>
+                    </div>
+                    <div class="col-sm-8">
+                        <i class="far fa-print">
+                            
+                            <button 
+                           
+                            (click)="printPage()" 
+                                    ngxPrint style=" margin-left: 80%;" class = "btn btn-success" type ="submit">
+                                      Imprimer</button>
+                        </i>
+                    </div>
+                    
+                    
+                </div>
+        </mat-card>
+        </div>
+        
+<!-- 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
     
@@ -69,7 +156,7 @@
                 
                         </div>
                         <i class="far fa-print">
-                            <!-- [useExistingCss]="true"  -->
+                       
                             <button 
                            
                                 printSectionId="id-print" 
@@ -87,4 +174,4 @@
     
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script> -->

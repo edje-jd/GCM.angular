@@ -40,5 +40,11 @@ export class MedecinDetailsComponent implements OnInit {
     });
 
 }
+Retour(){
+  window.history.back();
+}
+printPage() {
+  window.print();
+}
 
 }

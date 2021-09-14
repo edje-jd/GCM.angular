@@ -7,7 +7,10 @@
   content:" *";
   color: red;
 }
-
+.shipping-card{
+  width: 600px;
+  height: 500px;  
+}
 .input-icons i { 
     position: absolute;
 } 

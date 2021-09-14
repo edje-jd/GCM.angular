@@ -121,9 +121,9 @@ openUtil(){
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus = true;
-  dialogConfig.width = "600px";
-  dialogConfig.height= "500px";
-  
+  dialogConfig.width = "650px";
+  dialogConfig.height= "600px";
+  dialogConfig.position= {top: '80px'};
   this.dialog.open(AddPatientComponent,dialogConfig);
   // this.dialog.open(AddPatientComponent, {
   //   height: '600px',
@@ -131,21 +131,22 @@ openUtil(){
     
   // });
 }
-// UpdatePatient(Patient:patient){
-//   // this.service.initializeFormGroup();
-//   const dialogConfig = new MatDialogConfig();
-//   dialogConfig.disableClose = true;
-//   dialogConfig.autoFocus = true;
-//   dialogConfig.width = "600px";
-//   dialogConfig.height= "500px";
-//   dialogConfig.data = {patient: this.dataSource.Patient}
-//   this.dialog1.open(UpdatePatientComponent,dialogConfig);
-//   // this.dialog.open(AddPatientComponent, {
-//   //   height: '600px',
-//   //   width: '700px',
+UpdatePatient(Patient:patient){
+  // this.service.initializeFormGroup();
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "650px";
+  dialogConfig.height= "600px";
+  dialogConfig.position= {top: '80px'};
+  dialogConfig.data = {patient: Patient}
+  this.dialog1.open(UpdatePatientComponent,dialogConfig);
+  // this.dialog.open(AddPatientComponent, {
+  //   height: '600px',
+  //   width: '700px',
     
-//   // });
-// }
+  // });
+}
 findPatientByName(name:HTMLInputElement){
   this.applyFilter(name.value);
 

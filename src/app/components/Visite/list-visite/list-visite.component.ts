@@ -36,7 +36,7 @@ export class ListVisiteComponent implements OnInit {
   medecin?: Medecin;
   secretaires?:Secretaire[];
   secretaire?:Secretaire;
-
+  
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -47,8 +47,10 @@ export class ListVisiteComponent implements OnInit {
   constructor(private dialog:MatDialog,private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService,private secretaireService:SecretaireService) { }
   dataSource !:any ;
   dataSource2 !:any;
-  currentDate = new Date().toLocaleDateString("fr-FR", 
-  { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  currentDate = new Date();
+    
+   
+    
   @ViewChildren(MatPaginator) paginators = new QueryList<MatPaginator>();
   @ViewChildren(MatSort) sorts = new QueryList<MatSort>();
 
@@ -58,11 +60,31 @@ export class ListVisiteComponent implements OnInit {
      
       this.dataSource.paginator= this.paginators.toArray()[0];
       this.dataSource.sort=this.sorts.toArray()[0];
-      this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm => _visitepm.visite.effectue));
+
+      this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm =>_visitepm.visite.effectue  ));  
+      //   console.log("date: ", _visitepm.visite.date_visit)
+      //   const year = _visitepm.visite.date_visit.split("-")[0]
+      //   const month = _visitepm.visite.date_visit.split("-")[1]
+      //   const day = _visitepm.visite.date_visit.split("-")[2].split("T")[0]
+
+      //  console.log("is :", this.isTodayVisit(day,  month, year))
+         
+  
       this.dataSource2.paginator = this.paginators.toArray()[1];
       this.dataSource2.sort= this.sorts.toArray()[1];
     });
   }
+
+
+  // isTodayVisit(day: number, month: number, year: number) {
+  //         console.log(`current day: ${this.currentDate.getDate()}, our day: ${day}`)
+  //         console.log(`current month: ${this.currentDate.getMonth()}, our month: ${month}`)
+  //         console.log(`current year: ${this.currentDate.getFullYear()}, our year: ${year}`)
+  //         return this.currentDate.getDate() === day &&
+  //         this.currentDate.getMonth() === month &&
+  //         this.currentDate.getFullYear() === year 
+  //         }
+
   ngOnInit(): void {
    
   this.setDataSources()
@@ -107,32 +129,18 @@ detalVisite(visitepm:VisitePM){
 updateVisite(visite: Visite){
   this.router.navigate(['update-visite'],{state:visite});
 }
+
 findPatientByName(name:HTMLInputElement){
   this.applyFilter(name.value);
 
 }
 applyFilter(filterValue:string){
   filterValue= filterValue.trim();
-  filterValue= filterValue.toLocaleLowerCase();
-  this.dataSource.filter = filterValue;
+  filterValue= filterValue.toLowerCase();
+  this.dataSource2.filter = filterValue;
  }
 
-// public Search(key: string): void {
-//   console.log(key);
-//   const results: VisitePM[] = [];
-//   for (const visitepm of this.dataSource) {
-//     if (visitepm.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
-//     || visitepm.medecinPH.medecin.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-//     || visitepm.visite.type_visite.toLowerCase().indexOf(key.toLowerCase()) !== -1
-//      ) {
-//       results.push(visitepm);
-//     }
-//   }
-//   this.visitepms = results;
-//   if (results.length === 0 || !key) {
-//     this.dataSource;
-//   }
-// }
+
 
 deleteVisite(id: any){
   this.visitepmservice.deleteVisitePM(id).subscribe( data => {

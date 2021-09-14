@@ -1,4 +1,4 @@
-
+<!-- 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light;  " >
@@ -46,18 +46,18 @@
 
     </form>
   </div>
-</div> 
+</div>  -->
 
 
 
-<!-- <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   
     
   
    <mat-card class="shipping-card">
      <mat-card-header>
-       <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Modifier un Patient</mat-card-title>
-         <button mat-icon-button (click)="onClose()" style="margin-left: 54%;" color="basic" aria-label="Example icon button with a menu icon">
+       <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Mettre a jour les Information</mat-card-title>
+         <button mat-icon-button (click)="onClose()" style="margin-left: 35%;" color="basic" aria-label="Example icon button with a menu icon">
            <mat-icon>close</mat-icon>
          </button>
       
@@ -69,7 +69,7 @@
              <input
                matInput
                placeholder="Nom et Prénom"
-               formControlName="name.value"
+               formControlName="name"
               
                name="name"
              />
@@ -82,7 +82,7 @@
              <input
                matInput
                placeholder="Téléphone"
-               formControlName="phone.value"
+               formControlName="phone"
                
                name="phone"
              />
@@ -99,7 +99,7 @@
                matInput
                type="number"
                placeholder="Age"
-               formControlName="age.value"
+               formControlName="age"
                
                name="age"
              />
@@ -119,7 +119,7 @@
            <mat-form-field class="full-width">
              <mat-select
                placeholder="Sexe"
-               formControlName="sexe.value"
+               formControlName="sexe"
                
                name="sexe"
              >
@@ -141,7 +141,7 @@
              <textarea
                matInput
                placeholder="Maladie antecedent"
-               formControlName="antecedent.value"
+               formControlName="antecedent"
                
                name="antecedent"
              ></textarea>
@@ -154,7 +154,7 @@
              <input
                matInput
                placeholder="Adresse"
-               formControlName="adresse.value"
+               formControlName="adresse"
                
                name="adresse"
              >
@@ -171,7 +171,8 @@
        
      </mat-card-content>
      <mat-card-actions>
-       <button mat-raised-button color="primary"  style="margin-left: 0%;"type="submit" >Ajouter</button>
+      
+       <button mat-raised-button color="primary"  style="margin-left: 40%;"type="submit" >Modifier</button>
      </mat-card-actions>
    </mat-card>
- </form>  -->
+ </form>  

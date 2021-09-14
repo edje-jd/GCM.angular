@@ -18,6 +18,9 @@ annalysev!: AnnalyseV;
   }
   printPage() {
     window.print();
+
   }
+
+  
 
 }
