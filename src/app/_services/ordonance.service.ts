@@ -9,9 +9,9 @@ import { Ordonance } from '../model/Ordonance';
 export class OrdonanceService {
 
   
-  private host1 ="http://localhost:8080/GCM/Ordonance/add";
-  private host2 ="http://localhost:8080/GCM/Ordonance/all";
-  private host ="http://localhost:8080/GCM/Ordonance";
+  private host1 ="http://localhost:8082/GCM/Ordonance/add";
+  private host2 ="http://localhost:8082/GCM/Ordonance/all";
+  private host ="http://localhost:8082/GCM/Ordonance";
   constructor(private httpClient:HttpClient) { }
 
   addOrdonance(ordonance: Ordonance): Observable<Object>{

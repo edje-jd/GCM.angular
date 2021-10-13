@@ -8,9 +8,9 @@ import { MedecinPH } from '../model/MedecinPH';
 })
 export class MedecinPHService {
 
-  private host1 ="http://localhost:8080/GCM/MedecinPH/add";
-  private host2 ="http://localhost:8080/GCM/MedecinPH/all";
-  private host ="http://localhost:8080/GCM/MedecinPH";
+  private host1 ="http://localhost:8082/GCM/MedecinPH/add";
+  private host2 ="http://localhost:8082/GCM/MedecinPH/all";
+  private host ="http://localhost:8082/GCM/MedecinPH";
   
 
   constructor(private httpClient:HttpClient) { }

@@ -7,9 +7,9 @@ import { Antecedent } from '../model/Antecedent';
   providedIn: 'root'
 })
 export class AntecedentService {
-  private host1 ="http://localhost:8080/GCM/Antecedent/add";
-  private host2 ="http://localhost:8080/GCM/Antecedent/all";
-  private host ="http://localhost:8080/GCM/Antecedent";
+  private host1 ="http://localhost:8082/GCM/Antecedent/add";
+  private host2 ="http://localhost:8082/GCM/Antecedent/all";
+  private host ="http://localhost:8082/GCM/Antecedent";
 
   constructor(private httpClient:HttpClient) { }
 

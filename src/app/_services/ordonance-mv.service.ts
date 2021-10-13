@@ -8,9 +8,9 @@ import { OrdonanceMV } from '../model/OrdonanceMV';
 })
 export class OrdonanceMVService {
 
-  private host1 ="http://localhost:8080/GCM/OMV/add";
-  private host2 ="http://localhost:8080/GCM/OMV/all";
-  private host ="http://localhost:8080/GCM/OMV" ;
+  private host1 ="http://localhost:8082/GCM/OMV/add";
+  private host2 ="http://localhost:8082/GCM/OMV/all";
+  private host ="http://localhost:8082/GCM/OMV" ;
   
 
   constructor(private httpClient:HttpClient) { }

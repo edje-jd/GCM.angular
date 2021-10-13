@@ -14,9 +14,9 @@ import { patient } from '../model/Patient';
   providedIn: 'root'
 })
 export class PatientService {
-  private host1 ="http://localhost:8080/GCM/Patient/add";
-  private host2 ="http://localhost:8080/GCM/Patient/all";
-  private host ="http://localhost:8080/GCM/Patient";
+  private host1 ="http://localhost:8082/GCM/Patient/add";
+  private host2 ="http://localhost:8082/GCM/Patient/all";
+  private host ="http://localhost:8082/GCM/Patient";
   constructor(private httpClient:HttpClient) { }
 
   addPatient(Patient: patient): Observable<Object>{

@@ -8,9 +8,9 @@ import { HospitalisationV } from '../model/HospitalisationV';
 })
 export class HospitalisationVService {
 
-  private host1 ="http://localhost:8080/GCM/HOV/add";
-  private host2 ="http://localhost:8080/GCM/HOV/all";
-  private host ="http://localhost:8080/GCM/HOV";
+  private host1 ="http://localhost:8082/GCM/HOV/add";
+  private host2 ="http://localhost:8082/GCM/HOV/all";
+  private host ="http://localhost:8082/GCM/HOV";
   
 
   constructor(private httpClient:HttpClient) { }

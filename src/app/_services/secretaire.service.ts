@@ -8,9 +8,9 @@ import { Secretaire } from '../model/Secretaire';
 })
 export class SecretaireService {
 
-  private host1 ="http://localhost:8080/GCM/Secretaire/add";
-  private host2 ="http://localhost:8080/GCM/Secretaire/all";
-  private host ="http://localhost:8080/GCM/Secretaire";
+  private host1 ="http://localhost:8082/GCM/Secretaire/add";
+  private host2 ="http://localhost:8082/GCM/Secretaire/all";
+  private host ="http://localhost:8082/GCM/Secretaire";
 
   constructor(private httpClient:HttpClient) { }
 

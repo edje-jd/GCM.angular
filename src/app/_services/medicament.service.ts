@@ -7,9 +7,9 @@ import { Medicament } from '../model/Medicament';
   providedIn: 'root'
 })
 export class MedicamentService {
-  private host1 ="http://localhost:8080/GCM/Medicament/add";
-  private host2 ="http://localhost:8080/GCM/Medicament/all";
-  private host ="http://localhost:8080/GCM/Medicament";
+  private host1 ="http://localhost:8082/GCM/Medicament/add";
+  private host2 ="http://localhost:8082/GCM/Medicament/all";
+  private host ="http://localhost:8082/GCM/Medicament";
   constructor(private httpClient:HttpClient) { }
 
   addMedicament(medicament: Medicament): Observable<Object>{

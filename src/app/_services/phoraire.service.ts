@@ -8,9 +8,9 @@ import { Phoraire } from '../model/Phoraire';
 })
 export class PhoraireService {
 
-  private host1 ="http://localhost:8080/GCM/PHoraire/add";
-  private host2 ="http://localhost:8080/GCM/PHoraire/all";
-  private host ="http://localhost:8080/GCM/PHoraire";
+  private host1 ="http://localhost:8082/GCM/PHoraire/add";
+  private host2 ="http://localhost:8082/GCM/PHoraire/all";
+  private host ="http://localhost:8082/GCM/PHoraire";
 
   constructor(private httpClient:HttpClient) { }
   addPhoraire(phoraire: Phoraire): Observable<Object>{

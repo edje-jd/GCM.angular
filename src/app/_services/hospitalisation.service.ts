@@ -8,9 +8,9 @@ import { Hospitalisation } from '../model/Hospitalisation';
 })
 export class HospitalisationService {
 
-  private host1 ="http://localhost:8080/GCM/Hospitalisation/add";
-  private host2 ="http://localhost:8080/GCM/Hospitalisation/all";
-  private host ="http://localhost:8080/GCM/Hospitalisation";
+  private host1 ="http://localhost:8082/GCM/Hospitalisation/add";
+  private host2 ="http://localhost:8082/GCM/Hospitalisation/all";
+  private host ="http://localhost:8082/GCM/Hospitalisation";
   constructor(private httpClient:HttpClient) { }
 
   addHospitalisation(hospitalisation: Hospitalisation): Observable<Object>{

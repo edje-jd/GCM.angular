@@ -8,9 +8,9 @@ import { Visite } from '../model/Visite';
 })
 export class VisiteService {
 
-  private host1 ="http://localhost:8080/GCM/Visite/add";
-  private host2 ="http://localhost:8080/GCM/Visite/all";
-  private host ="http://localhost:8080/GCM/Visite";
+  private host1 ="http://localhost:8082/GCM/Visite/add";
+  private host2 ="http://localhost:8082/GCM/Visite/all";
+  private host ="http://localhost:8082/GCM/Visite";
 
   constructor(private httpClient:HttpClient) { }
 

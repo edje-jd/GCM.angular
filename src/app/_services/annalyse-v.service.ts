@@ -9,9 +9,9 @@ import { AnnalyseV } from '../model/AnnlyseV';
 export class AnnalyseVService {
 
  
-  private host1 ="http://localhost:8080/GCM/ANNV/add";
-  private host2 ="http://localhost:8080/GCM/ANNV/all";
-  private host ="http://localhost:8080/GCM/ANNV";
+  private host1 ="http://localhost:8082/GCM/ANNV/add";
+  private host2 ="http://localhost:8082/GCM/ANNV/all";
+  private host ="http://localhost:8082/GCM/ANNV";
   constructor(private httpClient:HttpClient) { }
 
   addAnnalyseV(annalyseV: AnnalyseV): Observable<Object>{

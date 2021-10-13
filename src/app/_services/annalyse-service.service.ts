@@ -9,9 +9,9 @@ import { Annalyse } from '../model/Annalyse';
 export class AnnalyseServiceService {
 
   
-  private host1 ="http://localhost:8080/GCM/Annalyse/add";
-  private host2 ="http://localhost:8080/GCM/Annalyse/all";
-  private host ="http://localhost:8080/GCM/Annalyse";
+  private host1 ="http://localhost:8082/GCM/Annalyse/add";
+  private host2 ="http://localhost:8082/GCM/Annalyse/all";
+  private host ="http://localhost:8082/GCM/Annalyse";
   constructor(private httpClient:HttpClient) { }
 
   addAnnalyse(annalyse: Annalyse): Observable<Object>{

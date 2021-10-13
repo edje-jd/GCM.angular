@@ -7,9 +7,9 @@ import { Localisation } from '../model/Localisation';
   providedIn: 'root'
 })
 export class LocalisationService {
-  private host1 ="http://localhost:8080/GCM/Localisation/add";
-  private host2 ="http://localhost:8080/GCM/Localisation/all";
-  private host ="http://localhost:8080/GCM/Localisation";
+  private host1 ="http://localhost:8082/GCM/Localisation/add";
+  private host2 ="http://localhost:8082/GCM/Localisation/all";
+  private host ="http://localhost:8082/GCM/Localisation";
 
   constructor(private httpClient:HttpClient) { }
 
