@@ -3,3 +3,8 @@
     height: 100px;
     
 }
+@media print{
+    .noprint{
+        display:none;
+    }
+ }

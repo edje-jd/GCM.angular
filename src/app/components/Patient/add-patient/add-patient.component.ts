@@ -29,7 +29,7 @@ export class AddPatientComponent implements OnInit {
   patientDesease: PatientDesease = new PatientDesease();
   options = ['Homme','Femme'];
     
-
+  
     addressForm = this.fb.group({
       name: null,
       phone: [null, Validators.required],
@@ -73,6 +73,7 @@ savePatient
     
     this.patientservice.addPatient(this.patient).subscribe(data => {
       console.log(data)
+      // this.Patiental(data);
        this.PatientDetails(data);
         // this.goToPatientList();
       },
@@ -89,6 +90,9 @@ savePatient
     }
     PatientDetails(patient: patient){
       this.router.navigate(['patient-details'],{state:patient});
+    }
+    Patiental(patient: patient){
+      this.router.navigate(['patiental'],{state:patient});
     }
 
     onClose() {

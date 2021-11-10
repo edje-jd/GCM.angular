@@ -1,4 +1,4 @@
-
+<div class="card-container">
   <div class="row">
     <div class="container">&nbsp;</div>
     <div class="container">&nbsp;</div>
@@ -141,9 +141,9 @@
         <ng-container matColumnDef="Actions">
           <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > Actions </th>
           <td mat-cell *matCellDef="let annalyseV">
-            <!-- <button  mat-mini-fab color="warn" (click) = "updateAnnalyse(annalyseV.annalyse)" aria-label="Example icon button with a home icon">
+             <button  mat-mini-fab color="primary" (click) = "UpdateAnalyse(annalyseV.annalyse)" aria-label="Example icon button with a home icon">
             <mat-icon >update</mat-icon></button>&nbsp;
-            <button  mat-mini-fab color="accent" (click) = "deleteAnnalyse(annalyseV.id)"><mat-icon >delete</mat-icon></button>&nbsp; -->
+          
             <button  mat-mini-fab color="primary" (click) = "annalyseDetail(annalyseV)" matTooltip="Détail analyse"><mat-icon >info</mat-icon></button>
         </td>
           
@@ -314,3 +314,4 @@
         </mat-card>
     </div>
 </div>  
+</div>

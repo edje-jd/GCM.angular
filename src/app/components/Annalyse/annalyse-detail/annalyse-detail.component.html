@@ -1,61 +1,82 @@
-<div class="col-xl-10 col-md-10">
+<div class="col-xl-10 col-md-10" id="demo">
     <div class="container">&nbsp;</div>
 <div class="container">&nbsp;</div>
     <mat-card class="example-card">
         
             <div class="row">
                 <div class="col-sm-5">
-                    <mat-card-title style="text-align: left;">Cabinet médicale </mat-card-title>
-                    <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
-                    <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
-                    <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
+                    <mat-card-title style="text-align: left;">  {{annalysev.visitePM.medecinPH.medecin.name}} </mat-card-title>
+                    <mat-card-subtitle style="text-align: left;"> {{annalysev.visitePM.medecinPH.medecin.specialicite}}</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;">{{annalysev.visitePM.medecinPH.medecin.email}}</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;">{{annalysev.visitePM.medecinPH.medecin.numPhone}}</mat-card-subtitle>
                </div>
                <div class="col-sm-2" >
                    <div class="image">
-                  <img mat-card-image img src="https://www.trimeche.labo.tn/images/logo.png"></div>
+                  <img mat-card-image img src="assets/images/an.png"></div>
                </div>
-               <div class="col-sm-3"></div>
-               <div class="col-sm-2">
+               <div class="col-sm-5" >
                 <div class="container">&nbsp;</div>
-                <div class="mr">
-                <img mat-card-image img src="../assets/images/mr.png"> </div>  
-               </div>
+                <div class="image">
+               <img mat-card-image img src="assets/images/logo.jpeg"></div>
+            </div>
+               
             </div> 
             <hr style="background-color: blue;border-radius: 10rem;border: 2;">
-
-            <mat-card-title style="text-align: center;">Bilan d'annalyse </mat-card-title>
-            <mat-card-subtitle style="text-align: center;">Code du patient:  {{annalysev.visitePM.patient.id}}</mat-card-subtitle>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-5">
+            <mat-card-title style="text-align: left;color : red;text-decoration: underline;">BULLTIN D'EXAMENS</mat-card-title>
+            </div>
+            <div class="col-sm-3"> <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Date : {{annalysev.annalyse.dateAnls  | date: 'dd/MM/yyyy'}}</mat-card-subtitle></div>
+            </div>
             <div class="container">&nbsp;</div>
             <div class="container">&nbsp;</div>
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-4">
                     
-                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;"> Nom et prénom :{{annalysev.visitePM.patient.name}}</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;"> Nom et prénom : {{annalysev.visitePM.patient.name}}</mat-card-subtitle>
                 </div>
                 <div class="col-sm-4">
                     
-                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Date : {{annalysev.annalyse.dateAnls  |date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Age : {{annalysev.visitePM.patient.age}} Ans</mat-card-subtitle>
+                </div>
+                <div class="col-sm-4"><mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Code du patient:  {{annalysev.visitePM.patient.id}}</mat-card-subtitle></div>
+            </div>
+            <div class="container">&nbsp;</div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <mat-card-title style="text-align: left;color : blue;text-decoration: underline;">EXAMENS DEMENDES</mat-card-title>
                 </div>
             </div>
+            <div class="container">&nbsp;</div>
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5" style="white-space:pre-wrap;">
                     
-                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Nom des analyses : {{annalysev.annalyse.nomAnls}}</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;"> {{annalysev.annalyse.nomAnls}}</mat-card-subtitle>
                 </div>
                 <div class="col-sm-4">
-                   
-                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Nom d'aboratoire : {{annalysev.annalyse.nom_labo}}</mat-card-subtitle>
+                   <div class="container">&nbsp;</div>
+                </div>
+            </div>
+            <div class="container">&nbsp;</div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <mat-card-title style="text-align: left;color : blue;text-decoration: underline;">RESULTA DES EXAMENS</mat-card-title>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5" style="white-space:pre-wrap;">
 
-                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Resultat des analyses :</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;"> {{annalysev.annalyse.res_Ana}}</mat-card-subtitle>
                 </div>
+                <div class="col-sm-4"></div>
             </div>
             
             <div class="container">&nbsp;</div>
             <div class="container">&nbsp;</div>
+            <div class="noprint">
             <div class="row">
                 <div class="col-sm-4">
                     <button  mat-mini-fab color="primary" (click) = "Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="Page précédent"><mat-icon >
@@ -66,8 +87,8 @@
                     <i class="far fa-print">
                         
                         <button 
-                       
-                                (click)="printPage()"  
+                        printSectionId="demo"
+                        [useExistingCss]="true"  
                                 ngxPrint style=" margin-left: 80%;" class = "btn btn-success" type ="submit">
                                   Imprimer</button>
                     </i>
@@ -75,7 +96,7 @@
                 
                 <div class="col-sm-2"> 
                      </div>
-            </div>
+            </div></div>
             <mat-card-footer style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">SISTA.sarl</mat-card-footer>
             </mat-card>
             </div>

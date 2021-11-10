@@ -14,7 +14,7 @@
             
             <mat-form-field  class="full-width">
               <mat-label>Date de visite</mat-label>
-              <input matInput [matDatepicker]="picker1" placeholder="Date de visite" formControlName="date_visit">
+              <input matInput [matDatepicker]="picker1" placeholder="yyyy-mm-dd" formControlName="date_visit">
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
@@ -30,9 +30,9 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <mat-select  placeholder="Type de visite" formControlName="type_visite">
+            <mat-select  placeholder="Type de visite"  click=" changeVisit()" formControlName="type_visite">
         <mat-option value="Consultation">Consultation</mat-option>
-        <mat-option value="Rend-Vous">Rend-Vous</mat-option>
+        <mat-option value="Rend-Vous">Rendez-Vous</mat-option>
         
       </mat-select>
             <mat-error *ngIf="addVisite.controls['type_visite'].hasError('required')">
@@ -54,25 +54,25 @@
       
      
         <div class="col">
-          <mat-form-field  class="full-width">
-            <mat-label>Date de Rend-Vous</mat-label>
-            <input matInput [matDatepicker]="picker2" placeholder="Date de Rend-Vous" formControlName="date_der_con">
+          <mat-form-field  class="full-width" >
+            <mat-label>Date derénier Consultation</mat-label>
+            <input matInput [matDatepicker]="picker2" placeholder="Date derénier Consultation" formControlName="date_der_con">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <!-- <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="effectué" formControlName="effectue">
             
           </mat-form-field>
-        </div>
+        </div> -->
         <div class="col">
           <mat-form-field class="full-width">
             
-            <mat-select placeholder="Medecin visité" formControlName="medecinPH">
+            <mat-select placeholder="Médecin" formControlName="medecinPH">
         
             <mat-option *ngFor = "let item of medecinphs" [value]="item">
                 <tr >

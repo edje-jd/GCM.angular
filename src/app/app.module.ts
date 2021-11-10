@@ -40,7 +40,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu'
-import {MatIconModule} from '@angular/material/icon'
+
 import {MatDividerModule} from '@angular/material/divider'
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
 import { Ng2OrderModule } from 'ng2-order-pipe';
@@ -80,8 +80,14 @@ import { DossierPatientComponent } from './components/DosdierPatient/dossier-pat
 import { MatNativeDateModule } from '@angular/material/core';
 import { DosierDetailComponent } from './components/DosdierPatient/dosier-detail/dosier-detail.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { AnnalyseDetailComponent } from './components/Annalyse/annalyse-detail/annalyse-detail.component'; 
+import { AnnalyseDetailComponent } from './components/Annalyse/annalyse-detail/annalyse-detail.component';
+import { PatientalComponent } from './components/Patient/patiental/patiental.component'; 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
+import { environment } from '../environments/environment';
+import { NgxPrintModule } from 'ngx-print';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -173,13 +179,17 @@ import { AnnalyseDetailComponent } from './components/Annalyse/annalyse-detail/a
     
     AnnalyseDetailComponent,
     
+    PatientalComponent,
+    
     
     
     
   ],
   entryComponents:[HomeComponent,AddVisiteComponent,ExempleComponent],
   imports: [
-    
+    MatIconModule,
+    MatListModule,
+    NgxPrintModule,
     MatNativeDateModule,
     MatSnackBarModule,
     MatGridListModule,
@@ -210,11 +220,14 @@ import { AnnalyseDetailComponent } from './components/Annalyse/annalyse-detail/a
     MatTreeModule,
     MatInputModule,
     MatRadioModule,
+  
+ 
+    
 
   
 
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,{provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

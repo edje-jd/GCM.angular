@@ -47,9 +47,10 @@ Consultation!:any;
 
   constructor( @Inject(MAT_DIALOG_DATA) public data: {patient: patient}, public dialogRef: MatDialogRef<AddVisiteComponent>,private fb: FormBuilder,private visitepmservice:VisitePMService,private visiteService:VisiteService,private patientservice: PatientService,private router: Router ,private medecinphservice:MedecinPHService,private secretaireService:SecretaireService) {
     this.visitepm.patient = this.data.patient;
-    console.log("patient: ", this.visitepm.patient)
+    console.log("patient: ", this.visitepm.patient);
     
     this.visitepm.visite = new Visite();
+    
    }
 
   ngOnInit(): void {
@@ -82,8 +83,9 @@ Consultation!:any;
 
   changeVisit() {
     console.log("selecting " + this.visitepm.visite.type_visite)
-    if( this.visitepm.visite.type_visite === "VC") {
-      this.visitepm.visite.date_der_con = undefined
+    if( this.visitepm.visite.type_visite === "Consultation") {
+      this.visitepm.visite.prix_cons = 5000 ;
+      this.visitepm.visite.date_der_con = undefined;
     } else {
       this.visitepm.visite.prix_cons = 0
     }

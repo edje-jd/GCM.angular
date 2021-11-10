@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <mat-select    placeholder="Medicament" formControlName="medicament" >
+            <mat-select multiple placeholder="Medicament" formControlName="medicament" >
            
     
                 
@@ -53,7 +53,7 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <textarea matInput  placeholder="Dosage" formControlName="dosage"></textarea>
+            <textarea matInput  placeholder="Note" formControlName="dosage"></textarea>
             <mat-error *ngIf="addOrd.controls['dosage'].hasError('required')">
               dosage est <strong>Obligatoire</strong>
             </mat-error>
@@ -63,7 +63,9 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput  placeholder="Prochaine Rend-Vous" formControlName="datePrdv">
+            <input matInput [matDatepicker]="picker2" placeholder="Prochaine Rend-Vous" formControlName="datePrdv">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
             <mat-error *ngIf="addOrd.controls['datePrdv'].hasError('required')">
               date du Prochaine Rend-Vous est <strong>Obligatoire</strong>
             </mat-error>

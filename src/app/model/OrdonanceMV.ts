@@ -5,7 +5,7 @@ import { VisitePM } from "./VisitePM";
 
 export class OrdonanceMV{
     id!:number;
-    medicament!:Medicament;
+    medicament!:Medicament[];
     ordonance!:Ordonance;
     visitepm!:VisitePM
 }

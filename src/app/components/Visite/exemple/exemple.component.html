@@ -1,100 +1,71 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="shipping-card">
-    <mat-card-header>
-      <mat-card-title>Shipping Information</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Company" formControlName="company">
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="First name" formControlName="firstName">
-            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
-              First name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Last name" formControlName="lastName">
-            <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
-              Last name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address" formControlName="address"></textarea>
-            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
-              Address is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row" *ngIf="!hasUnitNumber">
-        <div class="col">
-          <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
-            + Add C/O, Apt, Suite, Unit
-          </button>
-        </div>
-      </div>
-      <div class="row" *ngIf="hasUnitNumber">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="City" formControlName="city">
-            <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
-              City is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-select placeholder="State" formControlName="state">
-              <mat-option *ngFor="let state of states" [value]="state.abbreviation">
-                {{ state.name }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
-              State is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-radio-group formControlName="shipping">
-            <mat-radio-button value="free">Free Shipping</mat-radio-button>
-            <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
-            <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+<div class="card-container">
+<div class="container">
+<div class="container">&nbsp;</div>
+<div class="container">&nbsp;</div>
+  <DIV CLASS="container">
+    <p style="color: blue; font-family: 'Georgia', Times, serif; text-align: center;font-style: inherit;font-size: 36px; margin-left: 0%;" >Historique des visites </p></DIV>
+<div>
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+     
+      placeholder="Recherche par nom..."  (ngModelChange)="searchVisites(key.value)" #key="ngModel" ngModel
+     
+    />
+    </mat-form-field> </div>
+<div class="mat-elevation-z8">
+
+<table mat-table [dataSource]="dataSource4"  matSort (matSortChange)="announceSortChange($event)">
+
+
+<ng-container matColumnDef="date_visit">
+  <th style="color: blue;font-family: 'Georgia';font-size:14px;" mat-header-cell  *matHeaderCellDef mat-sort-header> Date </th>
+  <td mat-cell *matCellDef="let visitepm" > {{visitepm.visite.date_visit|date: 'dd/MM/yyyy'}} </td>
+  
+</ng-container>
+
+<ng-container matColumnDef="patient.name">
+  <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header>Patient</th>
+  <td mat-cell *matCellDef="let visitepm"> {{visitepm.patient.name}} </td>
+  
+</ng-container>
+<ng-container matColumnDef="patient.phone">
+  <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header>Téléphone</th>
+  <td mat-cell *matCellDef="let visitepm"> {{visitepm.patient.phone}} </td>
+  
+</ng-container>
+
+
+<ng-container matColumnDef="medecinPH.medecin.name">
+  <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header>Médecin</th>
+  <td  mat-cell *matCellDef="let visitepm">{{visitepm.medecinPH.medecin.name}}</td>
+  
+</ng-container>
+<ng-container matColumnDef="type_visite">
+  <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef mat-sort-header> Type de visite</th>
+  <td mat-cell *matCellDef="let visitepm"> {{ visitepm.visite.type_visite}} </td>
+</ng-container>
+
+<ng-container matColumnDef="effectue">
+  <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef> effectué</th>
+  <td mat-cell *matCellDef="let visitepm"> {{ visitepm.visite.effectue}} </td>
+</ng-container>
+
+<ng-container matColumnDef="Actions">
+  <th style="color: blue;font-family: 'Georgia';font-size: 14px;" mat-header-cell *matHeaderCellDef > &nbsp; &nbsp;&nbsp;&nbsp; Actions </th>
+  <td mat-cell *matCellDef="let visitepm">
+    &nbsp; &nbsp; &nbsp;
+    <button  mat-mini-fab color="primary" (click) = "detalVisite(visitepm)" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="info"><mat-icon >info</mat-icon></button>
+    <!-- <button  mat-mini-fab color="warn" (click) = "updateVisite(visitepm.visite)"  aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="modifier">
+    <mat-icon >update</mat-icon></button>&nbsp; -->
+    </td>
+  
+</ng-container>
+
+
+<tr  mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumnss;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+</div>
+</div>

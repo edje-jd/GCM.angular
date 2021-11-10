@@ -1,11 +1,23 @@
-.image{
+/* .image{
     width: 70px;
     height: 50px;
     align-items: center;
-}
+} */
 
 .mr{
     width: 100px;
     height: 100px;
     
 }
+
+.angular-with-newlines {
+    white-space: pre-wrap;
+}
+.gir{
+    width: 70%;
+}
+@media print{
+    .noprint{
+        display:none;
+    }
+ }

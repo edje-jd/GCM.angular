@@ -1,6 +1,6 @@
 
-
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-full bg-primary">
+<!-- 
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-full bg-primary" *ngIf="isLoggedIn">
     
       
       <button mat-icon-button (click)="isShow()" color="basic" aria-label="Example icon button with a menu icon" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
@@ -27,37 +27,46 @@
     </ul>
   </nav>
   <div class="row min-vh-100 flex-column flex-md-row">
-    <aside  class="col-12 col-md-3 col-xl-2 p-0  bg-primary " *ngIf="isLoggedIn && !show"> 
+    <aside  class="col-12 col-md-3 col-xl-2 p-0  bg-primary " *ngIf=" isLoggedIn &&!show"> 
       <nav  class="navbar navbar-expand-md navbar-dark  bg-primary flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
         
         <div class="text-center p-2">
-          <img src="../assets/images/cm.png" alt="profile picture" class="img-fluid rounded-circle my-2 p-1 d-none d-md-block shadow"/>
+          <img src="assets/images/cm.jpg" alt="profile picture" class="img-fluid rounded-circle my-2 p-1 d-none d-md-block shadow"/>
         </div>
            
         <hr style="height:2px; width:90%; border-width:0; color:lightblue; background-color:lightblue">
 
         <div class="text-left p-2" id="nav">
           <ul class="navbar-nav flex-column w-100 justify-content-center">
-          <li class="nav-item" >
+          <li class="nav-item" routerLinkActive="active">
             <button mat-button routerLink="/listPatient" class="navbar-brand mx-0 font-weight-bold  text-nowrap" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button  color="Basic" aria-label="Example icon button with a home icon" >
                 <mat-icon>person</mat-icon>
               </button >Gestion des Patients</button>
            
           </li>
-          <li class="nav-item" >
+          <li class="nav-item" routerLinkActive="active">
             <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/listVisite" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 
                 <mat-icon>timer</mat-icon>
-              </button> Visites et Liste d'attentes</button>
+              </button>Gestion de Liste d'attentes</button>
             
           </li>
-          <li class="nav-item" *ngIf="showAdminBoard">
+         
+          <li class="nav-item" *ngIf="showAdminBoard" routerLinkActive="active">
             <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/DossierPatient" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
               <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
                 <mat-icon> local_hospital</mat-icon>
               </button>Dossier du Patient</button>
+            
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/exemple" style="margin-left: 0%;" style="color: lightblue;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
+                
+                <mat-icon>home</mat-icon>
+              </button>Historique des visites</button>
             
           </li>
           
@@ -93,10 +102,121 @@
     
   </div>
   <mat-card style="text-align: center;">© 2021 Copyright: SISTA.sarl</mat-card>
-  <!-- <mat-toolbar color='light'>
-    <span class='spacer'></span>
-      <h1>© 2021 Copyright: SISTA.sarl</h1>
-    <span class='spacer'></span>
-  </mat-toolbar> -->
+
+ -->
+
   
+ <mat-toolbar class="navbar navbar-expand-lg navbar-dark navbar-full bg-primary" *ngIf="isLoggedIn">
+  <button mat-icon-button  (click)="sidenav.toggle()" class="menu-button" fxHide fxShow.lt-md>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span [ngClass]="{ 'hidden': opened ? false : true }" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 20px;">Gestion du cabinet médicale</span>
+  <span>
+  </span>
+  <span class="head-menu"></span>
+  <!-- <div class="row">
+    <button mat-button (click)="signout()">
+      <mat-icon>logout</mat-icon> Sign Out
+    </button>
+  </div> -->
+  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      
+      <li class="nav-item">
+        <a href="/login" class="navbar-brand mx-0 font-weight-bold  text-nowrap"  style="color: lightblue;font-family: 'Georgia'"  routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="navbar-brand mx-0 font-weight-bold  text-nowrap"  style="color: black;font-family: 'Georgia'" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <!-- <a href class="nav-link"  style="color: lightblue;font-family: 'Georgia'" (click)="logout()">LogOut</a> -->
+        <button mat-button (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon> 
+          Sign Out
+          </button>
+      </li>
+    </ul>
+</mat-toolbar>
+<mat-sidenav-container >
+  <mat-sidenav #sidenav  [mode]="opened === false ? 'over' : 'side'" [opened]="opened === true" *ngIf="isLoggedIn" >
+    <mat-nav-list>
+      <div style="text-align: center;">
+        <img class="avatar mat-elevation-z8" src="assets/images/cm.jpg" />
+
+        <h4 class="name text-responsive" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 16px;">Cabinet El-Avia</h4>
+        <p class="designation" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 16px;">Nouakchott</p>
+
+        <mat-divider></mat-divider>
+      </div>
+      <!-- Here we are using menu-list-item -->
+          
+            <ul class="navbar-nav flex-column w-100 justify-content-center">
+             <li class="nav-item" routerLinkActive="active">
+            <button mat-button routerLink="/listPatient" class="navbar-brand mx-0 font-weight-bold  text-nowrap" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button  color="Basic" aria-label="Example icon button with a home icon" >
+                <mat-icon>person</mat-icon>
+              </button >Gestion des Patients</button>
+
+
+           
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/listVisite" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
+                
+                <mat-icon>timer</mat-icon>
+              </button>Gestion de Liste d'attentes</button>
+            
+          </li>
+
+          <li class="nav-item" *ngIf="showAdminBoard" routerLinkActive="active">
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/DossierPatient" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
+                <mat-icon> local_hospital</mat-icon>
+              </button>Dossier du Patient</button>
+            
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" routerLink="/exemple" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
+                
+                <mat-icon>home</mat-icon>
+              </button>Historique des visites</button>
+            
+          </li>
+          
+          <mat-divider></mat-divider>
+          <li class="nav-item" >
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" style="margin-left: 0%;" (click)="openDialog()" style="color: black;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
+                <mat-icon>settings</mat-icon>
+              </button>Paramétrage</button>
+
+            
+          </li>
+
+          <li class="nav-item" *ngIf="showAdminBoard">
+            <button mat-button class="navbar-brand mx-0 font-weight-bold  text-nowrap" (click)="openUtil()" style="margin-left: 0%;" style="color: black;font-family: 'Georgia';font-size: 16px;">
+              <button mat-icon-button color="Basic" aria-label="Example icon button with a home icon">
+                <mat-icon>build</mat-icon>
+              </button>Gestion d'utilisateur</button>
+ 
+          </li>
+       
+        </ul>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+<footer *ngIf="isLoggedIn">
+  <mat-card style="text-align: center;">© 2021 Copyright: SISTA.sarl</mat-card>
+</footer>
+        
+     
  

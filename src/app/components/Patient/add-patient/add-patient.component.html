@@ -1,11 +1,12 @@
+
  <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
   
     
   
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Ajouter un Patient</mat-card-title>
-        <button mat-icon-button (click)="onClose()" style="margin-left: 54%;" color="basic" aria-label="Example icon button with a menu icon">
+      <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Ajouter un nouveau patient</mat-card-title>
+        <button mat-icon-button (click)="onClose()" style="margin-left: 40%;" color="basic" aria-label="Example icon button with a menu icon">
           <mat-icon>close</mat-icon>
         </button>
      
@@ -31,7 +32,8 @@
               matInput
               placeholder="Téléphone"
               formControlName="phone"
-              
+              minlength="8"
+              maxlength="8"
               name="phone"
             />
             <mat-error
@@ -48,7 +50,8 @@
               type="number"
               placeholder="Age"
               formControlName="age"
-              
+              minlength="1"
+              maxlength="3"
               name="age"
             />
 
@@ -121,8 +124,18 @@
     <mat-card-actions>
       <button mat-raised-button color="primary"  style="margin-left: 40%;"type="submit" >Ajouter</button>
     </mat-card-actions>
+    <!-- <div *ngIf="alerte" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>le patient est ajouter</strong>
+      <button (click)="closeAlerte()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
   </mat-card>
+  
 </form> 
+<!-- <div class="alert alert-success">
+  le patient est bien ajouter
+</div> -->
 <!--  
 <!DOCTYPE html>
 <html>

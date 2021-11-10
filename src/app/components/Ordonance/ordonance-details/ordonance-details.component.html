@@ -1,171 +1,79 @@
-<!-- 
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
-    
-    
-    <div class="container" style="background-color: right; margin-top: 5%;" >
-        
-      <div class="page-content page-container" id="page-content">
-        <div class="padding">
-            <div class="row container d-flex justify-content-center">
-                 <div class="col-xl-4 col-md-4"> <mat-card class="example-card">
-                    <mat-card-title> {{this.ordonancemv.visitepm.patient.name&& this.ordonancemv.visitepm.patient.name.length <= 5 ?  this.ordonancemv.visitepm.patient.name : this.ordonancemv.visitepm.patient.name?.slice(0,5) + ".."}}</mat-card-title>
-                    <img mat-card-image img src="https://as2.ftcdn.net/jpg/02/14/64/25/500_F_214642505_6kkV06wDk1j1NpXjmCeepDMt3j64ul0r.jpg">
-                    <mat-card-footer>SISTA.sarl</mat-card-footer>
-                </mat-card></div> 
-                <div class="col-xl-10 col-md-10">
-                    <div class="card user-card-full">
-                       
-                        <div id="id-print" >
-                        <div class="row m-l-0 m-r-0">
-    
-                       
-                            <div   class="col-sm-4 bg-c-lite-green user-profile">
-                                <div class="card-block text-center text-white">
-                                    
-                                    <br>
-                                     <header   style="margin-left: 5%; size: 30ch; font-family: Georgia,  'Times New Roman', Times, serif, Times, serif;font-weight: bold; color: blue;"><b>Ordonance du Patient: {{ordonancemv.visitepm.patient.name}} </b> </header>
-                                        <br>
-                                    <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png"
-                                        class="img-radius" alt="User-Profile-Image"> </div>
-                                 
-                                    <h6 class="f-w-600" style="color: blue;"><b>Identifiant du patient</b></h6>
-                                    <p style="color: black;font-family: 'Georgia';font-size: 14px;">{{ordonancemv.visitepm.patient.id}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="card-block">
-                                    <button style="margin-left: 80%;margin-top: 2%" class = "btn btn-primary" (click)="Retour()"><i class="bi bi-arrow-right-circle-fill"></i></button>
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: blue;font-family: 'Georgia';font-size: 20px;"><b>Ordonance Information</b></h6>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Nom patient</p>
-                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;"> {{ordonancemv.visitepm.patient.name}}</h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Date d'ordonance</p>
-                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{ordonancemv.ordonance.date_ord|date: 'dd/MM/yyyy'}}</h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Dosage</p>
-    
-                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{ordonancemv.ordonance.dosage}}</h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600" style="color: blue">Type de medicament</p>
-                                            <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{ordonancemv.medicament.typeMedc}}</h6>
-                                        </div>
-                                      
-                                     <br>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600" style="color: blue">Nom de medicament</p>
-    
-                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{ordonancemv.medicament.nomMedc}}</h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600" style="color: blue">Nom de medecin </p>
-                                        <h6 class="text-muted f-w-400" style="color: black;font-family: 'Georgia';font-size: 14px;">{{ordonancemv.visitepm.medecinPH.medecin.name}}</h6>
-                                    </div>
-                    
-                                
-                                
-                            
-                                </div>
-                                </div>
-                                <footer style="margin-left: 80%; color: rgb(180, 12, 12); ">
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600" >
-                                    <b> GCM.SISTA</b></h6></footer>
-                    </div>
-               
-                    
-                
-                
-                        </div>
-                        <i class="far fa-print">
-                            
-                            <button 
-                           
-                                printSectionId="id-print" 
-                                    ngxPrint style="margin-top:-5%; margin-left: 10%;" class = "btn btn-success" type ="submit">
-                                      Imprimer</button>
-                        </i>
-                        </div>
-                        </div>
-                            </div>
-                </div>
-                    </div>
-                    
-            </div>
-    
-    
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script> -->
 
-
-    <div class="col-xl-10 col-md-10">
+    <div class="col-xl-10 col-md-10" >
         <div class="container">&nbsp;</div>
     <div class="container">&nbsp;</div>
-        <mat-card class="example-card">
-            
-                <div class="row">
-                    <div class="col-sm-5">
-                        <mat-card-title style="text-align: left;">Cabinet medicale </mat-card-title>
-                        <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
-                        <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
-                        <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
-                   </div>
-                   <div class="col-sm-2" >
-                       <div class="image">
-                      <img mat-card-image img src="../assets/images/6.jpg"></div>
-                   </div>
-                   <div class="col-sm-5">
+        <mat-card class="example-card"  >
+            <div id="demo">
+            <div class="row" >
+                <div class="col-sm-6">
+                    <mat-card-title style="text-align: left;">  {{ordonancemv.visitepm.medecinPH.medecin.name}} </mat-card-title>
+                    <mat-card-subtitle style="text-align: left;"> {{ordonancemv.visitepm.medecinPH.medecin.specialicite}}</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;">{{ordonancemv.visitepm.medecinPH.medecin.email}}</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: left;">{{ordonancemv.visitepm.medecinPH.medecin.numPhone}}</mat-card-subtitle>
+               </div>
+               <!-- <div class="col-sm-2">
+                <div class="image">
+                    <img mat-card-image img src="assets/images/6.jpg"></div>
+               </div> -->
+              
+               <div class="col-sm-6" >
+                <div class="container">&nbsp;</div>
+                   <div class="image">
+                    <img mat-card-image img src="assets/images/logo.jpeg"></div>
+               </div></div>
+                   <!-- <div class="col-sm-5">
                     <mat-card-title style="text-align: right;">  {{ordonancemv.visitepm.medecinPH.medecin.name}} </mat-card-title>
                     <mat-card-subtitle style="text-align: right;"> {{ordonancemv.visitepm.medecinPH.medecin.specialicite}}</mat-card-subtitle>
                     <mat-card-subtitle style="text-align: right;">{{ordonancemv.visitepm.medecinPH.medecin.email}}</mat-card-subtitle>
                     <mat-card-subtitle style="text-align: right;">{{ordonancemv.visitepm.medecinPH.medecin.numPhone}}</mat-card-subtitle>
                     
-                   </div>
-                </div> 
+                   </div> -->
+                
                 <hr style="background-color: blue;border-radius: 10rem;border: 2;">
                 <mat-card-content>
-                <mat-card-title style="text-align: center;"> Ordonnance Médicale</mat-card-title>
-                <div class="container">&nbsp;</div>
-                <div class="container">&nbsp;</div>
-                <div class="row">
+                   
+                    <div class="row" >
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-4">
+                            <mat-card-title style="text-align: right;color : red;text-decoration: underline;"> Ordonnance &nbsp;وصفة طبية</mat-card-title>
+                        </div>
+                    <div class="col-sm-4">
+                        <mat-card-subtitle style="text-align: right;color: black;font-family: 'Georgia';font-size: 16px;"> Date : {{ordonancemv.ordonance.date_ord|date: 'dd/MM/yyyy'}} </mat-card-subtitle>
+                    </div></div>
+                    <div class="container">&nbsp;</div>
+                <div class="row" >
                     <div class="col-sm-6">
-                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Patient: {{ordonancemv.visitepm.patient.name}}</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Nom du Patient: {{ordonancemv.visitepm.patient.name}}</mat-card-subtitle>
                     </div>
-                    <div class="col-sm-6">
-                        <mat-card-subtitle style="text-align: right;color: black;font-family: 'Georgia';font-size: 16px;"> Date d'ordonnance: {{ordonancemv.ordonance.date_ord|date: 'dd/MM/yyyy'}} </mat-card-subtitle>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-4"><mat-card-subtitle style="text-align:  left;color: black;font-family: 'Georgia';font-size: 16px;">{{ordonancemv.medicament.nomMedc}} </mat-card-subtitle> </div>
-                    <div class="col-sm-6">
-                        <mat-card-subtitle style="text-align:  left;color: black;font-family: 'Georgia';font-size: 16px;">{{ordonancemv.ordonance.dosage}} </mat-card-subtitle> 
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-4"><mat-card-subtitle style="text-align:  left;color: black;font-family: 'Georgia';font-size: 16px;">Prochaine Rend-vous :{{ordonancemv.ordonance.datePrdv}} </mat-card-subtitle> </div>
-                    <div class="col-sm-6">
-                       
-                    </div>
+                    <div class="col-sm-6"> <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Age: {{ordonancemv.visitepm.patient.age}}</mat-card-subtitle></div>
                     
                 </div>
                 
-                <div class="row">
+                <div class="container">&nbsp;</div>
+                
+                <div class="row"  class="angular-with-newlines" *ngFor="let item of ordonancemv.medicament">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8"><mat-card-subtitle style="text-align: center;color: black;font-family: 'Georgia';font-size: 16px;">{{item.nomMedc}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.manCos}}  </mat-card-subtitle> </div>
+                    <div class="col-sm-2">
+                        <mat-card-subtitle style="text-align:  left;color: black;font-family: 'Georgia';font-size: 16px;">  </mat-card-subtitle> 
+                    </div>
                     
-                    <div class="col-sm-12"> 
-                        <mat-card-subtitle style="text-align: center;">Dr.signature: </mat-card-subtitle></div>
                 </div>
-                <div class="row">
+                <div class="container">&nbsp;</div>
+                <div  class="row">
+                    <div class="col-sm-6">
+                        <mat-card-subtitle style="text-align:  left;color: black;font-family: 'Georgia';font-size: 16px;">Prochaine Rend-vous :{{ordonancemv.ordonance.datePrdv|date: 'dd/MM/yyyy'}} </mat-card-subtitle> </div>
+                    
+                        <div class="col-sm-6">
+                    <mat-card-subtitle style="text-align: center;">Dr.signature: </mat-card-subtitle></div>
+                    
+                </div>
+            </mat-card-content>
+           
+               <div class="noprint">
+                <div class="row" >
                     <div class="col-sm-6">
                         <button  mat-mini-fab style=" margin-left: 0%;" color="primary" (click) = "Retour()" aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="Page précédent"><mat-icon >
                             arrow_back
@@ -175,15 +83,19 @@
                         <i class="far fa-print">
                             
                             <button 
-                            (click)="printPage()"
-                                
+                            printSectionId="demo"
+                            [useExistingCss]="true"
                                     ngxPrint style=" margin-left: 80%;" class = "btn btn-success" type ="submit">
                                       Imprimer</button>
                         </i>
                     </div>
-                    </div>
-                </mat-card-content>
-            <mat-card-footer style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">SISTA.sarl</mat-card-footer>
+                    </div></div>
+                    
+            <mat-card-footer >
+                <hr class ="gir" style="background-color: black;border-radius: 10rem;border: 2;">
+                    <mat-card-subtitle style="text-align: center;">يرجى إحضار الوصفة في الموعد القادم</mat-card-subtitle>
+                    <mat-card-subtitle style="text-align: center;"> Veuillez rapportez l'ordonnance a la prochaine visite </mat-card-subtitle>
+            </mat-card-footer></div>
            
         </mat-card>
     </div>

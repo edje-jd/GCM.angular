@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <div class="container" style="background-color: light; margin-left: 10% " >
 
@@ -24,4 +24,81 @@
       <button style="margin-bottom: 5%; margin-left: 80%;" class = "btn btn-success" type ="submit">Modifier</button>
       </form>
 </div>
-</div>
+</div> -->
+
+<form [formGroup]="updateAnls" novalidate (ngSubmit)="onSubmit()" class="formm">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <button mat-icon-button (click)="onClose()" style="margin-left: 38%;" color="basic" aria-label="Example icon button with a menu icon">
+        <mat-icon>close</mat-icon>
+      </button>
+          <mat-card-title style="color: blue; font-family: 'Georgia', Times, serif;">Ajouter resultat des analyses</mat-card-title>
+       
+        
+          
+       
+      
+     
+    </mat-card-header>
+    <mat-card-content >
+      <div class="row">
+        <div class="col">
+          
+            
+            <mat-form-field  class="full-width">
+              
+              <input matInput [matDatepicker]="picker1" 
+              placeholder="Date des analyses" formControlName="dateAnls"
+              name="dateAnls">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          
+        </div>
+      </div>
+     
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput  placeholder="Nom des analyses" 
+            formControlName="nomAnls"
+            name="nomAnls"></textarea>
+            <mat-error *ngIf="updateAnls.controls['nomAnls'].hasError('required')">
+              nom analyse est <strong>Obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput  placeholder="Resultat des analyses" formControlName="res_Ana"
+            name="res_Ana"></textarea>
+            
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput  placeholder="Nom d'aboratoire" formControlName="nom_labo"
+            name="nom_labo">
+            <mat-error *ngIf="updateAnls.controls['nom_labo'].hasError('required')">
+              dosage est <strong>Obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="col">
+          <mat-form-field class="full-width">
+            <input type="file" placeholder="Resultat d'analyse" accept="image/*,.pdf" formControlName="resul_ana">
+           
+          </mat-form-field>
+        </div> -->
+      </div>
+     
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Ajouter</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

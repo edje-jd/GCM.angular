@@ -53,6 +53,13 @@ export class AddOrdonanceComponent implements OnInit {
 
   saveOrdonance(){
     this.ordonancemv.ordonance.date_ord = this.addOrd.controls.date_ord.value;
+    // for (let index = 0; index < this.addOrd.controls.medicament.value.length; index++) {
+    //   const element1 = this.addOrd.controls.medicament.value[index];
+      
+    //     this.ordonancemv.medicament = push(element1.id);
+    //   }
+     
+    // }
     this.ordonancemv.medicament = this.addOrd.controls.medicament.value;
     this.ordonancemv.ordonance.dosage = this.addOrd.controls.dosage.value;
     this.ordonancemv.ordonance.datePrdv = this.addOrd.controls.datePrdv.value;
@@ -63,6 +70,9 @@ export class AddOrdonanceComponent implements OnInit {
       this.ordoranceDetails(this.ordonancemv);
       },
       error => console.log(error));
+
+      console.log('Form content ',this.addOrd);
+      
   }
   goToOrdonanceList(){
     this.router.navigate(['/listOrdonance']);

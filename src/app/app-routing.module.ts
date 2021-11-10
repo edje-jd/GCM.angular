@@ -46,6 +46,8 @@ import { UpdateVisiteComponent } from './components/Visite/update-visite/update-
 import { DossierPatientComponent } from './components/DosdierPatient/dossier-patient/dossier-patient.component';
 import { DosierDetailComponent } from './components/DosdierPatient/dosier-detail/dosier-detail.component';
 import { AnnalyseDetailComponent } from './components/Annalyse/annalyse-detail/annalyse-detail.component';
+import { PatientalComponent } from './components/Patient/patiental/patiental.component';
+import { ExempleComponent } from './components/Visite/exemple/exemple.component';
 
 
 
@@ -63,6 +65,7 @@ const routes: Routes = [
   {path:'addPatient', component:AddPatientComponent},
   {path:'updatePatient',component:UpdatePatientComponent},
   {path:'patient-details',component:PatientDetailsComponent},
+  {path:'patiental' , component:PatientalComponent},
   
   {path:'addAntecedent' , component:AddAntecedentComponent},
   {path:'listAntecedent', component:ListAntecedentComponent},
@@ -82,6 +85,7 @@ const routes: Routes = [
   {path:'addVisite',component:AddVisiteComponent},
   {path:'update-visite' , component:UpdateVisiteComponent},
   {path:'visiteDetails',component:VisiteDetailsComponent},
+  {path:'exemple', component:ExempleComponent},
  
   {path:'listSecretaire' , component:ListSecretaireComponent},
   {path:'addSecretaire', component:AddSecretaireComponent},

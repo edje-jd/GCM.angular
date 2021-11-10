@@ -20,7 +20,7 @@ import { VisiteService } from 'src/app/_services/visite.service';
 export class DossierPatientComponent implements OnInit {
 
  
-  
+  visitepms!:VisitePM[];
   displayedColumns: string[] = ['date_visit' ,'patient.name','patient.phone', 'medecinPH.medecin.name','type_visite','patient.age','patient.adresse','Actions'];
   constructor(private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService) { }
   dataSource !:any;
@@ -31,21 +31,34 @@ export class DossierPatientComponent implements OnInit {
       this.dataSource= new MatTableDataSource<VisitePM>(data.filter(_visitepm => _visitepm.visite.effectue));
       this.dataSource.paginator= this.paginator;
       this.dataSource.sort=this.sort;
-    })
+    });
+    this.getVisitePMs();
   }
 
   detalVisite(visitepm:VisitePM){
     this.router.navigate(['Dosier-Detail'],{state:visitepm});
   }
-
-  findPatientByName(name:HTMLInputElement){
-    this.applyFilter(name.value);
+  private getVisitePMs(){
+    this.visitepmservice.getVisitePMList().subscribe(data => {
+      this.visitepms = data;
+    });
   
   }
-  applyFilter(filterValue:string){
-    filterValue= filterValue.trim();
-    filterValue= filterValue.toLocaleLowerCase();
-    this.dataSource.filter = filterValue;
+
+  public searchDossier(key: string): void {
+    console.log(key);
+    const results: VisitePM[] = [];
+    for (const visitepm of this.visitepms) {
+      if (visitepm.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      
+      || visitepm.patient.phone?.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(visitepm);
+      }
+    }
+    this.dataSource = results;
+    if (results.length === 0 || !key) {
+      this.dataSource;
+    }
   }
 
 }

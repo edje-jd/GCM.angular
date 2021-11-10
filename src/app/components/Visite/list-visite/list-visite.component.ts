@@ -26,7 +26,9 @@ import { UpdateVisiteComponent } from '../update-visite/update-visite.component'
 })
 export class ListVisiteComponent implements OnInit {
   visitepms!:VisitePM[];
+  visitepmss!:VisitePM[];
   visitepm!:VisitePM;
+  
   visite!: Visite[];
   id: any;
   i:any;
@@ -42,8 +44,8 @@ export class ListVisiteComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  displayedColumnss:string[]=['date_visit','patient.name','medecinPH.medecin.name','type_visite','Actions']
-  displayedColumns: string[] = ['date_visit', 'patient.name', 'medecinPH.medecin.name','type_visite','Actions'];
+  displayedColumnss:string[]=['date_visit','patient.name','patient.phone','medecinPH.medecin.name','type_visite','Actions']
+  displayedColumns: string[] = ['date_visit', 'patient.name','patient.phone', 'medecinPH.medecin.name','type_visite','Actions'];
   constructor(private dialog:MatDialog,private visitepmservice :VisitePMService,private tokenStorageService: TokenStorageService,private patientservice: PatientService, private route: ActivatedRoute ,private router: Router,private visiteService:VisiteService,private medecinService:MedecinService,private secretaireService:SecretaireService) { }
   dataSource !:any ;
   dataSource2 !:any;
@@ -56,12 +58,21 @@ export class ListVisiteComponent implements OnInit {
 
   setDataSources() {
     this.visitepmservice.getVisitePMList().subscribe(data => {
-      this.dataSource= new MatTableDataSource<VisitePM>(data.filter(_visitepm => !_visitepm.visite.effectue));
+      
+      this.dataSource= new MatTableDataSource<VisitePM>(data.filter(_visitepm => !_visitepm.visite.effectue &&
+        //  (_visitepm.visite.date_visit.toString().substring(4,7)==this.currentDate.toString().substring(4,7)) &&
+         (_visitepm.visite.date_visit.toString().substring(8,10)==this.currentDate.toString().substring(8,10)) 
+        //  (_visitepm.visite.date_visit.toString().substring(11,15)==this.currentDate.toString().substring(11,15))
+      ));
+  
      
+      this.visitepms= data.filter(_visitepm => !_visitepm.visite.effectue);
       this.dataSource.paginator= this.paginators.toArray()[0];
-      this.dataSource.sort=this.sorts.toArray()[0];
+      this.dataSource.sort=this.sorts.toArray()[2];
 
-      this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm =>_visitepm.visite.effectue  ));  
+      this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm =>_visitepm.visite.effectue && (_visitepm.visite.date_visit.toString().substring(8,10)==this.currentDate.toString().substring(8,10)))); 
+      this.visitepmss= data.filter(_visitepm =>_visitepm.visite.effectue );
+     
       //   console.log("date: ", _visitepm.visite.date_visit)
       //   const year = _visitepm.visite.date_visit.split("-")[0]
       //   const month = _visitepm.visite.date_visit.split("-")[1]
@@ -86,6 +97,7 @@ export class ListVisiteComponent implements OnInit {
   //         }
 
   ngOnInit(): void {
+   console.log(this.currentDate.toString().substring(11,15));
    
   this.setDataSources()
    
@@ -102,7 +114,7 @@ export class ListVisiteComponent implements OnInit {
 
       this.username = user.username;}
 
-    this.getVisitePMs();
+    
     this.i=this.route.snapshot.params['i'];
     this.patient=new patient()
     this.patientservice.getPatientById(this.i).subscribe(dta=> {
@@ -115,12 +127,8 @@ export class ListVisiteComponent implements OnInit {
        this.secretaire=dta;});   
   }
 
-  private getVisitePMs(){
-    this.visitepmservice.getVisitePMList().subscribe(data => {
-      this.visitepms = data;
-    });
+ 
 
-}
 
 detalVisite(visitepm:VisitePM){
   this.router.navigate(['visiteDetails'], {state: visitepm});
@@ -130,24 +138,46 @@ updateVisite(visite: Visite){
   this.router.navigate(['update-visite'],{state:visite});
 }
 
-findPatientByName(name:HTMLInputElement){
-  this.applyFilter(name.value);
-
+public searchAttante(key: string): void {
+  console.log(key);
+  const results: VisitePM[] = [];
+  for (const visitepm of this.visitepms) {
+    if (visitepm.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+    
+    || visitepm.patient.phone?.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      results.push(visitepm);
+    }
+  }
+  this.dataSource = results;
+  if (results.length === 0 || !key) {
+    this.visitepmservice.getVisitePMList().subscribe(data => {
+      this.dataSource= new MatTableDataSource<VisitePM>(data.filter(_visitepm => !_visitepm.visite.effectue));});
+  }
 }
-applyFilter(filterValue:string){
-  filterValue= filterValue.trim();
-  filterValue= filterValue.toLowerCase();
-  this.dataSource2.filter = filterValue;
- }
-
-
-
-deleteVisite(id: any){
-  this.visitepmservice.deleteVisitePM(id).subscribe( data => {
-    console.log(data);
-    this.getVisitePMs();
-  })
+public searchEffectue(key1: string): void {
+  console.log(key1);
+  const results: VisitePM[] = [];
+  for (const visitepm of this.visitepmss) {
+    if (visitepm.patient.name?.toLowerCase().indexOf(key1.toLowerCase()) !== -1
+    
+    || visitepm.patient.phone?.toLowerCase().indexOf(key1.toLowerCase()) !== -1) {
+      results.push(visitepm);
+    }
+  }
+  this.dataSource2 = results;
+  console.log(this.dataSource2)
+  if (results.length === 0 || !key1) {
+    this.visitepmservice.getVisitePMList().subscribe(data => {
+      this.dataSource2= new MatTableDataSource<VisitePM>(data.filter(_visitepm =>_visitepm.visite.effectue ));});
+  }
 }
+
+// deleteVisite(id: any){
+//   this.visitepmservice.deleteVisitePM(id).subscribe( data => {
+//     console.log(data);
+//     this.getVisitePMs();
+//   })
+// }
 
 
 

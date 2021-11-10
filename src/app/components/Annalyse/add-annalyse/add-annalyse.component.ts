@@ -24,7 +24,9 @@ export class AddAnnalyseComponent implements OnInit {
   addAnls = this.fb.group({
     dateAnls: null,
     nomAnls: [null, Validators.required], 
-    nom_labo: [null, Validators.required]
+    res_Ana:null, 
+    nom_labo: [null, Validators.required],
+    // resul_ana:null, 
     
     
    
@@ -40,6 +42,7 @@ export class AddAnnalyseComponent implements OnInit {
   saveAnnalyse(){
     this.annalyseV.annalyse.dateAnls = this.addAnls.controls.dateAnls.value;
     this.annalyseV.annalyse.nomAnls = this.addAnls.controls.nomAnls.value;
+    this.annalyseV.annalyse.res_Ana = this.addAnls.controls.res_Ana.value;
     this.annalyseV.annalyse.nom_labo = this.addAnls.controls.nom_labo.value;
     console.log("enchewv",this.annalyseV);
     this.annalyseVService.addAnnalyseV(this.annalyseV).subscribe( data =>{

@@ -34,8 +34,14 @@
           <mat-form-field class="full-width">
             <textarea matInput  placeholder="Nom des analyses" formControlName="nomAnls"></textarea>
             <mat-error *ngIf="addAnls.controls['nomAnls'].hasError('required')">
-              dosage est <strong>Obligatoire</strong>
+              nom analyse est <strong>Obligatoire</strong>
             </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput  placeholder="Resultat des analyses" formControlName="res_Ana"></textarea>
+            
           </mat-form-field>
         </div>
       </div>
@@ -49,6 +55,13 @@
             </mat-error>
           </mat-form-field>
         </div>
+
+        <!-- <div class="col">
+          <mat-form-field class="full-width">
+            <input type="file" placeholder="Resultat d'analyse" accept="image/*,.pdf" formControlName="resul_ana">
+           
+          </mat-form-field>
+        </div> -->
       </div>
      
     </mat-card-content>

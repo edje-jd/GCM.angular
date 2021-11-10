@@ -121,21 +121,20 @@
             
                 <div class="row">
                     <div class="col-sm-5">
-                        <mat-card-title style="text-align: left;">Cabinet médicale </mat-card-title>
-                        <mat-card-subtitle style="text-align: left;">48335244 - 20226226</mat-card-subtitle>
-                        <mat-card-subtitle style="text-align: left;">Cabinet@gmail.com</mat-card-subtitle>
-                        <mat-card-subtitle style="text-align: left;">Nktt</mat-card-subtitle>
+                        <mat-card-title style="text-align: left;">  {{hospitalisationv.visitePM.medecinPH.medecin.name}} </mat-card-title>
+                        <mat-card-subtitle style="text-align: left;"> {{hospitalisationv.visitePM.medecinPH.medecin.specialicite}}</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">{{hospitalisationv.visitePM.medecinPH.medecin.email}}</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;">{{hospitalisationv.visitePM.medecinPH.medecin.numPhone}}</mat-card-subtitle>
                    </div>
-                   <div class="col-sm-2" >
-                       <div class="image">
-                      <img mat-card-image img src="../assets/images/24.jpg"></div>
+                   <div class="col-sm-1" >
+                       
                    </div>
-                   <div class="col-sm-3"></div>
+                   
                 
-                   <div class="col-sm-2">
+                   <div class="col-sm-6">
                     <div class="container">&nbsp;</div>
-                    <div class="mr">
-                    <img mat-card-image img src="../assets/images/mr.png"> </div>  
+                    <div class="image">
+                    <img mat-card-image img src="assets/images/logo.jpeg"> </div>  
                    </div>
                 </div> 
                 <hr style="background-color: blue;border-radius: 10rem;border: 2;">
@@ -179,7 +178,7 @@
                     </div>
                     <div class="col-sm-6">
 
-                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Traitement : {{hospitalisationv.hospitalisation.traitement}}{{hospitalisationv.visitePM.medecinPH.medecin.name}}</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: left;color: black;font-family: 'Georgia';font-size: 16px;">Traitement : {{hospitalisationv.hospitalisation.traitement}}</mat-card-subtitle>
                     </div>
                     
                 </div>

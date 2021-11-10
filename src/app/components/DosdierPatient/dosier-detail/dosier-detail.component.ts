@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Annalyse } from 'src/app/model/Annalyse';
 import { AnnalyseV } from 'src/app/model/AnnlyseV';
 import { Hospitalisation } from 'src/app/model/Hospitalisation';
 import { HospitalisationV } from 'src/app/model/HospitalisationV';
@@ -15,6 +16,7 @@ import { HospitalisationVService } from 'src/app/_services/hospitalisation-v.ser
 import { OrdonanceMVService } from 'src/app/_services/ordonance-mv.service';
 import { VisitePMService } from 'src/app/_services/visite-pm.service';
 import { AddAnnalyseComponent } from '../../Annalyse/add-annalyse/add-annalyse.component';
+import { UpdateAnnalyseComponent } from '../../Annalyse/update-annalyse/update-annalyse.component';
 import { AddHospitalisationComponent } from '../../Hospitalisation/add-hospitalisation/add-hospitalisation.component';
 import { AddOrdonanceComponent } from '../../Ordonance/add-ordonance/add-ordonance.component';
 import { AddVisiteComponent } from '../../Visite/add-visite/add-visite.component';
@@ -26,6 +28,7 @@ import { AddVisiteComponent } from '../../Visite/add-visite/add-visite.component
 })
 export class DosierDetailComponent implements OnInit {
 visitepm!:VisitePM;
+
 displayedColumns: string[] = [ 'date_visit','type_visite','Actions'];
 displayedColumnsH: string[] = [ 'date_debut_hosp', 'date_fin_hosp','Actions'];
 displayedColumnsO: string[] = ['date_ord','Actions'];
@@ -83,6 +86,23 @@ displayedColumnsA: string[] = ['dateAnls','nomAnls', 'Actions'];
   ordoranceDetails(ordonancemv:OrdonanceMV){
     this.router.navigate(['ordonance-details'],{state:ordonancemv});
   }
+  UpdateAnalyse(analyse:Annalyse){
+    // this.service.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "650px";
+    dialogConfig.height= "600px";
+    dialogConfig.position= {top: '80px'};
+    dialogConfig.data = {annalyse: analyse}
+    console.log(analyse)
+    this.dialog.open(UpdateAnnalyseComponent,dialogConfig);
+    // this.dialog.open(AddPatientComponent, {
+    //   height: '600px',
+    //   width: '700px',
+      
+    // });
+  }
 
   annalyseDetail(annalyseV: AnnalyseV){
     this.router.navigate(['annalyse-detail'],{state:annalyseV});
@@ -137,6 +157,7 @@ displayedColumnsA: string[] = ['dateAnls','nomAnls', 'Actions'];
     dialogConfig.width = "650px";
     dialogConfig.height= "600px";
     dialogConfig.position= {top: '50px',left:'270px'};
+   
     dialogConfig.data = {patient: this.visitepm.patient}
     
     this.dialog.open(AddVisiteComponent,dialogConfig);}

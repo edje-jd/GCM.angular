@@ -93,7 +93,7 @@ getMedicamentbyId(id:number){
     for (const ordonancemv of this.ordonancemvs) {
       if ( ordonancemv.visitepm.patient.name?.toLowerCase().indexOf(key.toLowerCase()) !== -1
       ||  ordonancemv.visitepm.medecinPH.medecin.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      ||  ordonancemv.medicament.nomMedc?.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      // ||  ordonancemv.medicament.nomMedc?.toLowerCase().indexOf(key.toLowerCase()) !== -1
        ) {
         results.push(ordonancemv );
       }
